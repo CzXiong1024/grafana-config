@@ -1,2015 +1,2015 @@
 {
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": "-- Grafana --",
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "target": {
-          "limit": 100,
-          "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
-        },
-        "type": "dashboard"
-      }
-    ]
-  },
-  "description": "",
-  "editable": true,
-  "gnetId": 4701,
-  "graphTooltip": 1,
-  "id": 361,
-  "iteration": 1704457800421,
-  "links": [],
-  "panels": [
-    {
-      "collapsed": true,
-      "datasource": "infra-prometheus",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 605,
-      "panels": [
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": "-- Grafana --",
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "target": {
+                    "limit": 100,
+                    "matchAny": false,
+                    "tags": [],
+                    "type": "dashboard"
+                },
+                "type": "dashboard"
+            }
+        ]
+    },
+    "description": "",
+    "editable": true,
+    "gnetId": 4701,
+    "graphTooltip": 1,
+    "id": 361,
+    "iteration": 1704457800421,
+    "links": [],
+    "panels": [
         {
-          "datasource": "infra-prometheus",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "links": [
+            "collapsed": true,
+            "datasource": "infra-prometheus",
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 605,
+            "panels": [
                 {
-                  "targetBlank": true,
-                  "title": "点击查看更多慢接口统计",
-                  "url": "/d/jvm-job-http-rank/java-http-latency?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                    "datasource": "infra-prometheus",
+                    "fieldConfig": {
+                        "defaults": {
+                            "color": {
+                                "mode": "thresholds"
+                            },
+                            "links": [
+                                {
+                                    "targetBlank": true,
+                                    "title": "点击查看更多慢接口统计",
+                                    "url": "/d/jvm-job-http-rank/java-http-latency?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                                }
+                            ],
+                            "mappings": [],
+                            "thresholds": {
+                                "mode": "absolute",
+                                "steps": [
+                                    {
+                                        "color": "green",
+                                        "value": null
+                                    },
+                                    {
+                                        "color": "dark-yellow",
+                                        "value": 600
+                                    },
+                                    {
+                                        "color": "red",
+                                        "value": 6000
+                                    }
+                                ]
+                            }
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 5,
+                        "w": 6,
+                        "x": 0,
+                        "y": 1
+                    },
+                    "id": 621,
+                    "links": [
+                        {
+                            "targetBlank": true,
+                            "title": "点击查看更多慢RPC统计",
+                            "url": "/d/javars/slow-rpc?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                        }
+                    ],
+                    "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                            "calcs": [
+                                "lastNotNull"
+                            ],
+                            "fields": "",
+                            "values": false
+                        },
+                        "text": {
+                            "valueSize": 25
+                        },
+                        "textMode": "auto"
+                    },
+                    "pluginVersion": "7.5.4",
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": true,
+                            "expr": "sum(increase(http_client_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[1m])) - \nsum(increase(http_client_request_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[1m]))",
+                            "interval": "",
+                            "legendFormat": "",
+                            "refId": "A"
+                        }
+                    ],
+                    "title": "近一分钟慢接口趋势  (点击查看更多统计)",
+                    "type": "stat"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "short",
+                    "gridPos": {
+                        "h": 5,
+                        "w": 13,
+                        "x": 6,
+                        "y": 1
+                    },
+                    "id": 619,
+                    "interval": null,
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "7.5.6",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "(sum(increase(http_client_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\",group=~\"$backend\"}[$__range])) by (instance) - sum(increase(http_client_request_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\",group=~\"$backend\"}[$__range])) by (instance)) >= 1",
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{instance}}",
+                            "refId": "A"
+                        }
+                    ],
+                    "title": "所选时段内慢接口节点分布 ( 耗时> 2s )",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 12,
+                        "w": 19,
+                        "x": 0,
+                        "y": 6
+                    },
+                    "id": 603,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "7.5.6",
+                    "repeatDirection": "v",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "(sum(increase(http_client_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request) - \nsum(increase(http_client_request_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request)) >= 1",
+                            "format": "time_series",
+                            "hide": false,
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{request}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "title": "所选时段内慢请求次数 ( 耗时> 2s )",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
                 }
-              ],
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "dark-yellow",
-                    "value": 600
-                  },
-                  {
-                    "color": "red",
-                    "value": 6000
-                  }
-                ]
-              }
+            ],
+            "title": "慢调用统计",
+            "type": "row"
+        },
+        {
+            "collapsed": true,
+            "datasource": "infra-prometheus",
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 1
             },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 6,
-            "x": 0,
-            "y": 1
-          },
-          "id": 621,
-          "links": [
-            {
-              "targetBlank": true,
-              "title": "点击查看更多慢RPC统计",
-              "url": "/d/javars/slow-rpc?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
-            }
-          ],
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
+            "id": 623,
+            "panels": [
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "short",
+                    "gridPos": {
+                        "h": 8,
+                        "w": 8,
+                        "x": 0,
+                        "y": 2
+                    },
+                    "id": 626,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "7.5.6",
+                    "repeatDirection": "v",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "sum(increase(http_client_request_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (status)",
+                            "format": "time_series",
+                            "hide": false,
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{status}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "title": "所选时段内FeignClient状态码统计",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "decimals": null,
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 8,
+                        "w": 9,
+                        "x": 8,
+                        "y": 2
+                    },
+                    "id": 637,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "7.5.6",
+                    "repeatDirection": "v",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (group)",
+                            "format": "time_series",
+                            "hide": false,
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{group}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "title": "所选时段内服务提供方5xx分布",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 9,
+                        "w": 17,
+                        "x": 0,
+                        "y": 10
+                    },
+                    "id": 633,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [
+                        {
+                            "title": "查看单个HTTP接口的统计",
+                            "url": "/d/jvm-job-http/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                        }
+                    ],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "7.5.6",
+                    "repeatDirection": "v",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "topk(20,(sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request)) > 0)",
+                            "format": "time_series",
+                            "hide": false,
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{request}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "title": "所选时段内接口请求量 TOP 20 ",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 6,
+                        "w": 9,
+                        "x": 0,
+                        "y": 19
+                    },
+                    "id": 628,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "7.5.6",
+                    "repeatDirection": "v",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "(sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
+                            "format": "time_series",
+                            "hide": false,
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{instance}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "title": "所选时段内 HTTP 5xx 节点分布",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 6,
+                        "w": 8,
+                        "x": 9,
+                        "y": 19
+                    },
+                    "id": 627,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "7.5.6",
+                    "repeatDirection": "v",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "(sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
+                            "format": "time_series",
+                            "hide": false,
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{instance}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "title": "所选时段内 HTTP 4xx 节点分布",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 6,
+                        "w": 9,
+                        "x": 0,
+                        "y": 25
+                    },
+                    "id": 614,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "maxDataPoints": 3,
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "(sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{instance}}",
+                            "refId": "A"
+                        }
+                    ],
+                    "title": "所选时段内 Exception 节点分布",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 6,
+                        "w": 8,
+                        "x": 9,
+                        "y": 25
+                    },
+                    "id": 616,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [],
+                    "maxDataPoints": 3,
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "(sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (class)) > 0",
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{class}} ",
+                            "refId": "A"
+                        }
+                    ],
+                    "title": "所选时段内 Exception 类型分布",
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                },
+                {
+                    "aliasColors": {},
+                    "breakPoint": "50%",
+                    "cacheTimeout": null,
+                    "combine": {
+                        "label": "Others",
+                        "threshold": 0
+                    },
+                    "datasource": "infra-prometheus",
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {},
+                        "overrides": []
+                    },
+                    "fontSize": "80%",
+                    "format": "none",
+                    "gridPos": {
+                        "h": 8,
+                        "w": 17,
+                        "x": 0,
+                        "y": 31
+                    },
+                    "id": 635,
+                    "interval": "30s",
+                    "legend": {
+                        "header": "total",
+                        "percentage": true,
+                        "percentageDecimals": 2,
+                        "show": true,
+                        "sort": "current",
+                        "sortDesc": true,
+                        "values": true
+                    },
+                    "legendType": "Right side",
+                    "links": [
+                        {
+                            "title": "查看单个HTTP接口统计",
+                            "url": "/d/jvm-job-http/java-http-sla?$__url_time_range&var-appname=${appname}&var-envtype=${envtype}"
+                        }
+                    ],
+                    "nullPointMode": "connected",
+                    "pieType": "pie",
+                    "pluginVersion": "8.4.1",
+                    "repeatDirection": "v",
+                    "strokeWidth": 1,
+                    "targets": [
+                        {
+                            "datasource": "infra-prometheus",
+                            "exemplar": false,
+                            "expr": "sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request) > 0",
+                            "format": "time_series",
+                            "hide": false,
+                            "instant": true,
+                            "interval": "",
+                            "intervalFactor": 10,
+                            "legendFormat": "{{request}} ",
+                            "refId": "B"
+                        }
+                    ],
+                    "title": "所选时段内4xx接口分布",
+                    "transformations": [],
+                    "type": "grafana-piechart-panel",
+                    "valueName": "current"
+                }
+            ],
+            "title": "RPC状态码/异常统计",
+            "type": "row"
+        },
+        {
+            "collapsed": false,
+            "datasource": "infra-prometheus",
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 2
             },
-            "text": {
-              "valueSize": 25
+            "id": 595,
+            "panels": [],
+            "title": "RPC调用概览",
+            "type": "row"
+        },
+        {
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "links": [
+                        {
+                            "targetBlank": true,
+                            "title": "查看单个接口的统计",
+                            "url": "/d/javard/java-rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                        }
+                    ],
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "rgba(50, 172, 45, 0.97)",
+                                "value": null
+                            },
+                            {
+                                "color": "rgba(237, 129, 40, 0.89)",
+                                "value": 3000
+                            },
+                            {
+                                "color": "rgba(245, 54, 54, 0.9)",
+                                "value": 12000
+                            }
+                        ]
+                    },
+                    "unit": "reqps"
+                },
+                "overrides": []
             },
-            "textMode": "auto"
-          },
-          "pluginVersion": "7.5.4",
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": true,
-              "expr": "sum(increase(http_client_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[1m])) - \nsum(increase(http_client_request_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[1m]))",
-              "interval": "",
-              "legendFormat": "",
-              "refId": "A"
+            "gridPos": {
+                "h": 3,
+                "w": 4,
+                "x": 0,
+                "y": 3
+            },
+            "id": 590,
+            "interval": "30s",
+            "links": [
+                {
+                    "targetBlank": true,
+                    "title": "点击查看接口维度统计",
+                    "url": "/d/javard/rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                }
+            ],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {
+                    "valueSize": 25
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "(sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[2m]))) OR on() vector(0)",
+                    "format": "time_series",
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "metric": "",
+                    "refId": "A",
+                    "step": 14400
+                }
+            ],
+            "title": "RPC请求",
+            "transparent": true,
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 6,
+                "w": 15,
+                "x": 4,
+                "y": 3
+            },
+            "hiddenSeries": false,
+            "id": 601,
+            "interval": "30s",
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeatDirection": "v",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(group) ",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "服务提供方: {{group}} ",
+                    "refId": "C"
+                },
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "sum(irate(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(group) > 0",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{group}} - 5xx",
+                    "refId": "B"
+                },
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "sum(irate(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(group) > 0",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{group}} - 4xx",
+                    "refId": "D"
+                },
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(instance) ",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{instance}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "RPC调用趋势",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:163",
+                    "format": "reqps",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:164",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
             }
-          ],
-          "title": "近一分钟慢接口趋势  (点击查看更多统计)",
-          "type": "stat"
         },
         {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "short",
-          "gridPos": {
-            "h": 5,
-            "w": 13,
-            "x": 6,
-            "y": 1
-          },
-          "id": 619,
-          "interval": null,
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "7.5.6",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "(sum(increase(http_client_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\",group=~\"$backend\"}[$__range])) by (instance) - sum(increase(http_client_request_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\",group=~\"$backend\"}[$__range])) by (instance)) >= 1",
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "links": [
+                        {
+                            "targetBlank": true,
+                            "title": "查看单个接口的统计",
+                            "url": "/d/javard/java-rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                        }
+                    ],
+                    "mappings": [],
+                    "max": 1,
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "rgba(50, 172, 45, 0.97)",
+                                "value": null
+                            },
+                            {
+                                "color": "rgba(237, 129, 40, 0.89)",
+                                "value": 1e-7
+                            },
+                            {
+                                "color": "rgba(245, 54, 54, 0.9)",
+                                "value": 0.4
+                            }
+                        ]
+                    },
+                    "unit": "percentunit"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 4,
+                "x": 0,
+                "y": 6
+            },
+            "id": 600,
+            "interval": "30s",
+            "links": [
+                {
+                    "targetBlank": true,
+                    "title": "查看单个接口的调用统计",
+                    "url": "/d/javard/rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                }
+            ],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {
+                    "valueSize": 25
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "(sum(increase(http_client_request_total{status=~\"5..\",group!~\"OperationHandler|default\",app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[70s])) / sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[70s]))) >=0 OR on() vector(0)",
+                    "format": "time_series",
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "metric": "",
+                    "refId": "A",
+                    "step": 14400
+                }
+            ],
+            "title": "5xx请求占比 [ 1m ]",
+            "transparent": true,
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 10,
+                "w": 19,
+                "x": 0,
+                "y": 9
+            },
+            "hiddenSeries": false,
+            "id": 599,
+            "interval": "30s",
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "sort": "max",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeatDirection": "v",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by (request,group)",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "30s",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{request}} ({{group}})",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "RPC调用QPS",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:197",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:198",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
             }
-          ],
-          "title": "所选时段内慢接口节点分布 ( 耗时> 2s )",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
         },
         {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 12,
-            "w": 19,
-            "x": 0,
-            "y": 6
-          },
-          "id": 603,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "7.5.6",
-          "repeatDirection": "v",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "(sum(increase(http_client_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request) - \nsum(increase(http_client_request_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request)) >= 1",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{request}}",
-              "refId": "B"
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "links": [],
+                    "unit": "s"
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 10,
+                "w": 19,
+                "x": 0,
+                "y": 19
+            },
+            "hiddenSeries": false,
+            "id": 634,
+            "interval": "30s",
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "sort": "max",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeatDirection": "v",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "( sum(increase(http_client_request_duration_seconds_sum{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group)\n      /\n      sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group) ) >=0",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "30s",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{request}} ({{group}})",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "RPC调用平均耗时",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:226",
+                    "format": "s",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:227",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
             }
-          ],
-          "title": "所选时段内慢请求次数 ( 耗时> 2s )",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
-        }
-      ],
-      "title": "慢调用统计",
-      "type": "row"
-    },
-    {
-      "collapsed": true,
-      "datasource": "infra-prometheus",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 1
-      },
-      "id": 623,
-      "panels": [
+        },
         {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "short",
-          "gridPos": {
-            "h": 8,
-            "w": 8,
-            "x": 0,
-            "y": 2
-          },
-          "id": 626,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "7.5.6",
-          "repeatDirection": "v",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "sum(increase(http_client_request_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (status)",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{status}}",
-              "refId": "B"
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 19,
+                "x": 0,
+                "y": 29
+            },
+            "hiddenSeries": false,
+            "id": 602,
+            "interval": "30s",
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "sort": "max",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeatDirection": "v",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",server=~\"$backend\"}[2m])) by (class,server)",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{class}} ({{server}})",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "近两分钟RPC调用Exception趋势",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:348",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:349",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
             }
-          ],
-          "title": "所选时段内FeignClient状态码统计",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
         },
         {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "decimals": null,
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 8,
-            "w": 9,
-            "x": 8,
-            "y": 2
-          },
-          "id": 637,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "7.5.6",
-          "repeatDirection": "v",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (group)",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{group}}",
-              "refId": "B"
+            "aliasColors": {},
+            "breakPoint": "50%",
+            "cacheTimeout": null,
+            "combine": {
+                "label": "Others",
+                "threshold": 0
+            },
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fontSize": "80%",
+            "format": "none",
+            "gridPos": {
+                "h": 8,
+                "w": 19,
+                "x": 0,
+                "y": 36
+            },
+            "id": 598,
+            "interval": "30s",
+            "legend": {
+                "header": "total",
+                "percentage": true,
+                "percentageDecimals": 2,
+                "show": true,
+                "sort": "current",
+                "sortDesc": true,
+                "values": true
+            },
+            "legendType": "Right side",
+            "links": [],
+            "nullPointMode": "connected",
+            "pieType": "pie",
+            "pluginVersion": "8.4.1",
+            "repeatDirection": "v",
+            "strokeWidth": 1,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": false,
+                    "expr": "sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[$__range])) by (request,group,status) > 0",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": true,
+                    "interval": "",
+                    "intervalFactor": 10,
+                    "legendFormat": "{{status}} - {{request}} ({{group}})",
+                    "refId": "B"
+                }
+            ],
+            "title": "所选时段内接口5xx状态码分布",
+            "transformations": [],
+            "type": "grafana-piechart-panel",
+            "valueName": "current"
+        },
+        {
+            "aliasColors": {},
+            "breakPoint": "50%",
+            "cacheTimeout": null,
+            "combine": {
+                "label": "Others",
+                "threshold": 0
+            },
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fontSize": "80%",
+            "format": "none",
+            "gridPos": {
+                "h": 8,
+                "w": 19,
+                "x": 0,
+                "y": 44
+            },
+            "id": 638,
+            "interval": "30s",
+            "legend": {
+                "header": "total",
+                "percentage": true,
+                "percentageDecimals": 2,
+                "show": true,
+                "sort": "current",
+                "sortDesc": true,
+                "values": true
+            },
+            "legendType": "Right side",
+            "links": [],
+            "nullPointMode": "connected",
+            "pieType": "pie",
+            "pluginVersion": "8.4.1",
+            "repeatDirection": "v",
+            "strokeWidth": 1,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": false,
+                    "expr": "      sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[$__range])) by (request,group,status) > 0",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": true,
+                    "interval": "",
+                    "intervalFactor": 10,
+                    "legendFormat": "{{status}} - {{request}} ({{group}})",
+                    "refId": "B"
+                }
+            ],
+            "title": "所选时段内接口4xx状态码分布",
+            "transformations": [],
+            "type": "grafana-piechart-panel",
+            "valueName": "current"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 19,
+                "x": 0,
+                "y": 52
+            },
+            "hiddenSeries": false,
+            "id": 636,
+            "interval": "30s",
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "sort": "max",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeatDirection": "v",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "sum(increase(http_client_errorcode_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",server=~\"$backend\"}[2m])) by (server,code)",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": " {{code}} ({{server}})",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "近两分钟RPC调用业务码趋势",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:277",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:278",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
             }
-          ],
-          "title": "所选时段内服务提供方5xx分布",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
         },
         {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 9,
-            "w": 17,
-            "x": 0,
-            "y": 10
-          },
-          "id": 633,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [
-            {
-              "title": "查看单个HTTP接口的统计",
-              "url": "/d/jvm-job-http/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 19,
+                "x": 0,
+                "y": 59
+            },
+            "hiddenSeries": false,
+            "id": 640,
+            "interval": "30s",
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "sort": "max",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeatDirection": "v",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "                        sum(irate(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "  {{group}}",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "RPC服务提供方5xx趋势",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:277",
+                    "format": "reqps",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:278",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
             }
-          ],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "7.5.6",
-          "repeatDirection": "v",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "topk(20,(sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request)) > 0)",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{request}}",
-              "refId": "B"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "infra-prometheus",
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 19,
+                "x": 0,
+                "y": 66
+            },
+            "hiddenSeries": false,
+            "id": 639,
+            "interval": "30s",
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "sort": "max",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeatDirection": "v",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": "infra-prometheus",
+                    "exemplar": true,
+                    "expr": "            sum(irate(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
+                    "format": "time_series",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "  {{group}}",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "RPC服务提供方4xx趋势",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:277",
+                    "format": "reqps",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:278",
+                    "format": "none",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
             }
-          ],
-          "title": "所选时段内接口请求量 TOP 20 ",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
-        },
-        {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 6,
-            "w": 9,
-            "x": 0,
-            "y": 19
-          },
-          "id": 628,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "7.5.6",
-          "repeatDirection": "v",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "(sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            }
-          ],
-          "title": "所选时段内 HTTP 5xx 节点分布",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
-        },
-        {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 9,
-            "y": 19
-          },
-          "id": 627,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "7.5.6",
-          "repeatDirection": "v",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "(sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{instance}}",
-              "refId": "B"
-            }
-          ],
-          "title": "所选时段内 HTTP 4xx 节点分布",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
-        },
-        {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 6,
-            "w": 9,
-            "x": 0,
-            "y": 25
-          },
-          "id": 614,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "maxDataPoints": 3,
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "(sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{instance}}",
-              "refId": "A"
-            }
-          ],
-          "title": "所选时段内 Exception 节点分布",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
-        },
-        {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 6,
-            "w": 8,
-            "x": 9,
-            "y": 25
-          },
-          "id": 616,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [],
-          "maxDataPoints": 3,
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "(sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (class)) > 0",
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{class}} ",
-              "refId": "A"
-            }
-          ],
-          "title": "所选时段内 Exception 类型分布",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
-        },
-        {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "cacheTimeout": null,
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
-          "datasource": "infra-prometheus",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fontSize": "80%",
-          "format": "none",
-          "gridPos": {
-            "h": 8,
-            "w": 17,
-            "x": 0,
-            "y": 31
-          },
-          "id": 635,
-          "interval": "30s",
-          "legend": {
-            "header": "total",
-            "percentage": true,
-            "percentageDecimals": 2,
-            "show": true,
-            "sort": "current",
-            "sortDesc": true,
-            "values": true
-          },
-          "legendType": "Right side",
-          "links": [
-            {
-              "title": "查看单个HTTP接口统计",
-              "url": "/d/jvm-job-http/java-http-sla?$__url_time_range&var-appname=${appname}&var-envtype=${envtype}"
-            }
-          ],
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "pluginVersion": "8.4.1",
-          "repeatDirection": "v",
-          "strokeWidth": 1,
-          "targets": [
-            {
-              "datasource": "infra-prometheus",
-              "exemplar": false,
-              "expr": "sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (request) > 0",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "intervalFactor": 10,
-              "legendFormat": "{{request}} ",
-              "refId": "B"
-            }
-          ],
-          "title": "所选时段内4xx接口分布",
-          "transformations": [],
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
         }
-      ],
-      "title": "RPC状态码/异常统计",
-      "type": "row"
-    },
-    {
-      "collapsed": false,
-      "datasource": "infra-prometheus",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 2
-      },
-      "id": 595,
-      "panels": [],
-      "title": "RPC调用概览",
-      "type": "row"
-    },
-    {
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "links": [
-            {
-              "targetBlank": true,
-              "title": "查看单个接口的统计",
-              "url": "/d/javard/java-rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
-            }
-          ],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 3000
-              },
-              {
-                "color": "rgba(245, 54, 54, 0.9)",
-                "value": 12000
-              }
-            ]
-          },
-          "unit": "reqps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 0,
-        "y": 3
-      },
-      "id": 590,
-      "interval": "30s",
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "点击查看接口维度统计",
-          "url": "/d/javard/rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
-        }
-      ],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {
-          "valueSize": 25
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.4",
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "(sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[2m]))) OR on() vector(0)",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "metric": "",
-          "refId": "A",
-          "step": 14400
-        }
-      ],
-      "title": "RPC请求",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 15,
-        "x": 4,
-        "y": 3
-      },
-      "hiddenSeries": false,
-      "id": 601,
-      "interval": "30s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(group) ",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "服务提供方: {{group}} ",
-          "refId": "C"
-        },
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "sum(irate(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(group) > 0",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{group}} - 5xx",
-          "refId": "B"
-        },
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "sum(irate(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(group) > 0",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{group}} - 4xx",
-          "refId": "D"
-        },
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by(instance) ",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "RPC调用趋势",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:163",
-          "format": "reqps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:164",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "links": [
-            {
-              "targetBlank": true,
-              "title": "查看单个接口的统计",
-              "url": "/d/javard/java-rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
-            }
-          ],
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "rgba(50, 172, 45, 0.97)",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1e-7
-              },
-              {
-                "color": "rgba(245, 54, 54, 0.9)",
-                "value": 0.4
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 0,
-        "y": 6
-      },
-      "id": 600,
-      "interval": "30s",
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "查看单个接口的调用统计",
-          "url": "/d/javard/rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
-        }
-      ],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {
-          "valueSize": 25
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.4",
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "(sum(increase(http_client_request_total{status=~\"5..\",group!~\"OperationHandler|default\",app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[70s])) / sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[70s]))) >=0 OR on() vector(0)",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "metric": "",
-          "refId": "A",
-          "step": 14400
-        }
-      ],
-      "title": "5xx请求占比 [ 1m ]",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 10,
-        "w": 19,
-        "x": 0,
-        "y": 9
-      },
-      "hiddenSeries": false,
-      "id": 599,
-      "interval": "30s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "sum(irate(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[2m])) by (request,group)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "30s",
-          "intervalFactor": 1,
-          "legendFormat": "{{request}} ({{group}})",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "RPC调用QPS",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:197",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:198",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": [],
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 10,
-        "w": 19,
-        "x": 0,
-        "y": 19
-      },
-      "hiddenSeries": false,
-      "id": 634,
-      "interval": "30s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "( sum(increase(http_client_request_duration_seconds_sum{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group)\n      /\n      sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group) ) >=0",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "30s",
-          "intervalFactor": 1,
-          "legendFormat": "{{request}} ({{group}})",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "RPC调用平均耗时",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:226",
-          "format": "s",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:227",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 19,
-        "x": 0,
-        "y": 29
-      },
-      "hiddenSeries": false,
-      "id": 602,
-      "interval": "30s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",server=~\"$backend\"}[2m])) by (class,server)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{class}} ({{server}})",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "近两分钟RPC调用Exception趋势",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:348",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:349",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fontSize": "80%",
-      "format": "none",
-      "gridPos": {
-        "h": 8,
-        "w": 19,
-        "x": 0,
-        "y": 36
-      },
-      "id": 598,
-      "interval": "30s",
-      "legend": {
-        "header": "total",
-        "percentage": true,
-        "percentageDecimals": 2,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "Right side",
-      "links": [],
-      "nullPointMode": "connected",
-      "pieType": "pie",
-      "pluginVersion": "8.4.1",
-      "repeatDirection": "v",
-      "strokeWidth": 1,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": false,
-          "expr": "sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[$__range])) by (request,group,status) > 0",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 10,
-          "legendFormat": "{{status}} - {{request}} ({{group}})",
-          "refId": "B"
-        }
-      ],
-      "title": "所选时段内接口5xx状态码分布",
-      "transformations": [],
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fontSize": "80%",
-      "format": "none",
-      "gridPos": {
-        "h": 8,
-        "w": 19,
-        "x": 0,
-        "y": 44
-      },
-      "id": 638,
-      "interval": "30s",
-      "legend": {
-        "header": "total",
-        "percentage": true,
-        "percentageDecimals": 2,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "Right side",
-      "links": [],
-      "nullPointMode": "connected",
-      "pieType": "pie",
-      "pluginVersion": "8.4.1",
-      "repeatDirection": "v",
-      "strokeWidth": 1,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": false,
-          "expr": "      sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[$__range])) by (request,group,status) > 0",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 10,
-          "legendFormat": "{{status}} - {{request}} ({{group}})",
-          "refId": "B"
-        }
-      ],
-      "title": "所选时段内接口4xx状态码分布",
-      "transformations": [],
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 19,
-        "x": 0,
-        "y": 52
-      },
-      "hiddenSeries": false,
-      "id": 636,
-      "interval": "30s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "sum(increase(http_client_errorcode_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",server=~\"$backend\"}[2m])) by (server,code)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": " {{code}} ({{server}})",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "近两分钟RPC调用业务码趋势",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:277",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:278",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 19,
-        "x": 0,
-        "y": 59
-      },
-      "hiddenSeries": false,
-      "id": 640,
-      "interval": "30s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "                        sum(irate(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "  {{group}}",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "RPC服务提供方5xx趋势",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:277",
-          "format": "reqps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:278",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "infra-prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 19,
-        "x": 0,
-        "y": 66
-      },
-      "hiddenSeries": false,
-      "id": 639,
-      "interval": "30s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.4",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "infra-prometheus",
-          "exemplar": true,
-          "expr": "            sum(irate(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "  {{group}}",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "RPC服务提供方4xx趋势",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:277",
-          "format": "reqps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:278",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    }
-  ],
-  "refresh": false,
-  "schemaVersion": 27,
-  "style": "dark",
-  "tags": [],
-  "templating": {
-    "list": [
-      {
-        "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "prod",
-          "value": "prod"
-        },
-        "datasource": "infra-prometheus",
-        "definition": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": false,
-        "label": "部署环境",
-        "multi": false,
-        "name": "envtype",
-        "options": [],
-        "query": {
-          "query": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "hhub-price",
-          "value": "hhub-price"
-        },
-        "datasource": "infra-prometheus",
-        "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": false,
-        "label": "应用 ( 支持sug )",
-        "multi": false,
-        "name": "appname",
-        "options": [],
-        "query": {
-          "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": ".+",
-        "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": "infra-prometheus",
-        "definition": "label_values(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"},group)",
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": true,
-        "label": "服务提供方",
-        "multi": true,
-        "name": "backend",
-        "options": [],
-        "query": {
-          "query": "label_values(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"},group)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": ".+",
-        "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": "infra-prometheus",
-        "definition": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": true,
-        "label": "节点",
-        "multi": true,
-        "name": "instance",
-        "options": [],
-        "query": {
-          "query": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      }
-    ]
-  },
-  "time": {
-    "from": "now-3h",
-    "to": "now"
-  },
-  "timepicker": {
-    "refresh_intervals": [
-      "10s",
-      "30s",
-      "1m",
-      "3m",
-      "5m",
-      "10m",
-      "15m",
-      "30m"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
-  },
-  "timezone": "browser",
-  "title": "rpc-overview",
-  "uid": "javar",
-  "version": 18
+    "refresh": false,
+    "schemaVersion": 27,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": [
+            {
+                "allValue": null,
+                "current": {
+                    "selected": false,
+                    "text": "prod",
+                    "value": "prod"
+                },
+                "datasource": "infra-prometheus",
+                "definition": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+                "description": null,
+                "error": null,
+                "hide": 0,
+                "includeAll": false,
+                "label": "部署环境",
+                "multi": false,
+                "name": "envtype",
+                "options": [],
+                "query": {
+                    "query": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+                    "refId": "StandardVariableQuery"
+                },
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {
+                    "selected": false,
+                    "text": "hhub-price",
+                    "value": "hhub-price"
+                },
+                "datasource": "infra-prometheus",
+                "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+                "description": null,
+                "error": null,
+                "hide": 0,
+                "includeAll": false,
+                "label": "应用 ( 支持sug )",
+                "multi": false,
+                "name": "appname",
+                "options": [],
+                "query": {
+                    "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+                    "refId": "StandardVariableQuery"
+                },
+                "refresh": 2,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": ".+",
+                "current": {
+                    "selected": true,
+                    "text": [
+                        "All"
+                    ],
+                    "value": [
+                        "$__all"
+                    ]
+                },
+                "datasource": "infra-prometheus",
+                "definition": "label_values(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"},group)",
+                "description": null,
+                "error": null,
+                "hide": 0,
+                "includeAll": true,
+                "label": "服务提供方",
+                "multi": true,
+                "name": "backend",
+                "options": [],
+                "query": {
+                    "query": "label_values(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"},group)",
+                    "refId": "StandardVariableQuery"
+                },
+                "refresh": 2,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": ".+",
+                "current": {
+                    "selected": true,
+                    "text": [
+                        "All"
+                    ],
+                    "value": [
+                        "$__all"
+                    ]
+                },
+                "datasource": "infra-prometheus",
+                "definition": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
+                "description": null,
+                "error": null,
+                "hide": 0,
+                "includeAll": true,
+                "label": "节点",
+                "multi": true,
+                "name": "instance",
+                "options": [],
+                "query": {
+                    "query": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
+                    "refId": "StandardVariableQuery"
+                },
+                "refresh": 2,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            }
+        ]
+    },
+    "time": {
+        "from": "now-3h",
+        "to": "now"
+    },
+    "timepicker": {
+        "refresh_intervals": [
+            "10s",
+            "30s",
+            "1m",
+            "3m",
+            "5m",
+            "10m",
+            "15m",
+            "30m"
+        ],
+        "time_options": [
+            "5m",
+            "15m",
+            "1h",
+            "6h",
+            "12h",
+            "24h",
+            "2d",
+            "7d",
+            "30d"
+        ]
+    },
+    "timezone": "browser",
+    "title": "rpc-overview",
+    "uid": "javar",
+    "version": 18
 }
