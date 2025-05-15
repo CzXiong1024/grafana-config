@@ -73,16 +73,16 @@
                     "exemplar": true,
                     "expr": "(sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"500.0\",channel=~\"$channel\"}[1m])) by (channel) ) > 0",
                     "interval": "30s",
-                    "legendFormat": "{{channel}} - 产品数 [1,500]",
+                    "legendFormat": "{{channel}} - Number of products [1,500]",
                     "queryType": "randomWalk",
                     "refId": "J"
                 },
                 {
                     "exemplar": true,
-                    "expr": "(sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"1500.0\",channel=~\"$channel\"}[1m])) by (channel) - sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"500.0\",channel=~\"$channel\"}[1m])) by (channel) ) > 0",
+                    "expr": "(sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envty pe\",le=\"1500.0\",channel=~\"$channel\"}[1m])) by (channel) - sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"500.0\",channel=~\"$channel\"}[1m])) by (channel) ) > 0",
                     "hide": false,
                     "interval": "30s",
-                    "legendFormat": "{{channel}} - 产品数 (500,1500]",
+                    "legendFormat": "{{channel}} - Number of products (500,1500])",
                     "refId": "I"
                 },
                 {
@@ -90,7 +90,7 @@
                     "expr": "(sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"+Inf\",channel=~\"$channel\"}[1m])) by (channel) - sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"1500.0\",channel=~\"$channel\"}[1m])) by (channel) ) > 0",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "{{channel}} - 产品数 >1500",
+                    "legendFormat": "{{channel}} - Number of products>1500",
                     "refId": "H"
                 }
             ],
@@ -98,7 +98,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近一分钟房价查询产品数",
+            "title": "Number of housing price query products in the last minute",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -200,7 +200,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 1天请求量",
+                    "legendFormat": "{{channel}} - 1 day's requests",
                     "refId": "J"
                 },
                 {
@@ -212,7 +212,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 3天请求量",
+                    "legendFormat": "{{channel}} - 3 days of requests",
                     "refId": "I"
                 },
                 {
@@ -224,7 +224,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 7天请求量",
+                    "legendFormat": "{{channel}} - 7-day request volume",
                     "refId": "H"
                 },
                 {
@@ -236,7 +236,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 15天请求量",
+                    "legendFormat": "{{channel}} - 15-day request volume",
                     "refId": "G"
                 },
                 {
@@ -248,7 +248,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 30天请求量",
+                    "legendFormat": "{{channel}} - 30-day request volume",
                     "refId": "K"
                 },
                 {
@@ -260,7 +260,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 60天请求量",
+                    "legendFormat": "{{channel}} - 60-day request volume",
                     "refId": "A"
                 },
                 {
@@ -272,7 +272,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 90天请求量",
+                    "legendFormat": "{{channel}} - 90-day request volume",
                     "refId": "B"
                 },
                 {
@@ -284,7 +284,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 180天请求量",
+                    "legendFormat": "{{channel}} - 180 days of requests",
                     "refId": "C"
                 },
                 {
@@ -296,7 +296,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 360天请求量",
+                    "legendFormat": "{{channel}} - 360-day request volume",
                     "refId": "D"
                 },
                 {
@@ -308,7 +308,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 420天请求量",
+                    "legendFormat": "{{channel}} - 420 days of requests",
                     "refId": "E"
                 },
                 {
@@ -320,7 +320,7 @@
                     "instant": false,
                     "interval": "30s",
                     "intervalFactor": 1,
-                    "legendFormat": "{{channel}} - 大于420天请求量",
+                    "legendFormat": "{{channel}} - greater than 420 days of requests",
                     "refId": "F"
                 }
             ],
@@ -328,7 +328,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近一分钟房价查询天数的请求量",
+            "title": "The number of requests for house price query days in the last minute",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -430,7 +430,7 @@
                     "refId": "K"
                 }
             ],
-            "title": "所选时段内房价查询天数的分布",
+            "title": "Distribution of housing price inquiry days in the selected period",
             "type": "bargauge"
         },
         {
@@ -485,7 +485,7 @@
                     "refId": "K"
                 }
             ],
-            "title": "房价查询天数的分布热力图",
+            "title": "Thermal map of the distribution of house price inquiry days",
             "tooltip": {
                 "show": true,
                 "showHistogram": false
@@ -529,7 +529,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -558,7 +558,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用",
+                "label": "Application",
                 "multi": false,
                 "name": "appname",
                 "options": [
@@ -589,7 +589,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "来源",
+                "label": "Source",
                 "multi": true,
                 "name": "source",
                 "options": [],
@@ -624,7 +624,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "渠道",
+                "label": " Channel",
                 "multi": true,
                 "name": "channel",
                 "options": [],

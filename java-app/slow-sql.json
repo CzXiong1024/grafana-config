@@ -35,7 +35,7 @@
                 "y": 0
             },
             "id": 592,
-            "title": "所选时段内慢SQL统计",
+            "title": "Slow SQL statistics in the selected period",
             "type": "row"
         },
         {
@@ -96,7 +96,7 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "慢SQL(>$le秒)的节点分布",
+            "title": "Node distribution of slow SQL (>$le seconds)",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -154,7 +154,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内慢SQL(>$le秒)分布",
+            "title": "Distribution of slow SQL (>$le seconds) in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -229,7 +229,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近一分钟慢SQL(>$le秒)趋势",
+            "title": "Slow SQL (>$le seconds) trend in the past minute",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -288,7 +288,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -319,7 +319,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -349,7 +349,7 @@
                 "description": null,
                 "error": null,
                 "hide": 0,
-                "label": "耗时(秒)大于",
+                "label": "Time taken (seconds) is greater than",
                 "name": "le",
                 "options": [
                     {
@@ -411,7 +411,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

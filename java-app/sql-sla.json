@@ -916,7 +916,7 @@
                     }
                 }
             ],
-            "title": "SQL耗时水位线",
+            "title": "SQL time-consuming watermark",
             "type": "row"
         },
         {
@@ -1036,7 +1036,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P95(95%) 耗时",
+                    "title": "P95(95%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1179,7 +1179,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P99(99%) 耗时",
+                    "title": "P99(99%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1321,7 +1321,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P999(99.9%) 耗时",
+                    "title": "P999(99.9%) time consuming",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1361,7 +1361,7 @@
                     }
                 }
             ],
-            "title": "SQL长尾请求横向对比",
+            "title": "Horizontal comparison of SQL long-tail requests",
             "type": "row"
         },
         {
@@ -1460,7 +1460,7 @@
                             "tags": []
                         }
                     ],
-                    "title": "所选时段内 SQL Exception 类型分布",
+                    "title": "SQL Exception type distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -1546,12 +1546,12 @@
                             "tags": []
                         }
                     ],
-                    "title": "所选时段内 SQL Exception 节点分布",
+                    "title": "SQL Exception node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "所选时段内SQL异常分布",
+            "title": "SQL abnormal distribution in the selected period",
             "type": "row"
         },
         {
@@ -1647,7 +1647,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "集群: {{app_cluster}}",
+                    "legendFormat": "Cluster: {{app_cluster}}",
                     "refId": "B"
                 },
                 {
@@ -1666,7 +1666,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "QPS 趋势",
+            "title": "QPS Trend",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1882,7 +1882,7 @@
                     "refId": "K"
                 }
             ],
-            "title": "所选时段内的耗时直方图",
+            "title": "Time consumption histogram in the selected period",
             "type": "bargauge"
         },
         {
@@ -1962,7 +1962,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近两分钟Exception趋势",
+            "title": "Exception trend in the last two minutes",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2022,7 +2022,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -2053,7 +2053,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": " Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -2119,7 +2119,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

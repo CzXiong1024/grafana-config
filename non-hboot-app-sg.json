@@ -108,7 +108,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "副本数",
+            "title": "Number of copies",
             "type": "stat"
         },
         {
@@ -149,7 +149,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "节点"
+                                "value": "node"
                             },
                             {
                                 "id": "custom.align"
@@ -172,7 +172,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "启动时长"
+                                "value": "Startup duration"
                             },
                             {
                                 "id": "custom.displayMode",
@@ -235,7 +235,7 @@
                 "sortBy": [
                     {
                         "desc": false,
-                        "displayName": "启动时长"
+                        "displayName": "Startup duration"
                     }
                 ]
             },
@@ -256,7 +256,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "应用节点和 Pod Name",
+            "title": "Application Node and Pod Name",
             "transformations": [
                 {
                     "id": "merge",
@@ -543,7 +543,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "HTTP API 请求量",
+                    "title": "HTTP API Request Volume",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -664,7 +664,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "HTTP API 平均耗时",
+                    "title": "Average HTTP API time consumption",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -712,7 +712,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "HTTP接口统计",
+            "title": "HTTP Interface Statistics",
             "type": "row"
         },
         {
@@ -828,7 +828,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "HTTP 流量",
+                    "title": "HTTP Traffic",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -954,7 +954,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "sum(irate(commonspool2_con_borrowed_total{comp_type=~\"redis.+\",service=\"$appname\"}[2m]))  by (instance)",
+                            "expr": "sum(irate(commonspool2_con_borrowed_total{comp_type=~\"redis.+\",service=\"$appname\"}[2m])) by (instance)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -965,7 +965,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Redis 流量",
+                    "title": "Redis Traffic",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1077,7 +1077,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "sum(irate(rabbitmq_consumed_total{service=\"$appname\"}[2m]))  by (instance)",
+                            "expr": "sum(irate(rabbitmq_consumed_total{service=\"$appname\"}[2m])) by (instance)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -1091,7 +1091,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "sum(irate(rabbitmq_published_total{service=\"$appname\"}[2m]))  by (instance)",
+                            "expr": "sum(irate(rabbitmq_published_total{service=\"$appname\"}[2m])) by (instance)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -1102,7 +1102,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "RabbitMQ 流量",
+                    "title": "RabbitMQ Traffic",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1239,7 +1239,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Logback 日志",
+                    "title": "Logback Log",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1351,18 +1351,18 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "sum(irate(logback_events_total{service=\"$appname\"}[2m]))  by (instance,level)",
+                            "expr": "sum(irate(logback_events_total{service=\"$appname\"}[2m])) by (instance,level)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{instance}}  - {{level}}",
+                            "legendFormat": "{{instance}} - {{level}}",
                             "refId": "B"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Logback  Level ",
+                    "title": "Logback Level",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1410,7 +1410,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "各节点组件流量概览",
+            "title": "Overview of traffic of each node component",
             "type": "row"
         },
         {
@@ -1447,7 +1447,7 @@
                     "fieldConfig": {
                         "defaults": {
                             "links": [],
-                            "unit": "次/分钟"
+                            "unit": "times/minute"
                         },
                         "overrides": []
                     },
@@ -1513,7 +1513,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "YoungGC 频率",
+                    "title": "YoungGC Frequency",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1535,7 +1535,7 @@
                     "yaxes": [
                         {
                             "$$hashKey": "object:2162",
-                            "format": "次/分钟",
+                            "format": "times/minute",
                             "logBase": 1,
                             "min": 0,
                             "show": true
@@ -1637,7 +1637,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "新生代内存分配",
+                    "title": "New Generation Memory Allocation",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1695,7 +1695,7 @@
                     "fieldConfig": {
                         "defaults": {
                             "links": [],
-                            "unit": "次/分钟"
+                            "unit": "times/minute"
                         },
                         "overrides": []
                     },
@@ -1761,7 +1761,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "OldGC 频率",
+                    "title": "OldGC Frequency",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1783,7 +1783,7 @@
                     "yaxes": [
                         {
                             "$$hashKey": "object:2162",
-                            "format": "次/分钟",
+                            "format": "times/minute",
                             "logBase": 1,
                             "min": 0,
                             "show": true
@@ -1885,7 +1885,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "老年代内存分配(晋升对象)",
+                    "title": "Old Generation Memory Allocation (Promotion Object)",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2003,13 +2003,13 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{instance}}  - {{cause}}",
+                            "legendFormat": "{{instance}} - {{cause}}",
                             "refId": "A"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "GC 最大停顿",
+                    "title": "GC Maximum Pause",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2133,7 +2133,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "老年代内存",
+                    "title": "Old Generation Memory",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2245,7 +2245,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": " sum(jvm_memory_used_bytes{service=\"$appname\",area=\"heap\"}) by (instance) /  sum(jvm_memory_max_bytes{service=\"$appname\",area=\"heap\"}) by (instance)",
+                            "expr": " sum(jvm_memory_used_bytes{service=\"$appname\",area=\"heap\"}) by (instance) / sum(jvm_memory_max_bytes{service=\"$appname\",area=\"heap\"}) by (instance)",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
@@ -2257,7 +2257,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "堆内存(Heap) 使用率",
+                    "title": "Heap Memory Usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2380,7 +2380,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "进程CPU使用率",
+                    "title": "Process CPU Usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2492,7 +2492,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "进程打开的文件描述符",
+                    "title": "File descriptors opened by the process",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -2615,13 +2615,13 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{pod}} - 近3分钟重启",
+                            "legendFormat": "{{pod}} - Restarted in the last 3 minutes",
                             "refId": "A"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "容器OOM/Restart统计",
+                    "title": "Container OOM/Restart Statistics",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2733,7 +2733,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "(tomcat_threads_busy{container=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"}/ tomcat_threads_config_max)  OR  (tomcat_threads_busy_threads{container=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"}/ tomcat_threads_config_max_threads)",
+                            "expr": "(tomcat_threads_busy{container=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"}/ tomcat_threads_config_max) OR (tomcat_threads_busy_threads{container=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"}/ tomcat_threads_config_max_threads)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -2744,7 +2744,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Tomcat 线程池使用率",
+                    "title": "Tomcat thread pool usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2867,7 +2867,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Tomcat 活跃线程",
+                    "title": "Tomcat Active Threads",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2973,13 +2973,13 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{instance}} -  {{state}} Threads",
+                            "legendFormat": "{{instance}} - {{state}} Threads",
                             "refId": "G"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "节点 JVM 线程状态",
+                    "title": "Node JVM Thread Status",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -3084,7 +3084,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "集群 JVM 线程状态",
+                    "title": "Cluster JVM Thread Status",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -3200,7 +3200,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "进程 CPU 使用率",
+                    "title": "Process CPU Usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3326,7 +3326,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "近一分钟 System LoadAvg ",
+                    "title": "System LoadAvg in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3378,7 +3378,7 @@
                         "type": "prometheus",
                         "uid": "Fe5-IHdIk"
                     },
-                    "description": "k8s统计的POD CPU使用率",
+                    "description": "Pod CPU usage statistics from k8s",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -3451,7 +3451,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "POD CPU使用率",
+                    "title": "POD CPU usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3503,7 +3503,7 @@
                         "type": "prometheus",
                         "uid": "Fe5-IHdIk"
                     },
-                    "description": "k8s统计的POD 内存使用率",
+                    "description": "Pod memory usage statistics from k8s",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -3576,7 +3576,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "POD 内存使用率",
+                    "title": "POD memory usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3693,7 +3693,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{pod}}  -  Sent Bytes",
+                            "legendFormat": "{{pod}} - Sent Bytes",
                             "refId": "B"
                         },
                         {
@@ -3707,13 +3707,13 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{pod}}  - Received Bytes",
+                            "legendFormat": "{{pod}} - Received Bytes",
                             "refId": "A"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "POD 网络IO",
+                    "title": "POD Network IO",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3850,7 +3850,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "POD 磁盘IO",
+                    "title": "POD Disk IO",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -4144,7 +4144,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "各节点关键指标概览",
+            "title": "Overview of key indicators of each node",
             "type": "row"
         },
         {
@@ -4226,7 +4226,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "JVM内存池最大配置",
+                    "title": "JVM memory pool maximum configuration",
                     "type": "bargauge"
                 },
                 {
@@ -4294,7 +4294,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "新生代(Young Gen)每秒增加的字节",
+                            "legendFormat": "Young Gen bytes added per second",
                             "refId": "C"
                         },
                         {
@@ -4307,7 +4307,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "老年代(Old Gen)每秒增加的字节",
+                            "legendFormat": "Old Gen bytes added per second",
                             "refId": "A"
                         },
                         {
@@ -4321,13 +4321,13 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "老年代Old(Mixed) GC 后的大小",
+                            "legendFormat": "Size of the old generation after Old(Mixed) GC",
                             "refId": "B"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "GC 内存分配",
+                    "title": "GC Memory Allocation",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -4438,13 +4438,13 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}({{area}})  - 已提交内存(Committed)",
+                            "legendFormat": "{{id}}({{area}}) - Committed",
                             "refId": "A"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "已使用的JVM内存池 ",
+                    "title": "JVM memory pool used",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -4540,7 +4540,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{action}} ({{cause}})  - 最大停顿时长",
+                            "legendFormat": "{{action}} ({{cause}}) - Maximum pause duration",
                             "refId": "A"
                         },
                         {
@@ -4553,7 +4553,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{action}} ({{cause}}) - 平均停顿",
+                            "legendFormat": "{{action}} ({{cause}}) - Average pause",
                             "refId": "C"
                         },
                         {
@@ -4567,13 +4567,13 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{action}} ({{cause}})  - 并发(concurrent)回收最大耗时",
+                            "legendFormat": "{{action}} ({{cause}}) - Maximum time taken for concurrent collection",
                             "refId": "D"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "GC 停顿时长",
+                    "title": "GC pause duration",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -4617,7 +4617,7 @@
                     "fieldConfig": {
                         "defaults": {
                             "links": [],
-                            "unit": "次/分钟"
+                            "unit": "times/minute"
                         },
                         "overrides": []
                     },
@@ -4676,7 +4676,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "GC 原因与频次",
+                    "title": "GC Reasons and Frequency",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -4691,7 +4691,7 @@
                     "yaxes": [
                         {
                             "$$hashKey": "object:1900",
-                            "format": "次/分钟",
+                            "format": "times/minute",
                             "logBase": 1,
                             "min": "0",
                             "show": true
@@ -4779,7 +4779,7 @@
                             "refId": "C"
                         }
                     ],
-                    "title": "所选时段内累计GC次数",
+                    "title": " Cumulative GC times in the selected period",
                     "type": "piechart"
                 },
                 {
@@ -4850,11 +4850,11 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "{{action}}  ({{cause}})",
+                            "legendFormat": "{{action}} ({{cause}})",
                             "refId": "C"
                         }
                     ],
-                    "title": "所选时段内累计GC耗时",
+                    "title": "Cumulative GC time consumed in the selected period",
                     "type": "piechart"
                 },
                 {
@@ -4923,7 +4923,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "活跃线程(busy)",
+                            "legendFormat": "Active thread (busy)",
                             "refId": "G"
                         },
                         {
@@ -4937,7 +4937,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大线程数",
+                            "legendFormat": "Maximum number of threads",
                             "refId": "A"
                         },
                         {
@@ -4946,18 +4946,18 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "tomcat_threads_current{service=\"$appname\",instance=\"$instance\"} OR  tomcat_threads_current_threads{service=\"$appname\",instance=\"$instance\"}",
+                            "expr": "tomcat_threads_current{service=\"$appname\",instance=\"$instance\"} OR tomcat_threads_current_threads{service=\"$appname\",instance=\"$instance\"}",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "当前线程数",
+                            "legendFormat": "Current number of threads",
                             "refId": "B"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Tomcat 线程池",
+                    "title": "Tomcat Thread Pool",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5050,7 +5050,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "jvm_threads_daemon{service=\"$appname\",instance=\"$instance\"} OR  jvm_threads_daemon_threads{service=\"$appname\",instance=\"$instance\"}",
+                            "expr": "jvm_threads_daemon{service=\"$appname\",instance=\"$instance\"} OR jvm_threads_daemon_threads{service=\"$appname\",instance=\"$instance\"}",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
@@ -5063,7 +5063,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "jvm_threads_live{service=\"$appname\",instance=\"$instance\"} OR  jvm_threads_live_threads{service=\"$appname\",instance=\"$instance\"}",
+                            "expr": "jvm_threads_live{service=\"$appname\",instance=\"$instance\"} OR jvm_threads_live_threads{service=\"$appname\",instance=\"$instance\"}",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -5077,18 +5077,18 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "jvm_threads_peak{service=\"$appname\",instance=\"$instance\"} OR  jvm_threads_peak_threads{service=\"$appname\",instance=\"$instance\"}",
+                            "expr": "jvm_threads_peak{service=\"$appname\",instance=\"$instance\"} OR jvm_threads_peak_threads{service=\"$appname\",instance=\"$instance\"}",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "峰值线程数",
+                            "legendFormat": "Peak number of threads",
                             "refId": "B"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "JVM 线程",
+                    "title": "JVM Threads",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5187,7 +5187,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近两分钟卸载的Class",
+                            "legendFormat": " Class uninstalled in the last two minutes",
                             "refId": "G"
                         },
                         {
@@ -5201,7 +5201,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近两分钟加载的Class",
+                            "legendFormat": "Class loaded in the last two minutes",
                             "refId": "A"
                         },
                         {
@@ -5210,7 +5210,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "jvm_buffer_count_buffers{service=\"$appname\",instance=\"$instance\"} OR  jvm_buffer_count{service=\"$appname\",instance=\"$instance\"} ",
+                            "expr": "jvm_buffer_count_buffers{service=\"$appname\",instance=\"$instance\"} OR jvm_buffer_count{service=\"$appname\",instance=\"$instance\"} ",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -5221,7 +5221,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Class加载统计",
+                    "title": "Class loading statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5326,7 +5326,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "JVM 线程状态",
+                    "title": "JVM Thread Status",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5431,7 +5431,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "Local Cache 命中率",
+                    "title": "Local Cache Hit Rate",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5537,7 +5537,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "每分钟 Local Cache Eviction",
+                    "title": "Local Cache Eviction per minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5642,7 +5642,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "每分钟 Local Cache Miss",
+                    "title": "Local Cache Miss per minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5747,7 +5747,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "每分钟 Local Cache Put",
+                    "title": "Local Cache Put per minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5788,7 +5788,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "当前节点JVM&关键指标",
+            "title": "Current Node JVM & Key Indicators",
             "type": "row"
         },
         {
@@ -5810,7 +5810,7 @@
                         "type": "prometheus",
                         "uid": "Fe5-IHdIk"
                     },
-                    "description": "所有节点每秒执行的Redis Command",
+                    "description": "Redis Commands executed per second by all nodes",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -5887,7 +5887,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "集群 Redis Command",
+                    "title": "Cluster Redis Command",
                     "type": "stat"
                 },
                 {
@@ -5899,7 +5899,7 @@
                         "type": "prometheus",
                         "uid": "Fe5-IHdIk"
                     },
-                    "description": "所有节点的Redis 连接池统计",
+                    "description": " Redis connection pool statistics for all nodes",
                     "fieldConfig": {
                         "defaults": {
                             "links": []
@@ -5957,7 +5957,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒执行的Redis命令(Borrow)",
+                            "legendFormat": "Redis commands executed per second (Borrow)",
                             "refId": "G"
                         },
                         {
@@ -5970,7 +5970,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒归还连接的次数(Return)",
+                            "legendFormat": "Number of connections returned per second (Return)",
                             "refId": "C"
                         },
                         {
@@ -5983,7 +5983,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每分钟创建的TCP连接",
+                            "legendFormat": "TCP connections created per minute",
                             "refId": "A"
                         },
                         {
@@ -5996,7 +5996,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每分钟销毁的TCP连接",
+                            "legendFormat": "TCP connections destroyed per minute",
                             "refId": "F"
                         },
                         {
@@ -6009,7 +6009,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每分钟由定时任务触发销毁的TCP连接",
+                            "legendFormat": "TCP connections destroyed every minute by scheduled tasks",
                             "refId": "D"
                         },
                         {
@@ -6022,13 +6022,13 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每分钟由获取连接触发销毁的TCP连接",
+                            "legendFormat": "TCP connections destroyed every minute triggered by connection acquisition",
                             "refId": "E"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "集群TCP连接统计",
+                    "title": "Cluster TCP Connection Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6068,7 +6068,7 @@
                         "type": "prometheus",
                         "uid": "Fe5-IHdIk"
                     },
-                    "description": "单个节点的 Redis 连接池使用率和配置",
+                    "description": "Redis connection pool usage and configuration for a single node",
                     "fieldConfig": {
                         "defaults": {
                             "links": []
@@ -6114,7 +6114,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:131",
-                            "alias": "/.+使用率/",
+                            "alias": "/.+usage/",
                             "yaxis": 2
                         }
                     ],
@@ -6132,7 +6132,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 使用率",
+                            "legendFormat": " {{comp_name}} - Usage",
                             "refId": "G"
                         },
                         {
@@ -6145,7 +6145,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}}  - 当前活跃的连接数",
+                            "legendFormat": " {{comp_name}} - Current number of active connections",
                             "refId": "A"
                         },
                         {
@@ -6158,7 +6158,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 池耗尽时阻塞等待的线程数",
+                            "legendFormat": "{{comp_name}} - Number of threads blocked waiting when pool is exhausted",
                             "refId": "B"
                         },
                         {
@@ -6171,7 +6171,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 当前的空闲连接数",
+                            "legendFormat": "{{comp_name}} - Current number of idle connections",
                             "refId": "C"
                         },
                         {
@@ -6184,7 +6184,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最大连接数",
+                            "legendFormat": "{{comp_name}} - Maximum number of connections",
                             "refId": "F"
                         },
                         {
@@ -6197,7 +6197,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最大空闲连接数",
+                            "legendFormat": "{{comp_name}} - Maximum number of idle connections",
                             "refId": "D"
                         },
                         {
@@ -6210,13 +6210,13 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最小空闲连接数",
+                            "legendFormat": "{{comp_name}} - Minimum number of idle connections",
                             "refId": "E"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "当前节点连接池统计",
+                    "title": "Current node connection pool statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6256,7 +6256,7 @@
                         "type": "prometheus",
                         "uid": "Fe5-IHdIk"
                     },
-                    "description": "单个节点最近一分钟的TCP连接统计",
+                    "description": "TCP connection statistics of a single node in the last minute",
                     "fieldConfig": {
                         "defaults": {
                             "links": []
@@ -6314,7 +6314,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - Redis命令的平均耗时[ms]",
+                            "legendFormat": " {{comp_name}} - Average time taken by Redis commands [ms]",
                             "refId": "H"
                         },
                         {
@@ -6327,7 +6327,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每秒执行的Redis命令(Borrow)",
+                            "legendFormat": " {{comp_name}} - Redis commands executed per second (Borrow)",
                             "refId": "G"
                         },
                         {
@@ -6340,7 +6340,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每秒归还连接的次数(Return)",
+                            "legendFormat": " {{comp_name}} - Number of connections returned per second (Return)",
                             "refId": "C"
                         },
                         {
@@ -6353,7 +6353,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}}  - 每分钟创建的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections created per minute",
                             "refId": "A"
                         },
                         {
@@ -6366,7 +6366,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections destroyed per minute",
                             "refId": "F"
                         },
                         {
@@ -6379,7 +6379,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟由定时任务触发销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connection destroyed every minute by a scheduled task",
                             "refId": "D"
                         },
                         {
@@ -6392,13 +6392,13 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟由获取连接触发销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections destroyed every minute triggered by connection acquisition",
                             "refId": "E"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "当前节点TCP连接统计",
+                    "title": "Current Node TCP Connection Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6438,7 +6438,7 @@
                         "type": "prometheus",
                         "uid": "Fe5-IHdIk"
                     },
-                    "description": "单个节点的Redis连接池耗时统计",
+                    "description": "Time consumption statistics of Redis connection pool of a single node",
                     "fieldConfig": {
                         "defaults": {
                             "links": [],
@@ -6496,7 +6496,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - Redis命令的平均耗时",
+                            "legendFormat": " {{comp_name}} - Average time taken by Redis commands",
                             "refId": "A"
                         },
                         {
@@ -6509,7 +6509,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 连接的平均闲置时长",
+                            "legendFormat": " {{comp_name}} - Average idle time of the connection",
                             "refId": "B"
                         },
                         {
@@ -6522,7 +6522,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 获取连接的平均等待时长",
+                            "legendFormat": " {{comp_name}} - Get the average waiting time for the connection",
                             "refId": "C"
                         },
                         {
@@ -6535,13 +6535,13 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 客户端配置的最大等待时长",
+                            "legendFormat": " {{comp_name}} - Maximum waiting time configured by the client",
                             "refId": "F"
                         }
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "当前节点连接池耗时统计",
+                    "title": "Current node connection pool time statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6643,11 +6643,11 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 5,
-                            "legendFormat": "{{name}}  - {{instance}}",
+                            "legendFormat": "{{name}} - {{instance}}",
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内各节点累计Cache Eviction",
+                    "title": "Accumulated Cache Eviction of each node in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -6696,11 +6696,11 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 5,
-                            "legendFormat": "{{name}}  - {{instance}}",
+                            "legendFormat": "{{name}} - {{instance}}",
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内各节点累计Cache Miss",
+                    "title": "Accumulated Cache Miss of each node in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -6749,11 +6749,11 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 5,
-                            "legendFormat": "{{name}}  - {{instance}}",
+                            "legendFormat": "{{name}} - {{instance}}",
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内各节点累计Cache Put",
+                    "title": "Accumulated Cache Put of each node in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -6802,11 +6802,11 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 5,
-                            "legendFormat": "{{name}}  - {{instance}}",
+                            "legendFormat": "{{name}} - {{instance}}",
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内各节点累计Cache Hit",
+                    "title": "Accumulated Cache Hit of each node in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -6884,7 +6884,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "集群 Local Cache QPS",
+                    "title": "Cluster Local Cache QPS",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6989,7 +6989,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "集群每分钟 Local Cache Miss ",
+                    "title": "Cluster Local Cache Miss per minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7094,7 +7094,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "集群每分钟  Local Cache Put",
+                    "title": "Cluster Local Cache Put per minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7199,7 +7199,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "集群每分钟 Local Cache Eviction",
+                    "title": "Cluster Local Cache Eviction per minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7304,7 +7304,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "各节点缓存大小",
+                    "title": "Cache size of each node",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7399,7 +7399,7 @@
                                 "uid": "Fe5-IHdIk"
                             },
                             "exemplar": true,
-                            "expr": "sum(rate(cache_gets_total{result=\"hit\",service=\"$appname\",name=~\"$localcache\"}[2m])) by(instance,name) / sum(rate(cache_gets_total{service=\"$appname\",name=~\"$localcache\"}[2m])) by (instance,name)",
+                            "expr": "sum(rate(cache_gets_total{result=\"hit\",service=\"$appname\",name=~\"$localcache\"}[2m])) by (instance,name) / sum(rate(cache_gets_total{service=\"$appname\",name=~\"$localcache\"}[2m])) by (instance,name)",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
@@ -7409,7 +7409,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "各节点缓存命中率",
+                    "title": "Cache hit rate of each node",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7517,7 +7517,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "各节点每分钟 Local Cache Miss",
+                    "title": "Local Cache Miss per node per minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7622,7 +7622,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "各节点每分钟 Local Cache Eviction",
+                    "title": "Local Cache Eviction per minute for each node",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7727,7 +7727,7 @@
                     ],
                     "thresholds": [],
                     "timeRegions": [],
-                    "title": "各节点每分钟 Local Cache Put",
+                    "title": "Local Cache Put per minute for each node",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7791,7 +7791,7 @@
                 "definition": "label_values(jvm_gc_pause_seconds_count,service)",
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用",
+                "label": "Application",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -7821,7 +7821,7 @@
                 "definition": "label_values(jvm_gc_pause_seconds_count{service=\"$appname\"},instance)",
                 "hide": 0,
                 "includeAll": false,
-                "label": "节点",
+                "label": "Node",
                 "multi": false,
                 "name": "instance",
                 "options": [],

@@ -185,7 +185,7 @@
                     "step": 14400
                 }
             ],
-            "title": "当前并发",
+            "title": "Current Concurrency",
             "transparent": true,
             "type": "stat"
         },
@@ -296,7 +296,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "节点"
+                                "value": "node"
                             },
                             {
                                 "id": "unit",
@@ -311,7 +311,7 @@
                                 "value": [
                                     {
                                         "targetBlank": true,
-                                        "title": "点击查看节点指标",
+                                        "title": "Click to view node metrics",
                                         "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__value.text}&${__url_time_range}"
                                     }
                                 ]
@@ -353,8 +353,8 @@
                                 "value": [
                                     {
                                         "targetBlank": true,
-                                        "title": "查看节点状态",
-                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.节点}&${__url_time_range}"
+                                        "title": "View Node Status",
+                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.Node}&${__url_time_range}"
                                     }
                                 ]
                             }
@@ -368,7 +368,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "集群"
+                                "value": "cluster"
                             },
                             {
                                 "id": "links",
@@ -396,7 +396,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "版本号"
+                                "value": "Version number"
                             },
                             {
                                 "id": "custom.align",
@@ -411,8 +411,8 @@
                                 "value": [
                                     {
                                         "targetBlank": true,
-                                        "title": "查看节点指标",
-                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.节点}&${__url_time_range}"
+                                        "title": "View Node Metrics",
+                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.Node}&${__url_time_range }"
                                     }
                                 ]
                             }
@@ -446,7 +446,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "应用节点",
+            "title": "Application Node",
             "transform": "table",
             "transformations": [
                 {
@@ -551,7 +551,7 @@
                     "step": 14400
                 }
             ],
-            "title": "Error日志(每分钟)",
+            "title": "Error log (every minute)",
             "transparent": true,
             "type": "stat"
         },
@@ -636,7 +636,7 @@
                     "step": 14400
                 }
             ],
-            "title": "5xx请求数占比(每分钟)",
+            "title": "5xx request percentage (per minute)",
             "transparent": true,
             "type": "stat"
         },
@@ -768,7 +768,7 @@
                     "expr": "sum(server_connections_current_total{app=\"$appname\",envtype=\"$envtype\"})",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "TCP并发数",
+                    "legendFormat": "TCP concurrent number",
                     "refId": "F"
                 }
             ],
@@ -910,7 +910,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "5xx的API接口 [ 1m ]",
+            "title": "5xx API interface[ 1m ]",
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
@@ -1050,7 +1050,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "HTTP接口QPS",
+                    "title": "HTTP Interface QPS",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1176,7 +1176,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "RPC调用QPS",
+                    "title": "RPC Call QPS",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1302,7 +1302,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "JVM线程数",
+                    "title": "JVM Thread Number",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1432,7 +1432,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "当前打开的文件描述符",
+                    "title": "Currently opened file descriptors",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1560,7 +1560,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "CPU使用率",
+                    "title": "CPU Usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1675,7 +1675,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": " instance_mem_free_bytes{app=\"$appname\",envtype=\"$envtype\"}\n    / instance_mem_total_bytes\n  \n",
+                            "expr": " instance_mem_free_bytes{app=\"$appname\",envtype=\"$envtype\"}\n / instance_mem_total_bytes\n \n",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
@@ -1689,7 +1689,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "内存使用率",
+                    "title": "Memory Usage",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1818,7 +1818,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近两分钟CPU Throttle 次数",
+                    "title": "CPU Throttle Times in the Last Two Minutes",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1947,7 +1947,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "进程内存(WSS)",
+                    "title": "Process Memory (WSS)",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2120,7 +2120,7 @@
                     }
                 }
             ],
-            "title": "节点概览",
+            "title": "Node Overview",
             "type": "row"
         },
         {
@@ -2218,7 +2218,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "最大TCP连接数",
+                    "title": "Maximum number of TCP connections",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2346,7 +2346,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "IO线程数",
+                    "title": " Number of IO threads",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2476,7 +2476,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "当前已用的Direct Memory",
+                    "title": "Direct Memory Currently Used",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2594,7 +2594,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{instance}}  EventLoop-{{eventloop}}  当前TCP连接 ",
+                            "legendFormat": " {{instance}} EventLoop-{{eventloop}} current TCP connection",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -2604,7 +2604,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{instance}}  EventLoop-{{eventloop}}  当前HTTP Request ",
+                            "legendFormat": " {{instance}} EventLoop-{{eventloop}} current HTTP Request ",
                             "metric": "",
                             "refId": "B",
                             "step": 2400
@@ -2745,7 +2745,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Netty Server TCP连接数",
+                    "title": "Netty Server TCP Connection Number",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2878,7 +2878,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "后端服务TCP创建失败 [ 1m ]",
+                    "title": "Backend service TCP creation failed [1m]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -2999,7 +2999,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "网关当前TCP并发 - {{app_cluster}}",
+                            "legendFormat": "Gateway current TCP concurrency - {{app_cluster}}",
                             "refId": "F"
                         },
                         {
@@ -3009,7 +3009,7 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "网关EventLoop当前TCP连接 - {{cluster}}",
+                            "legendFormat": " Gateway EventLoop current TCP connection - {{cluster}}",
                             "refId": "I"
                         },
                         {
@@ -3018,7 +3018,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "网关EventLoop当前HttpRequest - {{app_cluster}}",
+                            "legendFormat": "Gateway EventLoop current HttpRequest - {{app_cluster}}",
                             "refId": "J"
                         },
                         {
@@ -3027,7 +3027,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "后端服务创建失败的TCP [ 1m ] - {{app_cluster}}",
+                            "legendFormat": "Backend service creation failed TCP [ 1m ] - {{app_cluster}}",
                             "refId": "G"
                         },
                         {
@@ -3036,7 +3036,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "网关链路异常的TCP [ 1m ] - {{app_cluster}}",
+                            "legendFormat": "Gateway link abnormal TCP [ 1m ] - {{app_cluster}}",
                             "refId": "E"
                         },
                         {
@@ -3045,7 +3045,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "网关闲置超时的TCP [ 1m ] - {{app_cluster}}",
+                            "legendFormat": "Gateway Idle Timeout TCP [ 1m ] - {{app_cluster}}",
                             "refId": "H"
                         },
                         {
@@ -3054,7 +3054,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "网关已创建的TCP[ 1m ] - {{app_cluster}}",
+                            "legendFormat": "Gateway Created TCP [ 1m ] - {{app_cluster}}",
                             "refId": "C"
                         },
                         {
@@ -3063,7 +3063,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "网关已关闭的TCP[ 1m ] - {{app_cluster}}",
+                            "legendFormat": "Gateway Closed TCP [ 1m ] - {{app_cluster}}",
                             "refId": "B"
                         },
                         {
@@ -3072,7 +3072,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "后端服务已创建的TCP[ 1m ] - {{app_cluster}}",
+                            "legendFormat": "TCP[ 1m ] created by backend service - {{app_cluster}}",
                             "refId": "A"
                         },
                         {
@@ -3081,7 +3081,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "后端服务已关闭的TCP[ 1m ] - {{app_cluster}}",
+                            "legendFormat": "TCP closed by backend service [1m] - {{app_cluster}}",
                             "refId": "D"
                         }
                     ],
@@ -3212,7 +3212,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "获取AccessToken触发Fallback次数",
+                            "legendFormat": "Get AccessToken triggering Fallback times",
                             "metric": "",
                             "refId": "B",
                             "step": 2400
@@ -3223,7 +3223,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "限流检查触发Fallback次数",
+                            "legendFormat": "Number of current limit check triggering Fallback",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -3234,7 +3234,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "创建AccessToken触发fallback的次数",
+                            "legendFormat": "The number of times the AccessToken is created to trigger the fallback",
                             "metric": "",
                             "refId": "C",
                             "step": 2400
@@ -3245,7 +3245,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "无法重试因为没有Buffer RequestBody",
+                            "legendFormat": "Cannot retry because there is no Buffer RequestBody",
                             "metric": "",
                             "refId": "D",
                             "step": 2400
@@ -3256,7 +3256,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "客户端请求读取超时的次数",
+                            "legendFormat": "Number of times the client request read timed out",
                             "metric": "",
                             "refId": "G",
                             "step": 2400
@@ -3267,7 +3267,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "登录Token校验失败(超时或队列满了) [ {{app_cluster}} ]",
+                            "legendFormat": " Login Token verification failed (timeout or queue full) [ {{app_cluster}} ]",
                             "metric": "",
                             "refId": "H",
                             "step": 2400
@@ -3277,7 +3277,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "内部业务监控 [ 1m ]",
+                    "title": "Internal Business Monitoring[ 1m ]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3405,7 +3405,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{instance}}  instance leak - {{id}} ",
+                            "legendFormat": " {{instance}} instance leak - {{id}} ",
                             "metric": "",
                             "refId": "B",
                             "step": 2400
@@ -3415,7 +3415,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "内存泄露检测",
+                    "title": "Memory Leak Detection",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3460,7 +3460,7 @@
                     }
                 }
             ],
-            "title": "Netty Server 统计",
+            "title": "Netty Server Statistics",
             "type": "row"
         },
         {
@@ -3549,7 +3549,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "sum(irate(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"}[2m])) by (group)  > 0",
+                            "expr": "sum(irate(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"}[2m])) by (group) > 0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
@@ -3563,7 +3563,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "服务维度QPS",
+                    "title": "Service Dimension QPS",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3687,7 +3687,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟错误码趋势",
+                    "title": "Error code trend in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3820,7 +3820,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "触发单节点最大并发限制的后端服务 [ 1m ]",
+                    "title": " Backend service that triggers the maximum concurrency limit of a single node [ 1m ]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3943,7 +3943,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{instance}}  [ {{group}} ] {{name}}",
+                            "legendFormat": "{{instance}} [ {{group}} ] {{name}}",
                             "metric": "",
                             "refId": "B",
                             "step": 2400
@@ -3953,7 +3953,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "触发断路器的API接口",
+                    "title": "API interface for triggering circuit breaker",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3998,7 +3998,7 @@
                     }
                 }
             ],
-            "title": "服务提供方统计",
+            "title": "Service Provider Statistics",
             "type": "row"
         },
         {
@@ -4091,7 +4091,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近1分钟客户端错误码趋势",
+                    "title": "Client error code trend in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -4210,7 +4210,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "sum(irate(oauthclient_http_request_total{app=\"$appname\",envtype=\"$envtype\"}[2m])) by (client)  > 0",
+                            "expr": "sum(irate(oauthclient_http_request_total{app=\"$appname\",envtype=\"$envtype\"}[2m])) by (client) > 0",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
@@ -4357,7 +4357,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "OAuth Client 触发限流的API接口 [ 1m ]",
+                    "title": "OAuth Client triggers current limiting API interface [1m]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -4480,7 +4480,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 2,
-                            "legendFormat": "[ {{client}} - {{group}}  ]  {{name}}",
+                            "legendFormat": "[ {{client}} - {{group}} ] {{name}}",
                             "metric": "",
                             "refId": "B",
                             "step": 2400
@@ -4490,7 +4490,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "OAuth Client 5xx的API接口 [ 1m ]",
+                    "title": "OAuth Client 5xx API interface [ 1m ]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -4535,7 +4535,7 @@
                     }
                 }
             ],
-            "title": "网关客户端统计",
+            "title": "Gateway Client Statistics",
             "type": "row"
         },
         {
@@ -4631,7 +4631,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "日志统计[每分钟]",
+                    "title": "Log Statistics [per minute]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -4761,7 +4761,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Error日志统计[每分钟]",
+                    "title": "Error log statistics [per minute]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -4894,7 +4894,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "JVM GC [每分钟]",
+                    "title": "JVM GC [per minute]",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -5025,7 +5025,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "JVM GC 平均耗时",
+                    "title": "JVM GC average time",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -5148,7 +5148,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "JVM 老年代内存",
+                    "title": "JVM Old Generation Memory",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -5261,7 +5261,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒接收的字节",
+                            "legendFormat": "Bytes received per second",
                             "refId": "B"
                         },
                         {
@@ -5270,7 +5270,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒发送的字节",
+                            "legendFormat": "Bytes sent per second",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -5407,7 +5407,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Redis  Command QPS",
+                    "title": "Redis Command QPS",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -5527,7 +5527,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{instance}}  - {{comp_name}}",
+                            "legendFormat": "{{instance}} - {{comp_name}}",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -5537,7 +5537,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Redis  Command 耗时",
+                    "title": "Redis Command Time-consuming",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -5582,7 +5582,7 @@
                     }
                 }
             ],
-            "title": "JVM GC/Redis/日志概览",
+            "title": "JVM GC/Redis/Log Overview",
             "type": "row"
         }
     ],
@@ -5605,7 +5605,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -5632,7 +5632,7 @@
                 "description": null,
                 "error": null,
                 "hide": 0,
-                "label": "网关",
+                "label": "Gateway",
                 "name": "appname",
                 "options": [
                     {

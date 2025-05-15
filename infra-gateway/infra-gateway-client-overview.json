@@ -96,7 +96,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟全局错误码趋势",
+                    "title": "Global error code trend in the last minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -135,7 +135,7 @@
                     }
                 }
             ],
-            "title": "全局错误码",
+            "title": "Global Error Code",
             "type": "row"
         },
         {
@@ -238,7 +238,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "触发限流的接口",
+                    "title": "Interface that triggers current limiting",
                     "tooltip": {
                         "msResolution": false,
                         "shared": false,
@@ -288,7 +288,7 @@
                     }
                 }
             ],
-            "title": "接口限流统计",
+            "title": "Interface Current Limit Statistics",
             "type": "row"
         },
         {
@@ -553,7 +553,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "HTTP 5xx 接口",
+                    "title": "HTTP 5xx interface",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -691,7 +691,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "HTTP 4xx 接口",
+                    "title": "HTTP 4xx interface",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -737,7 +737,7 @@
                     }
                 }
             ],
-            "title": "接口  5xx / 4xx",
+            "title": "Interface 5xx / 4xx",
             "type": "row"
         },
         {
@@ -774,7 +774,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看接口统计",
+                            "title": "Click to view interface statistics",
                             "url": "/d/javahd/http-api-sla?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}&var-backend=${backend}&var-method=${request}"
                         }
                     ],
@@ -811,7 +811,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看接口指标",
+                    "title": "Click to view interface indicators",
                     "url": "/d/javahd/http-api-sla?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}&var-backend=${backend}&var-method=${request}"
                 }
             ],
@@ -984,7 +984,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "接口请求量趋势",
+            "title": "Interface request volume trend",
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
@@ -1118,7 +1118,7 @@
                     "step": 14400
                 }
             ],
-            "title": "近一分钟5xx占比",
+            "title": "5xx percentage in the last minute",
             "type": "stat"
         }
     ],
@@ -1140,7 +1140,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "网关环境",
+                "label": "Gateway Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1162,7 +1162,7 @@
                 "description": null,
                 "error": null,
                 "hide": 2,
-                "label": "网关",
+                "label": "Gateway",
                 "name": "appname",
                 "query": "infra-gateway",
                 "skipUrlSync": true,
@@ -1181,7 +1181,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "客户端 (调用方)",
+                "label": "Client (Caller)",
                 "multi": false,
                 "name": "gwclient",
                 "options": [],
@@ -1212,7 +1212,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "服务提供方",
+                "label": "Service Provider",
                 "multi": false,
                 "name": "backend",
                 "options": [],
@@ -1243,7 +1243,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "后端接口",
+                "label": "Backend interface",
                 "multi": false,
                 "name": "request",
                 "options": [],

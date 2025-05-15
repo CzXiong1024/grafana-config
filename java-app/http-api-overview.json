@@ -47,7 +47,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看更多慢接口统计",
+                                    "title": "Click to view more slow interface statistics",
                                     "url": "/d/javahs/http-slow-api?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                                 }
                             ],
@@ -82,7 +82,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看更多慢接口统计",
+                            "title": "Click to view more slow interface statistics",
                             "url": "/d/javahs/http-slow-api?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -114,7 +114,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "近一分钟慢接口趋势  (点击查看更多统计)",
+                    "title": "Slow interface trend in the past minute (click to view more statistics)",
                     "type": "stat"
                 },
                 {
@@ -168,7 +168,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内慢接口节点分布 ( 耗时> 1s )",
+                    "title": "Distribution of slow interface nodes in the selected period (time consumption > 1s)",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -228,12 +228,12 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "所选时段内慢请求次数 ( 耗时> 2s )",
+                    "title": "Number of slow requests (time consumption > 2s) in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "慢接口统计",
+            "title": "Slow Interface Statistics",
             "type": "row"
         },
         {
@@ -306,7 +306,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内HTTP状态码统计",
+                    "title": "HTTP status code statistics for the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -347,7 +347,7 @@
                     "legendType": "Right side",
                     "links": [
                         {
-                            "title": "查看单个HTTP接口的统计",
+                            "title": "View statistics of a single HTTP interface",
                             "url": "/d/jvm-job-http/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -370,7 +370,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内接口请求量 TOP 20 ",
+                    "title": "TOP 20 interface requests in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -418,7 +418,7 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": false,
-                            "expr": "(sum(increase(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance))  > 0",
+                            "expr": "(sum(increase(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance)) > 0",
                             "format": "time_series",
                             "hide": false,
                             "instant": true,
@@ -428,7 +428,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内 HTTP 5xx 节点分布",
+                    "title": " HTTP 5xx node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -477,7 +477,7 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": false,
-                            "expr": "(sum(increase(http_server_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance))  > 0",
+                            "expr": "(sum(increase(http_server_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance)) > 0",
                             "format": "time_series",
                             "hide": false,
                             "instant": true,
@@ -487,7 +487,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内 HTTP 4xx 节点分布",
+                    "title": "HTTP 4xx node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -533,7 +533,7 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": false,
-                            "expr": "(sum(increase(http_server_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance))  > 0",
+                            "expr": "(sum(increase(http_server_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance)) > 0",
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
@@ -541,7 +541,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内 Exception 节点分布",
+                    "title": "Exception node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -597,12 +597,12 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内 Exception 类型分布",
+                    "title": "Exception type distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "HTTP状态码/异常统计",
+            "title": "HTTP Status Code/Exception Statistics",
             "type": "row"
         },
         {
@@ -616,7 +616,7 @@
             },
             "id": 595,
             "panels": [],
-            "title": "HTTP接口概览",
+            "title": "HTTP Interface Overview",
             "type": "row"
         },
         {
@@ -630,7 +630,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看单个接口的统计",
+                            "title": "View statistics for a single interface",
                             "url": "/d/javahd/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -667,7 +667,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看接口维度统计",
+                    "title": "Click to view interface dimension statistics",
                     "url": "/d/javahd/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -699,13 +699,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看接口维度统计",
+                    "legendFormat": "Click to view interface dimension statistics",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "HTTP 接口",
+            "title": "HTTP Interface",
             "transparent": true,
             "type": "stat"
         },
@@ -772,7 +772,7 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "集群: {{app_cluster}} ",
+                    "legendFormat": "Cluster: {{app_cluster}} ",
                     "refId": "C"
                 },
                 {
@@ -803,7 +803,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量趋势",
+            "title": "Request volume trend",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -853,7 +853,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看单个接口的统计",
+                            "title": "View statistics for a single interface",
                             "url": "/d/javahd/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -892,7 +892,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "查看单个接口的调用统计",
+                    "title": "View call statistics of a single interface",
                     "url": "/d/javahd/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -924,13 +924,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "查看单个接口的调用统计",
+                    "legendFormat": "View the call statistics of a single interface",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "5xx请求占比 [ 1m ]",
+            "title": "5xx request percentage [1m]",
             "transparent": true,
             "type": "stat"
         },
@@ -1005,7 +1005,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "接口请求量",
+            "title": "Interface Request Volume",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1116,7 +1116,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "接口平均耗时",
+            "title": "Average interface time consumption",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1225,7 +1225,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近一分钟接口5xx趋势",
+            "title": "Interface 5xx trends in the last minute",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1320,7 +1320,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内5xx接口分布",
+            "title": "Distribution of 5xx interfaces in the selected period",
             "transformations": [],
             "type": "grafana-piechart-panel",
             "valueName": "current"
@@ -1397,7 +1397,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近一分钟接口业务码趋势",
+            "title": "Interface business code trend in the last minute",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1492,7 +1492,7 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "所选时段内接口业务码分布",
+            "title": " Interface service code distribution in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -1566,7 +1566,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近两分钟接口Exception 趋势",
+            "title": "Interface Exception Trend in the Last Two Minutes",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1660,7 +1660,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内4xx接口分布",
+            "title": "Distribution of 4xx interfaces in the selected period",
             "transformations": [],
             "type": "grafana-piechart-panel",
             "valueName": "current"
@@ -1685,7 +1685,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": " Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1716,7 +1716,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1751,7 +1751,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

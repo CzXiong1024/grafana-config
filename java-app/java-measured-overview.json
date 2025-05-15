@@ -33,7 +33,7 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "dark-green",
-                "慢请求(>3s)": "super-light-red"
+                "Slow request (>3s)": "super-light-red"
             },
             "bars": false,
             "dashLength": 10,
@@ -102,7 +102,7 @@
                     "expr": "(sum(increase(services_req_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\"}[1m])) by (app) - sum(increase(services_req_duration_seconds_bucket{le=\"3.0\",app=\"$appname\",envtype=\"$envtype\"}[1m])) by (app)) ",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "慢请求(>3s)",
+                    "legendFormat": "Slow request (>3s)",
                     "refId": "F"
                 },
                 {
@@ -110,7 +110,7 @@
                     "expr": "sum(increase(services_req_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\"}[1m])) by(app_cluster)",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "集群：{{app_cluster}}",
+                    "legendFormat": "Cluster: {{app_cluster}}",
                     "refId": "B"
                 }
             ],
@@ -118,7 +118,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "总体调用情况 [ 1m ]",
+            "title": "Overall call status [1m]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -164,7 +164,7 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
@@ -203,7 +203,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个方法的统计",
+                    "title": "Click to view statistics of a single method",
                     "url": "/d/java-measuredd/service-stats-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -233,7 +233,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量(By Method)  [ 1m ]",
+            "title": "Request volume (By Method) [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -279,7 +279,7 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
@@ -318,7 +318,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个方法的统计",
+                    "title": "Click to view statistics of a single method",
                     "url": "/d/java-measuredd/service-stats-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -348,7 +348,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量(By Instance) [ 1m ]",
+            "title": " Request volume (By Instance) [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -394,7 +394,7 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
@@ -433,7 +433,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个方法的耗时统计",
+                    "title": "Click to view the time statistics of a single method",
                     "url": "/d/java-measuredd/service-stats-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -463,7 +463,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "平均耗时(By Method)",
+            "title": "Average Time(By Method)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -509,7 +509,7 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
@@ -568,7 +568,7 @@
             "targets": [
                 {
                     "exemplar": true,
-                    "expr": "(sum(increase(services_req_error_total{app=\"$appname\",envtype=\"$envtype\",name=~\"$method\"}[1m])) by (name))  > 0",
+                    "expr": "(sum(increase(services_req_error_total{app=\"$appname\",envtype=\"$envtype\",name=~\"$method\"}[1m])) by (name)) > 0",
                     "interval": "",
                     "legendFormat": "{{name}}",
                     "refId": "A"
@@ -578,7 +578,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "Exception数量(By Method) [ 1m ]",
+            "title": "Exception Number (By Method) [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -624,7 +624,7 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
@@ -687,7 +687,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "Exception数量 ( by Class) [ 1m ]",
+            "title": "Number of Exceptions (by Class) [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -733,7 +733,7 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
@@ -796,7 +796,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近一分钟慢请求(>$le秒)趋势",
+            "title": "Slow request trend (>$le seconds) in the past minute",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -890,7 +890,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内慢请求(>$le秒)的分布",
+            "title": "Distribution of slow requests (>$le seconds) in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         }
@@ -914,7 +914,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -945,7 +945,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1026,7 +1026,7 @@
                 "description": null,
                 "error": null,
                 "hide": 0,
-                "label": "慢请求(秒)",
+                "label": "Slow Request (seconds)",
                 "name": "le",
                 "options": [
                     {

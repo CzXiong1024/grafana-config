@@ -47,7 +47,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看更多慢接口统计",
+                                    "title": "Click to view more slow interface statistics",
                                     "url": "/d/jvm-job-http-rank/java-http-latency?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                                 }
                             ],
@@ -82,7 +82,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看更多慢RPC统计",
+                            "title": "Click to view more slow RPC statistics",
                             "url": "/d/javars/slow-rpc?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -114,7 +114,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "近一分钟慢接口趋势  (点击查看更多统计)",
+                    "title": "Slow interface trend in the past minute (click to view more statistics)",
                     "type": "stat"
                 },
                 {
@@ -167,7 +167,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内慢接口节点分布 ( 耗时> 2s )",
+                    "title": "Distribution of slow interface nodes in the selected period (time consumption > 2s)",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -225,12 +225,12 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内慢请求次数 ( 耗时> 2s )",
+                    "title": "Number of slow requests (time consumption > 2s) in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "慢调用统计",
+            "title": "Slow Call Statistics",
             "type": "row"
         },
         {
@@ -298,7 +298,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内FeignClient状态码统计",
+                    "title": "FeignClient status code statistics in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -357,7 +357,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内服务提供方5xx分布",
+                    "title": "5xx distribution of service providers in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -397,7 +397,7 @@
                     "legendType": "Right side",
                     "links": [
                         {
-                            "title": "查看单个HTTP接口的统计",
+                            "title": "View statistics of a single HTTP interface",
                             "url": "/d/jvm-job-http/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -420,7 +420,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内接口请求量 TOP 20 ",
+                    "title": "TOP 20 interface requests in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -468,7 +468,7 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": false,
-                            "expr": "(sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
+                            "expr": "(sum(increase(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance)) > 0",
                             "format": "time_series",
                             "hide": false,
                             "instant": true,
@@ -478,7 +478,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内 HTTP 5xx 节点分布",
+                    "title": "HTTP 5xx node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -526,7 +526,7 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": false,
-                            "expr": "(sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
+                            "expr": "(sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance)) > 0",
                             "format": "time_series",
                             "hide": false,
                             "instant": true,
@@ -536,7 +536,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内 HTTP 4xx 节点分布",
+                    "title": "HTTP 4xx node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -582,7 +582,7 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": false,
-                            "expr": "(sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance))  > 0",
+                            "expr": "(sum(increase(http_client_exception_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\",group=~\"$backend\"}[$__range])) by (instance)) > 0",
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
@@ -590,7 +590,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内 Exception 节点分布",
+                    "title": "Exception node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -644,7 +644,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内 Exception 类型分布",
+                    "title": " Exception type distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -684,7 +684,7 @@
                     "legendType": "Right side",
                     "links": [
                         {
-                            "title": "查看单个HTTP接口统计",
+                            "title": "View single HTTP interface statistics",
                             "url": "/d/jvm-job-http/java-http-sla?$__url_time_range&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -707,13 +707,13 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内4xx接口分布",
+                    "title": "Distribution of 4xx interfaces in the selected period",
                     "transformations": [],
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "RPC状态码/异常统计",
+            "title": "RPC Status Code/Exception Statistics",
             "type": "row"
         },
         {
@@ -727,7 +727,7 @@
             },
             "id": 595,
             "panels": [],
-            "title": "RPC调用概览",
+            "title": "RPC Call Overview",
             "type": "row"
         },
         {
@@ -741,7 +741,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看单个接口的统计",
+                            "title": "View statistics for a single interface",
                             "url": "/d/javard/java-rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -778,7 +778,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看接口维度统计",
+                    "title": "Click to view interface dimension statistics",
                     "url": "/d/javard/rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -816,7 +816,7 @@
                     "step": 14400
                 }
             ],
-            "title": "RPC请求",
+            "title": "RPC Request",
             "transparent": true,
             "type": "stat"
         },
@@ -882,7 +882,7 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "服务提供方: {{group}} ",
+                    "legendFormat": "Service provider: {{group}} ",
                     "refId": "C"
                 },
                 {
@@ -924,7 +924,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "RPC调用趋势",
+            "title": "RPC call trends",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -974,7 +974,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看单个接口的统计",
+                            "title": "View statistics for a single interface",
                             "url": "/d/javard/java-rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -1013,7 +1013,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "查看单个接口的调用统计",
+                    "title": "View call statistics of a single interface",
                     "url": "/d/javard/rpc-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -1051,7 +1051,7 @@
                     "step": 14400
                 }
             ],
-            "title": "5xx请求占比 [ 1m ]",
+            "title": "5xx request percentage [1m]",
             "transparent": true,
             "type": "stat"
         },
@@ -1127,7 +1127,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "RPC调用QPS",
+            "title": "RPC Call QPS",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1225,7 +1225,7 @@
                 {
                     "datasource": "infra-prometheus",
                     "exemplar": true,
-                    "expr": "( sum(increase(http_client_request_duration_seconds_sum{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group)\n      /\n      sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group) ) >=0",
+                    "expr": "( sum(increase(http_client_request_duration_seconds_sum{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group)\n /\n sum(increase(http_client_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[1m])) by (request,group) ) >=0",
                     "format": "time_series",
                     "hide": false,
                     "instant": false,
@@ -1239,7 +1239,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "RPC调用平均耗时",
+            "title": "Average time of RPC calls",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1350,7 +1350,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近两分钟RPC调用Exception趋势",
+            "title": "RPC call exception trend in the past two minutes",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1443,7 +1443,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内接口5xx状态码分布",
+            "title": "Distribution of interface 5xx status codes during the selected period",
             "transformations": [],
             "type": "grafana-piechart-panel",
             "valueName": "current"
@@ -1492,7 +1492,7 @@
                 {
                     "datasource": "infra-prometheus",
                     "exemplar": false,
-                    "expr": "      sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[$__range])) by (request,group,status) > 0",
+                    "expr": " sum(increase(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[$__range])) by (request,group,status) > 0",
                     "format": "time_series",
                     "hide": false,
                     "instant": true,
@@ -1502,7 +1502,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内接口4xx状态码分布",
+            "title": "Distribution of interface 4xx status codes in the selected period",
             "transformations": [],
             "type": "grafana-piechart-panel",
             "valueName": "current"
@@ -1579,7 +1579,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近两分钟RPC调用业务码趋势",
+            "title": "RPC call business code trend in the past two minutes",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1676,13 +1676,13 @@
                 {
                     "datasource": "infra-prometheus",
                     "exemplar": true,
-                    "expr": "                        sum(irate(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
+                    "expr": " sum(irate(http_client_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
                     "format": "time_series",
                     "hide": false,
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "  {{group}}",
+                    "legendFormat": " {{group}}",
                     "refId": "B"
                 }
             ],
@@ -1690,7 +1690,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "RPC服务提供方5xx趋势",
+            "title": "RPC Service Provider 5xx Trends",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1787,13 +1787,13 @@
                 {
                     "datasource": "infra-prometheus",
                     "exemplar": true,
-                    "expr": "            sum(irate(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
+                    "expr": " sum(irate(http_client_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\",instance=~\"$instance\"}[3m])) by (group)",
                     "format": "time_series",
                     "hide": false,
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "  {{group}}",
+                    "legendFormat": " {{group}}",
                     "refId": "B"
                 }
             ],
@@ -1801,7 +1801,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "RPC服务提供方4xx趋势",
+            "title": "RPC Service Provider 4xx Trends",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1860,7 +1860,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1891,7 +1891,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1926,7 +1926,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "服务提供方",
+                "label": " Service Provider",
                 "multi": true,
                 "name": "backend",
                 "options": [],
@@ -1961,7 +1961,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

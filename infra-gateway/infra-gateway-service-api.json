@@ -30,7 +30,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看客户端指标",
+                            "title": "View Client Metrics",
                             "url": "/d/oauth-client/oauth-client-metrics?var-envtype=${envtype}&var-backend=${backend}&&var-oauthClient=$${__series.name}&${__url_time_range}"
                         }
                     ]
@@ -92,7 +92,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "接口调用方 QPS趋势",
+            "title": "Interface caller QPS trend",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -216,7 +216,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "所选时段内耗时大于500ms的接口 ( 按次数排行 ）",
+                    "title": "Interfaces with a time consumption greater than 500ms in the selected period (ranked by number)",
                     "tooltip": {
                         "shared": false,
                         "sort": 2,
@@ -258,7 +258,7 @@
                     }
                 }
             ],
-            "title": "慢接口排行",
+            "title": "Slowest Interface Ranking",
             "type": "row"
         },
         {
@@ -325,12 +325,12 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "所选时段内请求量TOP 20 接口",
+                    "title": " TOP 20 interfaces with the highest number of requests in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "接口请求量TOP 20",
+            "title": "TOP 20 API Request Volume",
             "type": "row"
         },
         {
@@ -396,7 +396,7 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "所选时段内接口5xx统计",
+                    "title": "Interface 5xx statistics in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -441,7 +441,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "sum(increase(http_server_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[$__range])) by (request)  > 0",
+                            "expr": "sum(increase(http_server_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[$__range])) by (request) > 0",
                             "format": "time_series",
                             "hide": false,
                             "instant": true,
@@ -453,12 +453,12 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "所选时段内接口4xx统计",
+                    "title": "Interface 4xx statistics in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "接口 5xx / 4xx 排行",
+            "title": "Interface 5xx / 4xx Ranking",
             "type": "row"
         }
     ],
@@ -481,7 +481,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "网关环境",
+                "label": "Gateway Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -503,7 +503,7 @@
                 "description": null,
                 "error": null,
                 "hide": 2,
-                "label": "网关",
+                "label": "Gateway",
                 "name": "appname",
                 "query": "infra-gateway",
                 "skipUrlSync": true,
@@ -522,7 +522,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "服务提供方 ( 支持sug )",
+                "label": "Service provider (support sug)",
                 "multi": false,
                 "name": "backend",
                 "options": [],
@@ -553,7 +553,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "接口",
+                "label": "Interface",
                 "multi": false,
                 "name": "api",
                 "options": [],

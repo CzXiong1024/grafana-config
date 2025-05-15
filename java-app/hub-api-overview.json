@@ -191,7 +191,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "Non-2xx Http Request   Per Minute by app",
+            "title": "Non-2xx Http Request Per Minute by app",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -324,7 +324,7 @@
                     "expr": "sum(increase(crs_order_total{app=\"hhub-order\",envtype=\"$envtype\",bizcode !=\"success\"}[1m]))",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "reservation - failure",
+                    "legendFormat": "reservation-failure",
                     "queryType": "randomWalk",
                     "refId": "B"
                 }
@@ -437,7 +437,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "reservation failure  by bizcode [ 1m ]",
+            "title": "reservation failure by bizcode [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -482,7 +482,7 @@
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "Number of success reservation  by channel in the last minute",
+            "description": "Number of success reservation by channel in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -539,7 +539,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "reservation success by channel  [ 1m ]",
+            "title": "reservation success by channel [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -641,7 +641,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "reservation failure by channel  [ 1m ]",
+            "title": "reservation failure by channel [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -746,7 +746,7 @@
             },
             "datasource": "infra-prometheus",
             "decimals": null,
-            "description": "Distribution of channel reservation failure   in the selected period",
+            "description": "Distribution of channel reservation failure in the selected period",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -788,7 +788,7 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "Distribution of reservation failure  by channel",
+            "title": "Distribution of reservation failure by channel",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -870,7 +870,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "reservation success by distributor  [ 1m ]",
+            "title": "reservation success by distributor [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -972,7 +972,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "reservation failure by distributor  [ 1m ]",
+            "title": "reservation failure by distributor [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1075,7 +1075,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "live check  success by distributor  [ 1m ]",
+            "title": "live check success by distributor [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1177,7 +1177,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "live check failure by distributor  [ 1m ]",
+            "title": "live check failure by distributor [ 1m ]",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1282,7 +1282,7 @@
             },
             "datasource": "infra-prometheus",
             "decimals": null,
-            "description": "Distribution of distributor reservation failure   in the selected period",
+            "description": "Distribution of distributor reservation failure in the selected period",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1324,7 +1324,7 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "Distribution of reservation failure  by distributor",
+            "title": "Distribution of reservation failure by distributor",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         }

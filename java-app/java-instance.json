@@ -20,7 +20,7 @@
             }
         ]
     },
-    "description": "节点指标",
+    "description": "Node metrics",
     "editable": true,
     "gnetId": 4701,
     "graphTooltip": 1,
@@ -40,7 +40,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看节点日志",
+                            "title": "Click to view node log",
                             "url": "${cloudBaseUrl}/logging/bizlog?app=${appname}&podName=${instance}&startTime=${__from}&endTime=${__to}"
                         }
                     ],
@@ -79,7 +79,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看节点日志",
+                    "title": "Click to view node log",
                     "url": ""
                 }
             ],
@@ -108,11 +108,11 @@
                     "expr": "process_uptime_seconds{envtype=\"${envtype}\",app=\"$appname\",instance=\"$instance\"}",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "点击查看当前节点日志",
+                    "legendFormat": "Click to view the current node log",
                     "refId": "A"
                 }
             ],
-            "title": "启动时长",
+            "title": "Startup duration",
             "type": "stat"
         },
         {
@@ -126,7 +126,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看CPU使用率",
+                            "title": "Click to view CPU usage",
                             "url": "/d/javan/java-instance?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}&viewPanel=531"
                         }
                     ],
@@ -187,11 +187,11 @@
                     "expr": "process_cpu_usage{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "进程CPU使用率",
+                    "legendFormat": " Process CPU usage",
                     "refId": "A"
                 }
             ],
-            "title": "进程 CPU Usage",
+            "title": "Process CPU Usage",
             "type": "stat"
         },
         {
@@ -206,7 +206,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看堆内存使用率",
+                            "title": "Click to view heap memory usage",
                             "url": "/d/javan/java-instance?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}&viewPanel=24"
                         }
                     ],
@@ -273,11 +273,11 @@
                     "expr": "1-(instance_mem_free_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}/instance_mem_total_bytes)",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "节点内存使用率",
+                    "legendFormat": "Node memory usage",
                     "refId": "A"
                 }
             ],
-            "title": "内存使用率",
+            "title": "Memory Usage",
             "type": "gauge"
         },
         {
@@ -321,7 +321,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "组件"
+                                "value": "Component"
                             },
                             {
                                 "id": "custom.align"
@@ -336,7 +336,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "状态"
+                                "value": "status"
                             },
                             {
                                 "id": "custom.align",
@@ -425,7 +425,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "版本"
+                                "value": "version"
                             },
                             {
                                 "id": "custom.align"
@@ -466,7 +466,7 @@
                 "sortBy": [
                     {
                         "desc": true,
-                        "displayName": "状态"
+                        "displayName": "Status"
                     }
                 ]
             },
@@ -484,7 +484,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "组件健康状态",
+            "title": "Component Health Status",
             "transformations": [
                 {
                     "id": "filterFieldsByName",
@@ -518,7 +518,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的接口统计",
+                            "title": "View the interface statistics of the current node",
                             "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -589,11 +589,11 @@
                     "expr": "(sum(irate(http_server_request_duration_seconds_count{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])))OR on() vector(0)",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "查看节点HTTP调用统计",
+                    "legendFormat": "View node HTTP call statistics",
                     "refId": "A"
                 }
             ],
-            "title": "Http Reqeusts",
+            "title": "Http Requests",
             "type": "stat"
         },
         {
@@ -607,7 +607,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看接口统计",
+                            "title": "View interface statistics",
                             "url": "${cloudBaseUrl}/logging/accesslog?app=${appname}&podName=${instance}&startTime=${__from}&endTime=${__to}\n"
                         }
                     ],
@@ -676,14 +676,14 @@
             "targets": [
                 {
                     "exemplar": true,
-                    "expr": "(sum(increase(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=~\"$envtype\",instance=\"$instance\"}[70s])) / sum(increase(http_server_request_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\",instance=\"$instance\"}[70s]))) >=0  or on() vector(0)",
+                    "expr": "(sum(increase(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=~\"$envtype\",instance=\"$instance\"}[70s])) / sum(increase(http_server_request_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\",instance=\"$instance\"}[70s]))) >=0 or on() vector(0)",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "查看AccessLog",
+                    "legendFormat": "View AccessLog",
                     "refId": "A"
                 }
             ],
-            "title": "5xx请求占比 [ 1m ]",
+            "title": "5xx request percentage [1m]",
             "type": "stat"
         },
         {
@@ -697,7 +697,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的SQL统计",
+                            "title": "View SQL statistics of the current node",
                             "url": "/d/javam/sql-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -757,11 +757,11 @@
                     "expr": "sum(irate(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=\"$instance\"}[2m]))",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "查看节点的SQL统计",
+                    "legendFormat": "View the SQL statistics of the node",
                     "refId": "A"
                 }
             ],
-            "title": "SQL请求",
+            "title": "SQL Request",
             "type": "stat"
         },
         {
@@ -775,7 +775,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的日志统计",
+                            "title": "View the log statistics of the current node",
                             "url": "${cloudBaseUrl}/logging/bizlog?app=${appname}&podName=${instance}&level=ERROR&startTime=${__from}&endTime=${__to}\n"
                         }
                     ],
@@ -812,7 +812,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看节点日志",
+                    "title": " Click to view node log",
                     "url": ""
                 }
             ],
@@ -838,14 +838,14 @@
             "targets": [
                 {
                     "exemplar": true,
-                    "expr": "increase(logback_events_total{level=\"error\",app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[60s]) OR increase(log4j2_events_total{level=\"error\",app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[60s])",
+                    "expr": "increase(logback_events_total{level=\"error\",app=\"$appname\",envtype=~\"$envtype \",instance=~\"$instance\"}[60s]) OR increase(log4j2_events_total{level=\"error\",app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}[60s])",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "查看节点的错误日志",
+                    "legendFormat": "View the node's error log",
                     "refId": "A"
                 }
             ],
-            "title": "Error日志 [ 1m ]",
+            "title": "Error log [1m]",
             "type": "stat"
         },
         {
@@ -859,7 +859,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的线程统计",
+                            "title": "View thread statistics of the current node",
                             "url": "/d/javan/java-instance?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}&var-instance=${instance}&viewPanel=532"
                         }
                     ],
@@ -921,13 +921,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看节点的JVM线程统计",
+                    "legendFormat": "Click to view the JVM thread statistics of the node",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "活跃线程数",
+            "title": "Number of active threads",
             "type": "stat"
         },
         {
@@ -941,7 +941,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的GC统计",
+                            "title": "View GC statistics of the current node",
                             "url": "/d/javaj/jvm-overview?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}&var-instance=${instance}"
                         }
                     ],
@@ -963,7 +963,7 @@
                             }
                         ]
                     },
-                    "unit": "次/分钟"
+                    "unit": "times/minute"
                 },
                 "overrides": []
             },
@@ -1001,11 +1001,11 @@
                     "expr": "sum(increase(instance_gc_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\",instance=\"$instance\"}[60s]))",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "查看节点的JVM统计",
+                    "legendFormat": "View the JVM statistics of the node",
                     "refId": "A"
                 }
             ],
-            "title": "GC频率",
+            "title": "GC Frequency",
             "type": "stat"
         },
         {
@@ -1170,7 +1170,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "宿主机累计运行",
+                    "title": "Accumulated running time of the host",
                     "type": "stat"
                 },
                 {
@@ -1253,7 +1253,7 @@
                             "expr": "increase(config_apollo_release_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])",
                             "hide": false,
                             "interval": "",
-                            "legendFormat": "近两分钟配置文件更新的次数",
+                            "legendFormat": "Number of configuration file updates in the last two minutes",
                             "refId": "A"
                         },
                         {
@@ -1261,7 +1261,7 @@
                             "expr": "increase(config_apollo_changedkeys_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])",
                             "hide": false,
                             "interval": "",
-                            "legendFormat": "近两分钟累计变动的配置项",
+                            "legendFormat": "Configuration items that have been changed cumulatively in the last two minutes",
                             "refId": "B"
                         },
                         {
@@ -1277,7 +1277,7 @@
                             "expr": "increase(config_cloud_release_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])",
                             "hide": false,
                             "interval": "",
-                            "legendFormat": "cloud 近两分钟配置文件更新的次数",
+                            "legendFormat": "The number of times the cloud configuration file has been updated in the last two minutes",
                             "refId": "D"
                         },
                         {
@@ -1285,7 +1285,7 @@
                             "expr": "increase(config_cloud_changedkeys_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])",
                             "hide": false,
                             "interval": "",
-                            "legendFormat": "cloud 近两分钟累计变动的配置项",
+                            "legendFormat": "cloud Configuration items that have been changed cumulatively in the last two minutes",
                             "refId": "E"
                         },
                         {
@@ -1297,7 +1297,7 @@
                             "refId": "F"
                         }
                     ],
-                    "title": "配置中心 & Exception",
+                    "title": "Configuration Center & Exception",
                     "type": "timeseries"
                 },
                 {
@@ -1336,7 +1336,7 @@
                                                 "options": {
                                                     "from": -10000,
                                                     "result": {
-                                                        "text": "不限"
+                                                        "text": "Unlimited"
                                                     },
                                                     "to": 0
                                                 },
@@ -1349,7 +1349,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "内存 Quota"
+                                    "options": "Memory Quota"
                                 },
                                 "properties": [
                                     {
@@ -1363,7 +1363,7 @@
                                                 "options": {
                                                     "from": -100000,
                                                     "result": {
-                                                        "text": "不限"
+                                                        "text": "Unlimited"
                                                     },
                                                     "to": 0
                                                 },
@@ -1388,7 +1388,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "宿主机CPU"
+                                    "options": "Host CPU"
                                 },
                                 "properties": [
                                     {
@@ -1412,7 +1412,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "宿主机内存"
+                                    "options": "Host memory"
                                 },
                                 "properties": [
                                     {
@@ -1424,7 +1424,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "SWAP分区"
+                                    "options": "SWAP partition"
                                 },
                                 "properties": [
                                     {
@@ -1436,7 +1436,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "磁盘容量"
+                                    "options": "Disk capacity"
                                 },
                                 "properties": [
                                     {
@@ -1542,7 +1542,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "内存 Quota",
+                            "legendFormat": "Memory Quota",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "B",
@@ -1674,7 +1674,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "磁盘容量",
+                            "legendFormat": "Disk capacity",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "H",
@@ -1718,7 +1718,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "宿主机CPU",
+                            "legendFormat": "Host CPU",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "D",
@@ -1762,7 +1762,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "宿主机内存",
+                            "legendFormat": "Host memory",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "E",
@@ -1806,7 +1806,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "SWAP分区",
+                            "legendFormat": "SWAP partition",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "G",
@@ -1828,7 +1828,7 @@
                             "tags": []
                         }
                     ],
-                    "title": "节点容量规格",
+                    "title": "Node Capacity Specifications",
                     "type": "stat"
                 },
                 {
@@ -1925,7 +1925,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "DNS缓存",
+                            "legendFormat": "DNS Cache",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "A",
@@ -1947,7 +1947,7 @@
                             "tags": []
                         }
                     ],
-                    "title": "DNS缓存",
+                    "title": "DNS Cache",
                     "type": "stat"
                 },
                 {
@@ -2030,7 +2030,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "集群",
+                    "title": "Cluster",
                     "type": "stat"
                 },
                 {
@@ -2113,7 +2113,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "时区",
+                    "title": "Time Zone",
                     "type": "stat"
                 },
                 {
@@ -2187,7 +2187,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "进程ID(PID)",
+                    "title": "Process ID (PID)",
                     "type": "stat"
                 },
                 {
@@ -2270,7 +2270,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "JAVA版本",
+                    "title": "JAVA version",
                     "type": "stat"
                 },
                 {
@@ -2353,7 +2353,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "Class版本",
+                    "title": "Class Version",
                     "type": "stat"
                 },
                 {
@@ -2436,7 +2436,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "JVM版本",
+                    "title": "JVM version",
                     "type": "stat"
                 },
                 {
@@ -2768,7 +2768,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "总内存",
+                    "title": "Total Memory",
                     "type": "stat"
                 },
                 {
@@ -2934,7 +2934,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "部署时Git Tag的最新版本",
+                    "title": "Latest version of Git Tag during deployment",
                     "type": "stat"
                 },
                 {
@@ -3017,7 +3017,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "最近的构建时间",
+                    "title": "Latest build time",
                     "type": "stat"
                 },
                 {
@@ -3258,7 +3258,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "发布时的Git CommitId",
+                    "title": " Git CommitId when publishing",
                     "type": "stat"
                 },
                 {
@@ -3341,7 +3341,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "宿主机IP",
+                    "title": "Host IP",
                     "type": "stat"
                 },
                 {
@@ -3565,7 +3565,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:600",
-                            "alias": "宿主机内存使用率",
+                            "alias": " Host memory usage",
                             "yaxis": 2
                         }
                     ],
@@ -3576,12 +3576,12 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": true,
-                            "expr": "1 -(system_memory_free_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"} /  system_memory_total_bytes)",
+                            "expr": "1 -(system_memory_free_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"} / system_memory_total_bytes)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机内存使用率",
+                            "legendFormat": "Host memory usage",
                             "refId": "E"
                         },
                         {
@@ -3591,7 +3591,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机空闲内存(free)",
+                            "legendFormat": "Host free memory (free)",
                             "refId": "B"
                         },
                         {
@@ -3602,7 +3602,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机总内存(total)",
+                            "legendFormat": "Total host memory (total)",
                             "refId": "A"
                         },
                         {
@@ -3613,7 +3613,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机Swap分区大小(total)",
+                            "legendFormat": "Host Swap partition size (total)",
                             "refId": "C"
                         },
                         {
@@ -3624,7 +3624,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机Swap分区剩余大小(free)",
+                            "legendFormat": "Host Swap partition remaining size (free)",
                             "refId": "F"
                         },
                         {
@@ -3635,7 +3635,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机PageCache",
+                            "legendFormat": "Host PageCache",
                             "refId": "D"
                         },
                         {
@@ -3646,7 +3646,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机PageCache Dirty",
+                            "legendFormat": "Host PageCache Dirty",
                             "refId": "G"
                         },
                         {
@@ -3657,7 +3657,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机PageCache WriteBack",
+                            "legendFormat": "Host PageCache WriteBack",
                             "refId": "H"
                         },
                         {
@@ -3668,7 +3668,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机Mapped Memory",
+                            "legendFormat": "Host Mapped Memory",
                             "refId": "I"
                         },
                         {
@@ -3679,7 +3679,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机Shared Memory",
+                            "legendFormat": "Host Shared Memory",
                             "refId": "J"
                         }
                     ],
@@ -3687,7 +3687,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "宿主机内存统计",
+                    "title": "Host Memory Statistics",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3731,7 +3731,7 @@
                     }
                 }
             ],
-            "title": "部署环境",
+            "title": "Deployment Environment",
             "type": "row"
         },
         {
@@ -3819,7 +3819,7 @@
                             "exemplar": true,
                             "expr": "sum(irate(http_server_request_duration_seconds_count{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m]))",
                             "interval": "",
-                            "legendFormat": "HTTP API ",
+                            "legendFormat": "HTTP API",
                             "refId": "A"
                         },
                         {
@@ -3913,11 +3913,11 @@
                             "refId": "K"
                         }
                     ],
-                    "title": "HTTP/RPC/SQL/Redis/MQ流量趋势",
+                    "title": "HTTP/RPC/SQL/Redis/MQ traffic trends",
                     "type": "timeseries"
                 }
             ],
-            "title": "流量概览",
+            "title": "Traffic Overview",
             "type": "row"
         },
         {
@@ -3991,7 +3991,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "CPU Usage - 进程",
+                            "legendFormat": "CPU Usage - Process",
                             "refId": "A"
                         },
                         {
@@ -4003,7 +4003,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "CPU Quota Usage - 进程",
+                            "legendFormat": "CPU Quota Usage - Process",
                             "refId": "D"
                         },
                         {
@@ -4014,7 +4014,7 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "CPU Avg Usage [1h] - 进程",
+                            "legendFormat": "CPU Avg Usage [1h] - Process",
                             "refId": "C"
                         },
                         {
@@ -4026,7 +4026,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "CPU Usage - 宿主机",
+                            "legendFormat": "CPU Usage - Host",
                             "refId": "B"
                         }
                     ],
@@ -4132,7 +4132,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "进程最大可用CPU Count (Quota)",
+                            "legendFormat": "Maximum available CPU Count (Quota) for the process",
                             "refId": "C"
                         },
                         {
@@ -4144,7 +4144,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机 CPU Count",
+                            "legendFormat": "Host CPU Count",
                             "refId": "A"
                         },
                         {
@@ -4188,7 +4188,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机CPU正在执行的任务数  (Process / Thread)",
+                            "legendFormat": "Number of tasks (Process / Thread) being executed by the host CPU",
                             "refId": "F"
                         },
                         {
@@ -4208,7 +4208,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "宿主机 System Load",
+                    "title": "Host System Load",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -4299,7 +4299,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "进程最大可用内存 (OOM)",
+                            "legendFormat": "Maximum available memory for the process (OOM)",
                             "refId": "M"
                         },
                         {
@@ -4310,7 +4310,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "进程内存 - Working Set Size",
+                            "legendFormat": "Process Memory - Working Set Size",
                             "refId": "C"
                         },
                         {
@@ -4350,7 +4350,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "RSS  Shared Memory",
+                            "legendFormat": "RSS Shared Memory",
                             "refId": "I"
                         },
                         {
@@ -4545,7 +4545,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "进程内存",
+                    "title": "Process Memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -4630,7 +4630,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "近一分钟进程 CPU Throttled 占比"
+                                    "options": "CPU Throttled percentage of processes in the last minute"
                                 },
                                 "properties": [
                                     {
@@ -4670,7 +4670,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "近一分钟进程CPU Throtteld累计时长"
+                                    "options": "The cumulative CPU Throtteld duration of the process in the past minute"
                                 },
                                 "properties": [
                                     {
@@ -4682,7 +4682,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "近一分钟进程 CPU User Time"
+                                    "options": "Process CPU User Time in the last minute"
                                 },
                                 "properties": [
                                     {
@@ -4694,7 +4694,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "近一分钟进程 CPU System Time"
+                                    "options": "Process CPU System Time in the last minute"
                                 },
                                 "properties": [
                                     {
@@ -4706,7 +4706,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "近一分钟进程 CPU  Total Usage"
+                                    "options": "Total CPU Usage of the process in the last minute"
                                 },
                                 "properties": [
                                     {
@@ -4754,7 +4754,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟进程 CPU Throttled 占比",
+                            "legendFormat": "CPU Throttled percentage of processes in the last minute",
                             "refId": "I"
                         },
                         {
@@ -4766,7 +4766,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟进程CPU Throttled次数",
+                            "legendFormat": "Number of CPU Throttled times of the process in the last minute",
                             "refId": "B"
                         },
                         {
@@ -4777,7 +4777,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟累计已过了多少个CPU周期",
+                            "legendFormat": "How many CPU cycles have passed in the past minute",
                             "refId": "A"
                         },
                         {
@@ -4819,7 +4819,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟进程CPU Throtteld累计时长",
+                            "legendFormat": "The cumulative CPU Throtteld duration of the process in the past minute",
                             "refId": "C"
                         },
                         {
@@ -4829,7 +4829,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟进程 CPU User Time",
+                            "legendFormat": "Process CPU User Time in the last minute",
                             "refId": "G"
                         },
                         {
@@ -4839,7 +4839,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟进程 CPU System Time",
+                            "legendFormat": "CPU System Time of the process in the last minute",
                             "refId": "H"
                         },
                         {
@@ -4849,11 +4849,11 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟进程 CPU  Total Usage",
+                            "legendFormat": "Total CPU Usage of the process in the last minute",
                             "refId": "J"
                         }
                     ],
-                    "title": "进程 CGroup 统计 [ 1m ]",
+                    "title": "Process CGroup Statistics [1m]",
                     "type": "timeseries"
                 },
                 {
@@ -4915,7 +4915,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟JVM创建的线程数",
+                            "legendFormat": "Number of threads created by JVM in the past minute",
                             "refId": "K"
                         },
                         {
@@ -4924,7 +4924,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "OS维度进程当前的线程",
+                            "legendFormat": "Current thread of OS dimension process",
                             "refId": "D"
                         },
                         {
@@ -4934,7 +4934,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "JVM维度当前的线程(daemon + non-daemon)",
+                            "legendFormat": "Current threads in JVM dimension (daemon + non-daemon)",
                             "refId": "B"
                         },
                         {
@@ -4943,7 +4943,7 @@
                             "hide": false,
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "JVM后台(Daemon)线程",
+                            "legendFormat": "JVM background (Daemon) thread",
                             "refId": "A"
                         },
                         {
@@ -4952,7 +4952,7 @@
                             "hide": false,
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "JVM线程峰值",
+                            "legendFormat": "JVM thread peak value",
                             "refId": "C"
                         },
                         {
@@ -4978,7 +4978,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "Minor Pagefault  per second",
+                            "legendFormat": "Minor Pagefault per second",
                             "refId": "G"
                         },
                         {
@@ -4988,7 +4988,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "Major Pagefault  per second",
+                            "legendFormat": "Major Pagefault per second",
                             "refId": "H"
                         },
                         {
@@ -5016,7 +5016,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "线程  & Context Switch & Page Fault",
+                    "title": "Thread& Context Switch & Page Fault",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5119,7 +5119,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "线程运行状态",
+                    "title": "Thread running status",
                     "tooltip": {
                         "shared": true,
                         "sort": 1,
@@ -5208,7 +5208,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "每秒读取的字节数 ( PageCache+磁盘 )",
+                            "legendFormat": "Bytes read per second (PageCache+disk)",
                             "refId": "B"
                         },
                         {
@@ -5216,7 +5216,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "每秒写入的字节数 ( PageCache+磁盘 )",
+                            "legendFormat": "Bytes written per second (PageCache+disk)",
                             "refId": "A"
                         },
                         {
@@ -5224,7 +5224,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "每秒从物理磁盘读取的字节数",
+                            "legendFormat": "Number of bytes read from physical disk per second",
                             "refId": "C"
                         },
                         {
@@ -5232,7 +5232,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "每秒写入物理磁盘的字节数",
+                            "legendFormat": "Bytes written to physical disk per second",
                             "refId": "D"
                         },
                         {
@@ -5240,7 +5240,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "每秒被取消磁盘写入的字节数",
+                            "legendFormat": "Number of bytes canceled from disk writes per second",
                             "refId": "E"
                         }
                     ],
@@ -5248,7 +5248,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "进程维度磁盘IO",
+                    "title": "Process Dimension Disk IO",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5341,14 +5341,14 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒 IO Read 系统调用",
+                            "legendFormat": "IO Read system calls per second",
                             "refId": "C"
                         },
                         {
                             "expr": "irate(process_io_syscw_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒 IO Write 系统调用",
+                            "legendFormat": "IO Write system calls per second",
                             "refId": "D"
                         },
                         {
@@ -5356,7 +5356,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "已打开的文件",
+                            "legendFormat": "Opened file",
                             "refId": "B"
                         },
                         {
@@ -5366,7 +5366,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大可打开文件",
+                            "legendFormat": "Maximum openable file size",
                             "refId": "A"
                         },
                         {
@@ -5385,7 +5385,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "进程文件描述符(fd)",
+                    "title": "Process file descriptor (fd)",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5432,7 +5432,7 @@
                             {
                                 "matcher": {
                                     "id": "byRegexp",
-                                    "options": ".+磁盘容量.+"
+                                    "options": ".+Disk capacity.+"
                                 },
                                 "properties": [
                                     {
@@ -5444,7 +5444,7 @@
                             {
                                 "matcher": {
                                     "id": "byRegexp",
-                                    "options": ".+磁盘空闲.+"
+                                    "options": ".+Disk free.+"
                                 },
                                 "properties": [
                                     {
@@ -5456,7 +5456,7 @@
                             {
                                 "matcher": {
                                     "id": "byRegexp",
-                                    "options": "/使用率/"
+                                    "options": "/usage/"
                                 },
                                 "properties": [
                                     {
@@ -5504,7 +5504,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:746",
-                            "alias": "/使用率/",
+                            "alias": "/usage/",
                             "yaxis": 2
                         }
                     ],
@@ -5521,7 +5521,7 @@
                             "instant": false,
                             "interval": "15s",
                             "intervalFactor": 1,
-                            "legendFormat": "{{name}} - 磁盘使用率",
+                            "legendFormat": "{{name}} - Disk usage",
                             "refId": "A"
                         },
                         {
@@ -5533,7 +5533,7 @@
                             "instant": false,
                             "interval": "15s",
                             "intervalFactor": 1,
-                            "legendFormat": "{{name}} - 磁盘容量(total)",
+                            "legendFormat": "{{name}} - Disk capacity (total)",
                             "refId": "C"
                         },
                         {
@@ -5545,7 +5545,7 @@
                             "instant": false,
                             "interval": "15s",
                             "intervalFactor": 1,
-                            "legendFormat": "{{name}} - 磁盘空闲容量(free)",
+                            "legendFormat": "{{name}} - Disk free capacity (free)",
                             "refId": "B"
                         }
                     ],
@@ -5553,7 +5553,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "磁盘统计",
+                    "title": "Disk Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5591,7 +5591,7 @@
                     }
                 }
             ],
-            "title": "进程 / 线程 / CPU / 磁盘 / IO",
+            "title": "Process/Thread/CPU/Disk/IO",
             "type": "row"
         },
         {
@@ -5621,7 +5621,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "堆内存使用率"
+                                    "options": "Heap memory usage"
                                 },
                                 "properties": [
                                     {
@@ -5668,7 +5668,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:364",
-                            "alias": "/使用率/",
+                            "alias": "/usage/",
                             "yaxis": 2
                         }
                     ],
@@ -5683,7 +5683,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "已用的(Used)堆内存",
+                            "legendFormat": "Used heap memory",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -5695,7 +5695,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大可用的(-Xmx)堆内存",
+                            "legendFormat": "Maximum available (-Xmx) heap memory",
                             "refId": "C"
                         },
                         {
@@ -5705,17 +5705,17 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "已提交的(Committed)堆内存",
+                            "legendFormat": "Committed heap memory",
                             "refId": "D"
                         },
                         {
                             "exemplar": true,
-                            "expr": "sum(jvm_memory_used_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"}) /  sum(jvm_memory_max_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"})",
+                            "expr": "sum(jvm_memory_used_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"}) / sum(jvm_memory_max_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"})",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "堆内存使用率",
+                            "legendFormat": "Heap memory usage",
                             "refId": "B",
                             "step": 2400
                         }
@@ -5724,7 +5724,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "堆(Heap)内存",
+                    "title": "Heap Memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5777,7 +5777,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "堆外内存使用率"
+                                    "options": "Off-heap memory usage"
                                 },
                                 "properties": [
                                     {
@@ -5824,7 +5824,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:520",
-                            "alias": "/使用率/",
+                            "alias": "/usage/",
                             "yaxis": 2
                         }
                     ],
@@ -5839,7 +5839,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "已用的(Used)堆外内存池",
+                            "legendFormat": "Used off-heap memory pool",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -5852,7 +5852,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "Netty已用的Direct Memory",
+                            "legendFormat": "Direct Memory used by Netty",
                             "metric": "",
                             "refId": "C",
                             "step": 2400
@@ -5864,7 +5864,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大可用的(Max)堆外内存",
+                            "legendFormat": "Maximum available off-heap memory",
                             "refId": "D"
                         },
                         {
@@ -5875,7 +5875,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "堆外内存使用率",
+                            "legendFormat": "Off-heap memory usage",
                             "refId": "B"
                         }
                     ],
@@ -5883,7 +5883,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "堆外(Off Heap)内存",
+                    "title": "Off Heap Memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -5981,7 +5981,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}({{area}}) - 已用内存(Used)",
+                            "legendFormat": "{{id}}({{area}}) - Used Memory(Used)",
                             "refId": "E"
                         },
                         {
@@ -5991,7 +5991,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}({{area}})  - 已提交内存(Committed)",
+                            "legendFormat": "{{id}}({{area}}) - Committed",
                             "refId": "A"
                         }
                     ],
@@ -5999,7 +5999,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "JVM内存池",
+                    "title": "JVM Memory Pool",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6093,7 +6093,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "JVM内存池最大配置",
+                    "title": "JVM memory pool maximum configuration",
                     "type": "bargauge"
                 },
                 {
@@ -6156,7 +6156,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{name}} - 平均停顿",
+                            "legendFormat": "{{name}} - Average Pause",
                             "refId": "B"
                         },
                         {
@@ -6166,7 +6166,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{action}} ({{cause}})  - 最大停顿时长",
+                            "legendFormat": "{{action}} ({{cause}}) - Maximum pause duration",
                             "refId": "A"
                         },
                         {
@@ -6176,7 +6176,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{action}} ({{cause}}) - 平均停顿",
+                            "legendFormat": "{{action}} ({{cause}}) - Average pause",
                             "refId": "C"
                         },
                         {
@@ -6187,7 +6187,7 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{action}} ({{cause}})  - 并发(concurrent)回收最大耗时",
+                            "legendFormat": "{{action}} ({{cause}}) - Maximum time taken for concurrent collection",
                             "refId": "D"
                         },
                         {
@@ -6198,7 +6198,7 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{action}} ({{cause}})  - 并发回收平均耗时",
+                            "legendFormat": "{{action}} ({{cause}}) - Average time taken for concurrent collection",
                             "refId": "E"
                         }
                     ],
@@ -6206,7 +6206,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "GC耗时",
+                    "title": "GC time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6288,11 +6288,11 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "{{action}}  ({{cause}})",
+                            "legendFormat": "{{action}} ({{cause}})",
                             "refId": "C"
                         }
                     ],
-                    "title": "所选时段内累计GC耗时",
+                    "title": "Cumulative GC time consumed in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -6306,7 +6306,7 @@
                     "fieldConfig": {
                         "defaults": {
                             "links": [],
-                            "unit": "次/分钟"
+                            "unit": "times/minute"
                         },
                         "overrides": []
                     },
@@ -6373,7 +6373,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "GC 原因与频次",
+                    "title": "GC Reasons and Frequency",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6389,7 +6389,7 @@
                     },
                     "yaxes": [
                         {
-                            "format": "次/分钟",
+                            "format": "times/minute",
                             "label": null,
                             "logBase": 1,
                             "max": null,
@@ -6459,7 +6459,7 @@
                             "refId": "C"
                         }
                     ],
-                    "title": "所选时段内累计GC次数",
+                    "title": "Cumulative GC times in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -6521,7 +6521,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "新生代(Young Gen)每秒增加的字节",
+                            "legendFormat": "Young Gen bytes added per second",
                             "refId": "C"
                         },
                         {
@@ -6531,7 +6531,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "老年代(Old Gen)每秒增加的字节",
+                            "legendFormat": "Old Gen bytes added per second",
                             "refId": "A"
                         },
                         {
@@ -6542,7 +6542,7 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "老年代Old(Mixed) GC 后的大小",
+                            "legendFormat": "Size of the old generation after Old(Mixed) GC",
                             "refId": "B"
                         }
                     ],
@@ -6550,7 +6550,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "GC 内存分配",
+                    "title": "GC Memory Allocation",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -6650,7 +6650,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "当前已加载的class",
+                            "legendFormat": "Currently loaded class",
                             "refId": "B"
                         },
                         {
@@ -6660,7 +6660,7 @@
                             "hide": false,
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "近两分钟累计加载的class",
+                            "legendFormat": "The cumulative class loaded in the past two minutes",
                             "refId": "C"
                         },
                         {
@@ -6669,7 +6669,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "近两分钟累计卸载的class",
+                            "legendFormat": "The cumulative number of classes uninstalled in the past two minutes",
                             "refId": "A"
                         }
                     ],
@@ -6797,7 +6797,7 @@
                             "instant": false,
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}_已用内存",
+                            "legendFormat": "{{id}}_Used Memory",
                             "refId": "B"
                         },
                         {
@@ -6806,7 +6806,7 @@
                             "hide": false,
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}_最大可用内存",
+                            "legendFormat": "{{id}}_Maximum Available Memory",
                             "refId": "C"
                         }
                     ],
@@ -6957,7 +6957,7 @@
                     }
                 }
             ],
-            "title": "JVM / 内存 / GC / Classloader",
+            "title": "JVM / Memory / GC / Classloader",
             "type": "row"
         },
         {
@@ -7064,7 +7064,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "DNS解析",
+                    "title": "DNS resolution",
                     "transformations": [
                         {
                             "id": "filterFieldsByName",
@@ -7138,7 +7138,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:157",
-                            "alias": "/解析耗时/",
+                            "alias": "/Parsing time/",
                             "yaxis": 2
                         }
                     ],
@@ -7153,7 +7153,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{host}} - 近五分钟解析失败",
+                            "legendFormat": "{{host}} - Parsing failed in the last five minutes",
                             "refId": "C"
                         },
                         {
@@ -7163,7 +7163,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{host}} - 最大解析耗时",
+                            "legendFormat": "{{host}} - Maximum parsing time",
                             "refId": "D"
                         },
                         {
@@ -7173,7 +7173,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{host}} - 近五分钟解析次数",
+                            "legendFormat": "{{host}} -Number of resolutions in the last five minutes",
                             "refId": "B"
                         },
                         {
@@ -7184,7 +7184,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{host}} - 平均解析耗时",
+                            "legendFormat": "{{host}} - Average parsing time",
                             "refId": "E"
                         }
                     ],
@@ -7192,7 +7192,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "DNS 耗时统计",
+                    "title": "DNS time statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7311,7 +7311,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "Allocated TCP ( All TCP State )",
+                            "legendFormat": "Allocated TCP (All TCP State)",
                             "refId": "C"
                         },
                         {
@@ -7351,7 +7351,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "宿主机 SocketStat 统计",
+                    "title": "Host SocketStat Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7446,7 +7446,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 接口接收到的字节数",
+                            "legendFormat": "{{interface}} - Number of bytes received by the interface",
                             "refId": "B"
                         },
                         {
@@ -7454,7 +7454,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 接口接收到的数据包",
+                            "legendFormat": "{{interface}} - data packets received by the interface",
                             "refId": "A"
                         },
                         {
@@ -7462,7 +7462,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 驱动程序检测到的发送错误",
+                            "legendFormat": "{{interface}} - send error detected by the driver",
                             "refId": "C"
                         },
                         {
@@ -7470,7 +7470,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 驱动程序接收时丢弃的数据包",
+                            "legendFormat": "{{interface}} - Packets dropped by the driver when receiving",
                             "refId": "D"
                         },
                         {
@@ -7478,7 +7478,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 接收缓冲区FIFO错误",
+                            "legendFormat": "{{interface}} - Receive buffer FIFO error",
                             "refId": "E"
                         },
                         {
@@ -7486,7 +7486,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 分组帧错误的数量",
+                            "legendFormat": "{{interface}} - Number of packet framing errors",
                             "refId": "F"
                         },
                         {
@@ -7494,7 +7494,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 设备驱动程序接收的多播帧数",
+                            "legendFormat": "{{interface}} - Number of multicast frames received by the device driver",
                             "refId": "G"
                         },
                         {
@@ -7502,7 +7502,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 接口发送的字节数",
+                            "legendFormat": "{{interface}} - number of bytes sent by the interface",
                             "refId": "H"
                         },
                         {
@@ -7510,7 +7510,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 接口发送的数据包",
+                            "legendFormat": "{{interface}} - packets sent by the interface",
                             "refId": "I"
                         },
                         {
@@ -7518,7 +7518,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 驱动程序检测到的发送错误",
+                            "legendFormat": "{{interface}} - send error detected by the driver",
                             "refId": "J"
                         },
                         {
@@ -7526,7 +7526,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 驱动程序发送时丢弃的数据包",
+                            "legendFormat": "{{interface}} - Packets dropped when sent by the driver",
                             "refId": "K"
                         },
                         {
@@ -7534,7 +7534,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 发送FIFO缓冲区错误的数量",
+                            "legendFormat": "{{interface}} - Number of transmit FIFO buffer errors",
                             "refId": "L"
                         },
                         {
@@ -7542,7 +7542,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 接口上检测到的冲突数",
+                            "legendFormat": "{{interface}} - Number of collisions detected on the interface",
                             "refId": "M"
                         },
                         {
@@ -7550,7 +7550,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{interface}} - 驱动程序检测到的载波损耗的数量",
+                            "legendFormat": "{{interface}} - The number of carrier losses detected by the driver",
                             "refId": "N"
                         }
                     ],
@@ -7558,7 +7558,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "宿主机网卡流量 [ 1m ]",
+                    "title": "Host network card traffic [1m]",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -7649,7 +7649,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "当前的TCP连接 ( ESTABLISHED or CLOSE_WAIT )",
+                            "legendFormat": "Current TCP connection (ESTABLISHED or CLOSE_WAIT)",
                             "refId": "H"
                         },
                         {
@@ -7660,7 +7660,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "当前的Netfilter Conntrack Count",
+                            "legendFormat": "Current Netfilter Conntrack Count",
                             "refId": "A"
                         },
                         {
@@ -7668,7 +7668,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 TCP Segment 重传",
+                            "legendFormat": " TCP Segment retransmission in the last minute",
                             "refId": "K"
                         },
                         {
@@ -7678,7 +7678,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒钟主动创建的TCP连接 ( Connect )",
+                            "legendFormat": "TCP connections actively created per second ( Connect )",
                             "refId": "D"
                         },
                         {
@@ -7688,7 +7688,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒钟收到的客户端连接 ( Listen )",
+                            "legendFormat": "Client connections received per second ( Listen )",
                             "refId": "E"
                         },
                         {
@@ -7696,7 +7696,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟收到的 Connection Reset",
+                            "legendFormat": "Connection Reset received in the last minute",
                             "refId": "G"
                         },
                         {
@@ -7704,7 +7704,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟发送的 Connection Reset",
+                            "legendFormat": "Connection Reset sent in the last minute",
                             "refId": "M"
                         },
                         {
@@ -7712,7 +7712,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟收到的 Bad Segment",
+                            "legendFormat": "Bad Segment received in the last minute",
                             "refId": "L"
                         },
                         {
@@ -7720,7 +7720,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 Connection AttemptFails",
+                            "legendFormat": "Connection AttemptFails in the last minute",
                             "refId": "F"
                         },
                         {
@@ -7728,7 +7728,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "每秒钟收到的 TCP Segment",
+                            "legendFormat": "TCP Segments received per second",
                             "refId": "I"
                         },
                         {
@@ -7736,7 +7736,7 @@
                             "format": "time_series",
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "每秒钟发送的 TCP Segment",
+                            "legendFormat": "TCP Segments sent per second",
                             "refId": "J"
                         }
                     ],
@@ -7744,7 +7744,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "宿主机TCP SNMP 统计",
+                    "title": "Host TCP SNMP Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 1,
@@ -7834,35 +7834,35 @@
                             "expr": "increase(process_netstat_tcpext_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\",name=\"ListenDrops\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 {{name}}",
+                            "legendFormat": "In the last minute {{name}}",
                             "refId": "B"
                         },
                         {
                             "expr": "increase(process_netstat_tcpext_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\",name=\"ListenOverflows\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 {{name}}",
+                            "legendFormat": "In the last minute {{name}}",
                             "refId": "C"
                         },
                         {
                             "expr": "increase(process_netstat_tcpext_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\",name=\"TCPSynRetrans\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 {{name}}",
+                            "legendFormat": " In the last minute {{name}}",
                             "refId": "D"
                         },
                         {
                             "expr": "increase(process_netstat_tcpext_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\",name=\"TCPBacklogDrop\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 {{name}}",
+                            "legendFormat": "In the last minute {{name}}",
                             "refId": "E"
                         },
                         {
                             "expr": "increase(process_netstat_tcpext_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\",name=\"TCPLostRetransmit\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 {{name}}",
+                            "legendFormat": "In the last minute {{name}}",
                             "refId": "F"
                         },
                         {
@@ -7870,7 +7870,7 @@
                             "format": "time_series",
                             "hide": false,
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 {{name}}",
+                            "legendFormat": "In the last minute {{name}}",
                             "refId": "A"
                         }
                     ],
@@ -7878,7 +7878,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "宿主机 TCP Netstat 统计",
+                    "title": "Host TCP Netstat Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 1,
@@ -7911,7 +7911,7 @@
                     }
                 }
             ],
-            "title": "网络 / 域名 / DNS",
+            "title": "Network/Domain Name/DNS",
             "type": "row"
         },
         {
@@ -7936,7 +7936,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看当前节点的接口统计",
+                                    "title": "Click to view the interface statistics of the current node",
                                     "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -7984,7 +7984,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的接口统计",
+                            "title": "View the interface statistics of the current node",
                             "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -8022,7 +8022,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "Reqeuets",
+                    "title": "Requests",
                     "transparent": true,
                     "type": "stat"
                 },
@@ -8180,7 +8180,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看当前节点的接口统计",
+                                    "title": "Click to view the interface statistics of the current node",
                                     "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -8229,7 +8229,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的接口统计",
+                            "title": "View the interface statistics of the current node",
                             "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -8267,7 +8267,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "近一分钟5xx占比",
+                    "title": "5xx percentage in the last minute",
                     "transparent": true,
                     "type": "stat"
                 },
@@ -8426,7 +8426,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟错误码趋势",
+                    "title": "Error code trend in the last minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -8551,7 +8551,7 @@
                     "type": "stat"
                 }
             ],
-            "title": "HTTP接口  / REST Controller",
+            "title": "HTTP Interface/REST Controller",
             "type": "row"
         },
         {
@@ -8576,7 +8576,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看当前节点的RPC统计",
+                                    "title": "Click to view the RPC statistics of the current node",
                                     "url": "/d/javar/rpc-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -8624,7 +8624,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的RPC调用统计",
+                            "title": "View the RPC call statistics of the current node",
                             "url": "/d/javar/rpc-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -8662,7 +8662,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "RPC Reqeuets",
+                    "title": "RPC Requests",
                     "transparent": true,
                     "type": "stat"
                 },
@@ -8772,7 +8772,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "FeignClient状态码分布",
+                    "title": "FeignClient Status Code Distribution",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -8822,7 +8822,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看当前节点的接口统计",
+                                    "title": "Click to view the interface statistics of the current node",
                                     "url": "/d/javar/rpc-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -8871,7 +8871,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看当前节点的RPC调用统计",
+                            "title": "View the RPC call statistics of the current node",
                             "url": "/d/javar/rpc-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -8909,7 +8909,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "近一分钟非2xx请求占比",
+                    "title": "Percentage of non-2xx requests in the last minute",
                     "transparent": true,
                     "type": "stat"
                 },
@@ -8975,7 +8975,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:487",
-                            "alias": "使用率",
+                            "alias": "Usage Rate",
                             "yaxis": 2
                         }
                     ],
@@ -8990,7 +8990,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "使用率",
+                            "legendFormat": "Usage rate",
                             "refId": "E"
                         },
                         {
@@ -9000,7 +9000,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "空闲的TCP连接",
+                            "legendFormat": "Idle TCP connection",
                             "refId": "C"
                         },
                         {
@@ -9010,7 +9010,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "正在执行请求的TCP连接",
+                            "legendFormat": "TCP connection executing the request",
                             "refId": "B"
                         },
                         {
@@ -9020,7 +9020,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "池耗尽时正在等待可用连接的线程",
+                            "legendFormat": "Threads waiting for available connections when the pool is exhausted",
                             "refId": "D"
                         },
                         {
@@ -9030,7 +9030,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "最大连接数",
+                            "legendFormat": "Maximum number of connections",
                             "refId": "A"
                         },
                         {
@@ -9040,7 +9040,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "Per Host最大连接数",
+                            "legendFormat": "Maximum number of connections per Host",
                             "refId": "F"
                         }
                     ],
@@ -9048,7 +9048,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "TCP连接池 - $httpConnectPool",
+                    "title": "TCP Connection Pool - $httpConnectPool",
                     "tooltip": {
                         "shared": true,
                         "sort": 1,
@@ -9146,7 +9146,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:143",
-                            "alias": "线程池使用率",
+                            "alias": "Thread pool usage",
                             "yaxis": 2
                         }
                     ],
@@ -9162,7 +9162,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "线程池使用率",
+                            "legendFormat": "Thread pool usage",
                             "refId": "A"
                         },
                         {
@@ -9172,7 +9172,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "当前忙碌的线程数（正在处理请求）",
+                            "legendFormat": "Number of currently busy threads (processing requests)",
                             "refId": "B"
                         },
                         {
@@ -9182,7 +9182,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "当前的线程数",
+                            "legendFormat": "Current number of threads",
                             "refId": "D"
                         },
                         {
@@ -9192,7 +9192,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大线程数",
+                            "legendFormat": " Maximum number of threads",
                             "refId": "C"
                         },
                         {
@@ -9202,7 +9202,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最小线程数",
+                            "legendFormat": "Minimum number of threads",
                             "refId": "H"
                         }
                     ],
@@ -9210,7 +9210,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "线程池",
+                    "title": "Thread Pool",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -9307,7 +9307,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "当前已建立的TCP连接数",
+                            "legendFormat": "Number of currently established TCP connections",
                             "refId": "B"
                         },
                         {
@@ -9317,7 +9317,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大允许的TCP连接数",
+                            "legendFormat": "Maximum number of TCP connections allowed",
                             "refId": "E"
                         },
                         {
@@ -9327,7 +9327,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "TCP Backlog 队列的大小",
+                            "legendFormat": "TCP Backlog queue size",
                             "refId": "I"
                         }
                     ],
@@ -9335,7 +9335,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "TCP连接统计",
+                    "title": "TCP Connection Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -9449,7 +9449,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "HTTP IO ",
+                    "title": "HTTP IO",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -9661,7 +9661,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "最耗时的请求时长",
+                            "legendFormat": "The longest request duration",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -9674,7 +9674,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "请求平均耗时",
+                            "legendFormat": "Average request duration",
                             "refId": "B"
                         },
                         {
@@ -9683,7 +9683,7 @@
                             "format": "time_series",
                             "hide": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{compName}} - 请求平均耗时",
+                            "legendFormat": "{{compName}} - Average request duration",
                             "refId": "C"
                         }
                     ],
@@ -9691,7 +9691,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "耗时统计",
+                    "title": "Time Consumption Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -9729,7 +9729,7 @@
                     }
                 }
             ],
-            "title": "Web容器 - Tomcat",
+            "title": "Web Container - Tomcat",
             "type": "row"
         },
         {
@@ -9803,12 +9803,12 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:640",
-                            "alias": "连接池使用率",
+                            "alias": "Connection pool usage",
                             "yaxis": 2
                         },
                         {
                             "$$hashKey": "object:641",
-                            "alias": "使用率",
+                            "alias": "Usage Rate",
                             "yaxis": 2
                         }
                     ],
@@ -9823,7 +9823,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "使用率",
+                            "legendFormat": "Usage rate",
                             "refId": "D"
                         },
                         {
@@ -9833,7 +9833,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 活跃连接数",
+                            "legendFormat": "Number of active connections",
                             "refId": "A"
                         },
                         {
@@ -9843,7 +9843,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大连接数",
+                            "legendFormat": "Maximum number of connections",
                             "refId": "B"
                         },
                         {
@@ -9853,7 +9853,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 最小连接数",
+                            "legendFormat": "Minimum number of connections",
                             "refId": "C"
                         },
                         {
@@ -9864,7 +9864,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 空闲连接数",
+                            "legendFormat": "Number of idle connections",
                             "refId": "E"
                         }
                     ],
@@ -9968,12 +9968,12 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:640",
-                            "alias": "连接池使用率",
+                            "alias": "Connection pool usage",
                             "yaxis": 2
                         },
                         {
                             "$$hashKey": "object:641",
-                            "alias": "使用率",
+                            "alias": "Usage Rate",
                             "yaxis": 2
                         }
                     ],
@@ -9988,7 +9988,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "使用率",
+                            "legendFormat": "Usage rate",
                             "refId": "D"
                         },
                         {
@@ -9998,7 +9998,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 活跃连接数",
+                            "legendFormat": "Number of active connections",
                             "refId": "A"
                         },
                         {
@@ -10008,7 +10008,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大连接数",
+                            "legendFormat": "Maximum number of connections",
                             "refId": "B"
                         },
                         {
@@ -10018,7 +10018,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 最小连接数",
+                            "legendFormat": "Minimum number of connections",
                             "refId": "C"
                         },
                         {
@@ -10029,7 +10029,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 空闲连接数",
+                            "legendFormat": "Number of idle connections",
                             "refId": "E"
                         }
                     ],
@@ -10073,7 +10073,7 @@
                     }
                 }
             ],
-            "title": "数据库 - DataSource",
+            "title": "DataSource - Database",
             "type": "row"
         },
         {
@@ -10139,7 +10139,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:131",
-                            "alias": "/.+使用率/",
+                            "alias": "/.+usage/ ",
                             "yaxis": 2
                         }
                     ],
@@ -10154,7 +10154,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 使用率",
+                            "legendFormat": " {{comp_name}} - Usage",
                             "refId": "G"
                         },
                         {
@@ -10164,7 +10164,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}}  - 当前活跃的连接数",
+                            "legendFormat": " {{comp_name}} - Current number of active connections",
                             "refId": "A"
                         },
                         {
@@ -10174,7 +10174,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 池耗尽时阻塞等待的线程数",
+                            "legendFormat": "{{comp_name}} - Number of threads blocked waiting when pool is exhausted",
                             "refId": "B"
                         },
                         {
@@ -10184,7 +10184,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 当前的空闲连接数",
+                            "legendFormat": "{{comp_name}} - Current number of idle connections",
                             "refId": "C"
                         },
                         {
@@ -10194,7 +10194,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最大连接数",
+                            "legendFormat": "{{comp_name}} - Maximum number of connections",
                             "refId": "F"
                         },
                         {
@@ -10204,7 +10204,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最大空闲连接数",
+                            "legendFormat": "{{comp_name}} - Maximum number of idle connections",
                             "refId": "D"
                         },
                         {
@@ -10214,7 +10214,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最小空闲连接数",
+                            "legendFormat": "{{comp_name}} - Minimum number of idle connections",
                             "refId": "E"
                         }
                     ],
@@ -10222,7 +10222,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "连接池统计",
+                    "title": "Connection Pool Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -10313,7 +10313,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - Redis命令的平均耗时",
+                            "legendFormat": " {{comp_name}} - Average time taken by Redis commands",
                             "refId": "A"
                         },
                         {
@@ -10323,7 +10323,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 连接的平均闲置时长",
+                            "legendFormat": " {{comp_name}} - Average idle time of the connection",
                             "refId": "B"
                         },
                         {
@@ -10333,7 +10333,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 获取连接的平均等待时长",
+                            "legendFormat": " {{comp_name}} - Get the average waiting time for the connection",
                             "refId": "C"
                         },
                         {
@@ -10343,7 +10343,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 客户端配置的最大等待时长",
+                            "legendFormat": " {{comp_name}} - Maximum waiting time configured by the client",
                             "refId": "F"
                         }
                     ],
@@ -10351,7 +10351,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "连接池耗时统计",
+                    "title": "Connection pool time statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -10449,7 +10449,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - Redis命令的平均耗时[ms]",
+                            "legendFormat": " {{comp_name}} - Average time taken by Redis commands [ms]",
                             "refId": "H"
                         },
                         {
@@ -10459,7 +10459,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每秒执行的Redis命令(Borrow)",
+                            "legendFormat": " {{comp_name}} - Redis commands executed per second (Borrow)",
                             "refId": "G"
                         },
                         {
@@ -10469,7 +10469,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每秒归还连接的次数(Retrurn)",
+                            "legendFormat": " {{comp_name}} - Number of connections returned per second (Retrurn)",
                             "refId": "C"
                         },
                         {
@@ -10479,7 +10479,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}}  - 每分钟创建的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections created per minute",
                             "refId": "A"
                         },
                         {
@@ -10489,7 +10489,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections destroyed per minute",
                             "refId": "F"
                         },
                         {
@@ -10499,7 +10499,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟由定时任务销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections destroyed by cron job every minute",
                             "refId": "D"
                         },
                         {
@@ -10509,7 +10509,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟由获取连接触发销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections destroyed every minute triggered by connection acquisition",
                             "refId": "E"
                         }
                     ],
@@ -10517,7 +10517,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "TCP连接统计",
+                    "title": "TCP Connection Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -10551,7 +10551,7 @@
                     }
                 }
             ],
-            "title": "Redis客户端 - Jedis | Lettuce",
+            "title": "Redis Client - Jedis | Lettuce",
             "type": "row"
         },
         {
@@ -10633,7 +10633,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟新增日志量",
+                    "title": "Number of new logs added in the last minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -10700,7 +10700,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "4096.0 "
+                                    "options": "4096.0"
                                 },
                                 "properties": [
                                     {
@@ -10712,7 +10712,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "12288.0 "
+                                    "options": "12288.0"
                                 },
                                 "properties": [
                                     {
@@ -10724,7 +10724,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "32768.0 "
+                                    "options": "32768.0"
                                 },
                                 "properties": [
                                     {
@@ -10736,7 +10736,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "65536.0 "
+                                    "options": "65536.0"
                                 },
                                 "properties": [
                                     {
@@ -10748,7 +10748,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "131072.0 "
+                                    "options": "131072.0"
                                 },
                                 "properties": [
                                     {
@@ -10760,7 +10760,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "262144.0 "
+                                    "options": "262144.0"
                                 },
                                 "properties": [
                                     {
@@ -10772,7 +10772,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "524288.0 "
+                                    "options": "524288.0"
                                 },
                                 "properties": [
                                     {
@@ -10784,7 +10784,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "1048576.0 "
+                                    "options": "1048576.0"
                                 },
                                 "properties": [
                                     {
@@ -10796,7 +10796,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "+Inf "
+                                    "options": "+Inf"
                                 },
                                 "properties": [
                                     {
@@ -10845,7 +10845,7 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "所选时段内日志大小与数量分布",
+                    "title": "Log size and number distribution in the selected period",
                     "type": "bargauge"
                 },
                 {
@@ -10918,7 +10918,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{appender}} 一分钟新增",
+                            "legendFormat": "{{appender}} added in one minute",
                             "refId": "B"
                         }
                     ],
@@ -10926,7 +10926,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "日志文件大小",
+                    "title": "Log file size",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -11025,7 +11025,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{appender}}  - 队列使用量",
+                            "legendFormat": "{{appender}} - queue usage",
                             "refId": "B"
                         },
                         {
@@ -11035,7 +11035,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{appender}}  - 队列最大容量",
+                            "legendFormat": "{{appender}} - maximum queue capacity",
                             "refId": "A"
                         },
                         {
@@ -11046,7 +11046,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{appender}}  -  近五分钟累计丢弃的日志量",
+                            "legendFormat": "{{appender}} - The cumulative amount of logs discarded in the past five minutes",
                             "refId": "E"
                         },
                         {
@@ -11057,7 +11057,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{appender}}  -  Discarding Threshold",
+                            "legendFormat": "{{appender}} - Discarding Threshold",
                             "refId": "C"
                         },
                         {
@@ -11068,7 +11068,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{appender}}  -  队列满了是否阻塞等待(1=False , 0=True)",
+                            "legendFormat": "{{appender}} - whether to block and wait when the queue is full (1=False, 0=True)",
                             "refId": "D"
                         }
                     ],
@@ -11076,7 +11076,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "异步日志队列",
+                    "title": "Asynchronous Log Queue",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -11116,7 +11116,7 @@
                     }
                 }
             ],
-            "title": "日志统计 -  Logback | Log4j2",
+            "title": "Log Statistics - Logback | Log4j2",
             "type": "row"
         },
         {
@@ -11132,12 +11132,12 @@
             "panels": [
                 {
                     "aliasColors": {
-                        " 核心线程数": "#f29191",
-                        "使用率": "#629e51",
-                        "当前线程池的大小": "#e5a8e2",
-                        "最大线程数": "#bf1b00",
-                        "每秒处理的任务数": "#f2c96d",
-                        "队列剩余可用大小": "#dedaf7"
+                        "Number of core threads": "#f29191",
+                        " Usage rate": "#629e51",
+                        "Current thread pool size": "#e5a8e2",
+                        "Maximum number of threads": "#bf1b00",
+                        "Tasks processed per second": "#f2c96d",
+                        "Queue remaining available size": "#dedaf7"
                     },
                     "bars": false,
                     "dashLength": 10,
@@ -11197,7 +11197,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:80",
-                            "alias": "使用率",
+                            "alias": "Usage Rate",
                             "yaxis": 2
                         }
                     ],
@@ -11212,7 +11212,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "使用率",
+                            "legendFormat": "Usage rate",
                             "refId": "I"
                         },
                         {
@@ -11223,7 +11223,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "活跃线程数",
+                            "legendFormat": "Number of active threads",
                             "refId": "J"
                         },
                         {
@@ -11233,7 +11233,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "当前线程池的大小",
+                            "legendFormat": "Current thread pool size",
                             "refId": "E"
                         },
                         {
@@ -11243,7 +11243,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒处理的任务数",
+                            "legendFormat": "Number of tasks processed per second",
                             "refId": "A"
                         },
                         {
@@ -11253,7 +11253,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 队列中等待执行的任务",
+                            "legendFormat": "Tasks waiting to be executed in the queue",
                             "refId": "C"
                         },
                         {
@@ -11263,7 +11263,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "队列剩余可用大小",
+                            "legendFormat": " Queue remaining available size",
                             "refId": "H"
                         },
                         {
@@ -11273,7 +11273,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " 核心线程数",
+                            "legendFormat": "Number of core threads",
                             "refId": "F"
                         },
                         {
@@ -11283,7 +11283,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大线程数",
+                            "legendFormat": "Maximum number of threads",
                             "refId": "G"
                         }
                     ],
@@ -11326,7 +11326,7 @@
                     }
                 }
             ],
-            "title": "线程池 - ThreadPoolExecutor",
+            "title": "Thread Pool - ThreadPoolExecutor",
             "type": "row"
         },
         {
@@ -11392,11 +11392,11 @@
                     "repeatDirection": "h",
                     "seriesOverrides": [
                         {
-                            "alias": "加载失败的次数",
+                            "alias": "Number of failed loads",
                             "yaxis": 1
                         },
                         {
-                            "alias": "命中率",
+                            "alias": "Hit Rate",
                             "yaxis": 2
                         }
                     ],
@@ -11408,7 +11408,7 @@
                             "expr": "sum(increase(cache_gets_total{cache=~\"$localcache\",result=\"hit\",app=\"$appname\",instance=\"$instance\"}[1m])) / sum(increase(cache_gets_total{cache=~\"$localcache\",app=\"$appname\",instance=\"$instance\"}[1m]))",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "命中率",
+                            "legendFormat": "Hit Rate",
                             "refId": "H"
                         },
                         {
@@ -11417,7 +11417,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "当前缓存大小",
+                            "legendFormat": "Current cache size",
                             "refId": "E"
                         },
                         {
@@ -11425,14 +11425,14 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "缓存命中的次数",
+                            "legendFormat": "Number of cache hits",
                             "refId": "A"
                         },
                         {
                             "expr": "increase(cache_gets_total{cache=~\"$localcache\",result=\"miss\",app=\"$appname\",instance=\"$instance\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": " 缓存未命中的次数",
+                            "legendFormat": "Number of cache misses",
                             "refId": "B"
                         },
                         {
@@ -11440,21 +11440,21 @@
                             "format": "time_series",
                             "hide": false,
                             "intervalFactor": 1,
-                            "legendFormat": "已淘汰的元素",
+                            "legendFormat": "Obsolete elements",
                             "refId": "C"
                         },
                         {
                             "expr": "increase(cache_load_total{cache=~\"$localcache\",result=\"success\",app=\"$appname\",instance=\"$instance\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "成功加载的次数",
+                            "legendFormat": " Number of successful loads",
                             "refId": "F"
                         },
                         {
                             "expr": "increase(cache_load_total{cache=~\"$localcache\",compType=~\"cache.local.*\",result=\"failure\",app=\"$appname\",instance=\"$instance\"}[1m])",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "加载失败的次数",
+                            "legendFormat": "Number of loading failures",
                             "refId": "D"
                         },
                         {
@@ -11462,7 +11462,7 @@
                             "format": "time_series",
                             "hide": false,
                             "intervalFactor": 1,
-                            "legendFormat": "平均加载耗时 (ms)",
+                            "legendFormat": "Average loading time (ms)",
                             "refId": "G"
                         }
                     ],
@@ -11470,7 +11470,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "$localcache  [ 1m ]",
+                    "title": "$localcache [ 1m ]",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -11506,7 +11506,7 @@
                     }
                 }
             ],
-            "title": "本地缓存 - Guava | Caffeine",
+            "title": "Local Cache - Guava | Caffeine",
             "type": "row"
         },
         {
@@ -11579,7 +11579,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{class}} / {{method}} / {{job_type}}  / {{expression}} - 平均耗时",
+                            "legendFormat": "{{class}} / {{method}} / {{job_type}} / {{expression}} - Average time",
                             "refId": "B"
                         },
                         {
@@ -11588,7 +11588,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{class}} / {{method}} / {{job_type}}  / {{expression}} - 最大耗时",
+                            "legendFormat": "{{class}} / {{method}} / {{job_type}} / {{expression}} - Maximum time consumption",
                             "refId": "A"
                         }
                     ],
@@ -11596,7 +11596,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Job 耗时统计",
+                    "title": "Job time statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -11695,7 +11695,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟Job 抛出Exception的次数",
+                    "title": "Number of Exceptions thrown by the Job in the past minute",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -11729,7 +11729,7 @@
                     }
                 }
             ],
-            "title": "定时任务 - Spring Scheduled / HScheduled",
+            "title": "Scheduled Tasks - Spring Scheduled / HScheduled",
             "type": "row"
         },
         {
@@ -11753,7 +11753,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看MQ统计",
+                                    "title": "Click to view MQ statistics",
                                     "url": "/d/mq/mq-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -11762,7 +11762,7 @@
                                     "options": {
                                         "match": "null",
                                         "result": {
-                                            "text": "查看消费者"
+                                            "text": "View consumers"
                                         }
                                     },
                                     "type": "special"
@@ -11792,7 +11792,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看MQ统计",
+                            "title": "Click to view MQ statistics",
                             "url": "/d/mq/mq-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -11822,7 +11822,7 @@
                             "instant": true,
                             "interval": "30s",
                             "intervalFactor": 10,
-                            "legendFormat": "点击查看Rabbit MQ统计",
+                            "legendFormat": "Click to view Rabbit MQ statistics",
                             "refId": "A"
                         }
                     ],
@@ -11838,7 +11838,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看Listener统计",
+                                    "title": "Click to view Listener statistics",
                                     "url": "/d/mq-listener/listener-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -11847,7 +11847,7 @@
                                     "options": {
                                         "match": "null",
                                         "result": {
-                                            "text": "查看消费者"
+                                            "text": "View consumers"
                                         }
                                     },
                                     "type": "special"
@@ -11877,7 +11877,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看Listener统计",
+                            "title": "Click to view Listener statistics",
                             "url": "/d/mq-listener/listener-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -11907,7 +11907,7 @@
                             "instant": true,
                             "interval": "30s",
                             "intervalFactor": 10,
-                            "legendFormat": "点击查看@RabbitListener统计",
+                            "legendFormat": "Click to view @RabbitListener statistics",
                             "refId": "A"
                         }
                     ],
@@ -11923,7 +11923,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看Kafka Consumer统计",
+                                    "title": "Click to view Kafka Consumer statistics",
                                     "url": "/d/kafka-consumer/kafka-consumer-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -11932,7 +11932,7 @@
                                     "options": {
                                         "match": "null",
                                         "result": {
-                                            "text": "查看消费者"
+                                            "text": "View consumers"
                                         }
                                     },
                                     "type": "special"
@@ -11962,7 +11962,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看Kafka Consumer统计",
+                            "title": "Click to view Kafka Consumer statistics",
                             "url": "/d/kafka-consumer/kafka-consumer-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -11992,7 +11992,7 @@
                             "instant": true,
                             "interval": "30s",
                             "intervalFactor": 10,
-                            "legendFormat": "点击查看Kafka Consumer统计",
+                            "legendFormat": "Click to view Kafka Consumer statistics",
                             "refId": "A"
                         }
                     ],
@@ -12008,7 +12008,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看Kafka Producer统计",
+                                    "title": "Click to view Kafka Producer statistics",
                                     "url": "/d/kafka-producer/kafka-producer-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                                 }
                             ],
@@ -12017,7 +12017,7 @@
                                     "options": {
                                         "match": "null",
                                         "result": {
-                                            "text": "查看消费者"
+                                            "text": "View consumers"
                                         }
                                     },
                                     "type": "special"
@@ -12047,7 +12047,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看MQ统计",
+                            "title": "Click to view MQ statistics",
                             "url": "/d/kafka-producer/kafka-producer-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}&var-instance=${instance}"
                         }
                     ],
@@ -12077,14 +12077,14 @@
                             "instant": true,
                             "interval": "30s",
                             "intervalFactor": 10,
-                            "legendFormat": "点击查看Kafka Producer统计",
+                            "legendFormat": "Click to view Kafka Producer statistics",
                             "refId": "A"
                         }
                     ],
                     "type": "stat"
                 }
             ],
-            "title": "消息队列(MQ)",
+            "title": "Message Queue (MQ)",
             "type": "row"
         },
         {
@@ -12177,7 +12177,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "The maximum number of queued connection requests which have still not received an  acknowledgement from the connecting client. If this number is exceeded, the kernel will begin dropping requests. see /proc/sys/net/ipv4/tcp_max_syn_backlog",
+                    "description": "The maximum number of queued connection requests which have still not received an acknowledgment from the connecting client. If this number is exceeded, the kernel will begin dropping requests. see /proc/sys/net/ipv4/tcp_max_syn_backlog",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -12491,13 +12491,13 @@
                             "step": 14400
                         }
                     ],
-                    "title": "TCP  SYN/ACK Retries",
+                    "title": "TCP SYN/ACK Retries",
                     "transparent": true,
                     "type": "stat"
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "The maximum number of times initial SYNs for an active TCP connection attempt will be retransmitted.This value should not be higher than 255. The default value is 5, which corresponds to approximately 180 seconds. see /proc/sys/net/ipv4/tcp_syn_retries",
+                    "description": "The maximum number of times initial SYNs for an active TCP connection attempt will be retransmitted. This value should not be higher than 255. The default value is 5, which corresponds to approximately 180 seconds. see /proc/sys/net/ipv4/tcp_syn_retries",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -12568,7 +12568,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "TCP  SYN Retries",
+                    "title": "TCP SYN Retries",
                     "transparent": true,
                     "type": "stat"
                 },
@@ -12651,7 +12651,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "The maximum number of times a TCP packet is retransmitted in established state before giving up. The default value is 15, which corresponds to a duration of approximately between 13 to  30 minutes, depending on the retransmission timeout. The  RFC 1122 specified minimum limit of 100 seconds is typically deemed too shortnumber of retransmits, we first have the network layer update the route if possible before each new retransmit. The default is the RFC specified minimum of 3. see /proc/sys/net/ipv4/tcp_retries2",
+                    "description": "The maximum number of times a TCP packet is retransmitted in established state before giving up. The default value is 15, which corresponds to a duration of approximately between 13 to 30 minutes, depending on the retransmission timeout. The RFC 1122 specified minimum limit of 100 seconds is typically deemed too shortnumber of retransmits, we first have the network layer update the route if possible before each new retransmit. The default is the RFC minimum specified of 3. see /proc/sys/net/ipv4/tcp_retries2",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -12728,7 +12728,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "nf_conntrack跟 NAT 有关，用来跟踪连接条目，它会使用一个哈希表来记录 established 的记录。nf_conntrack 在 2.6.15 被引入,如果该哈希表满了，就会出现 \"nf_conntrack: table full, dropping packet\" 信息. see /proc/sys/net/netfilter/nf_conntrack_max",
+                    "description": "nf_conntrack is related to NAT and is used to track connection entries. It uses a hash table to record established records. nf_conntrack was introduced in 2.6.15. If the hash table is full, the message \"nf_conntrack: table full, dropping packet\" will appear. see /proc/sys/net/netfilter/nf_conntrack_max",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -12876,7 +12876,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "TCP  Max Timewait",
+                    "title": "TCP Max Timewait",
                     "transparent": true,
                     "type": "stat"
                 },
@@ -13036,7 +13036,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "This control is used to define the rough relative IO cost of swapping and filesystem paging, as a value between 0 and 200. At 100, the VM assumes equal IO cost and will thus apply memory pressure to the page cache and swap-backed pages equally; lower values signify more expensive swap IO, higher values indicates cheaper.  Keep in mind that filesystem IO patterns under memory pressure tend to be more efficient than swap’s random IO. An optimal value will require experimentation and will also be workload-dependent. The default value is 60. For in-memory swap, like zram or zswap, as well as hybrid setups that have swap on faster devices than the filesystem, values beyond 100 can be considered. For example, if the random IO against the swap device is on average 2x faster than IO from thefilesystem, swappiness should be 133 (x + 2x = 200, 2x = 133.33).At 0, the kernel will not initiate swap until the amount of free and file-backed pages is less than the high watermark in a zone. see /proc/sys/vm/swappiness",
+                    "description": "This control is used to define the rough relative IO cost of swapping and filesystem paging, as a value between 0 and 200. At 100, the VM assumes equal IO cost and will thus apply memory pressure to the page cache and swap-backed pages equally; lower values signify more expensive swap IO, higher values indicates cheaper. Keep in mind that filesystem IO patterns under memory pressure tend to be more efficient than swap's random IO. An optimal value will require experimentation and will also be workload-dependent. The default value is 60. For in-memory swap, like zram or zswap, as well as hybrid setups that have swap on faster devices than the filesystem, values beyond 100 can be considered. For example, if the random IO against the swap device is on average 2x faster than IO from thefilesystem, swappiness should be 133 (x + 2x = 200, 2x = 133.33).At 0, the kernel will not initiate swap until the amount of free and file-backed pages is less than the high watermark in a zone. see /proc/sys/vm/swappiness",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -13113,7 +13113,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "当前应用所属CGroup的Swappiness配置，一般会继承全局设置. see /proc/sys/fs/cgroup/memory/memory.swappiness",
+                    "description": "Swappiness configuration of the CGroup to which the current application belongs, generally inherits the global settings. see /proc/sys/fs/cgroup/memory/memory.swappiness",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -13190,7 +13190,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "This is used to force the Linux VM to keep a minimum number of kilobytes free. The VM uses this number to compute a watermark[WMARK_MIN] value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size. Some minimal amount of memory is needed to satisfy PF_MEMALLOC allocations; if you set this to lower than 1024KB, your system will become subtly broken, and prone to deadlock under high loads.  Setting this too high will OOM your machine instantly..  see /proc/sys/vm/min_free_kbytes ",
+                    "description": "This is used to force the Linux VM to keep a minimum number of kilobytes free. The VM uses this number to compute a watermark[WMARK_MIN] value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size. Some minimal amount of memory is needed to satisfy PF_MEMALLOC allocations; if you set this to lower than 1024KB, your system will become subtly broken, and prone to deadlock under high loads. Setting this too high will OOM your machine instantly.. see /proc/sys/vm/min_free_kbytes ",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -13267,7 +13267,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "For efficiency run-time is transferred between the global pool and CPU local “silos” in a batch fashion. This greatly reduces global accounting pressure on large systems. The amount transferred each time such an update is required is described as the “slice”.see /proc/sys/kernel/sched_cfs_bandwidth_slice_us",
+                    "description": "For efficiency run-time is transferred between the global pool and CPU local \"silos\" in a batch fashion. This greatly reduces global accounting pressure on large systems. The amount transferred each time such an update is required is described as the \"slice\".see /proc/sys/kernel/sched_cfs_bandwidth_slice_us",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -13415,13 +13415,13 @@
                             "step": 14400
                         }
                     ],
-                    "title": "VM  dirty_ratio",
+                    "title": "VM dirty_ratio",
                     "transparent": true,
                     "type": "stat"
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "Contains, as a percentage of total available memory that contains free pages and reclaimable pages, the number of pages at which the background kernel flusher threads will start writing out dirty data.The total available memory is not equal to total system memory.see /proc/sys/vm/dirty_background_ratio",
+                    "description": "Contains, as a percentage of total available memory that contains free pages and reclaimable pages, the number of pages at which the background kernel flusher threads will start writing out dirty data. The total available memory is not equal to total system memory.see /proc/sys/vm/dirty_background_ratio",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -13498,7 +13498,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "The kernel flusher threads will periodically wake up and write old data out to disk. This tunable expresses the interval between those wakeups, in 100’ths of a second. Setting this to zero disables periodic writeback altogether. see /proc/sys/vm/dirty_writeback_centisecs",
+                    "description": "The kernel flusher threads will periodically wake up and write old data out to disk. This tunable expresses the interval between those wakeups, in 100'ths of a second. Setting this to zero disables periodic writeback altogether. see /proc/sys/vm/dirty_writeback_centisecs",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -13575,7 +13575,7 @@
                 },
                 {
                     "datasource": "infra-prometheus",
-                    "description": "This tunable is used to define when dirty data is old enough to be eligible for writeout by the kernel flusher threads. It is expressed in 100’ths of a second. Data which has been dirty in-memory for longer than this interval will be written out next  time a flusher thread wakes up. see /proc/sys/vm/dirty_expire_centisecs",
+                    "description": "This tunable is used to define when dirty data is old enough to be eligible for writeout by the kernel flusher threads. It is expressed in 100'ths of a second. Data which has been dirty in-memory for longer than this interval will be written out next time a flusher thread wakes up. see /proc/sys/vm/dirty_expire_centisecs",
                     "fieldConfig": {
                         "defaults": {
                             "color": {
@@ -13651,7 +13651,7 @@
                     "type": "stat"
                 }
             ],
-            "title": "网络内核参数",
+            "title": "Network Kernel Parameters",
             "type": "row"
         },
         {
@@ -13677,7 +13677,7 @@
                                     "options": {
                                         "match": "null",
                                         "result": {
-                                            "text": "点击查看自定义指标"
+                                            "text": "Click to view custom indicators"
                                         }
                                     },
                                     "type": "special"
@@ -13728,14 +13728,14 @@
                             "expr": "vector(0)",
                             "instant": false,
                             "interval": "",
-                            "legendFormat": "点击查看业务自定义统计",
+                            "legendFormat": "Click to view custom business statistics",
                             "refId": "A"
                         }
                     ],
                     "type": "stat"
                 }
             ],
-            "title": "业务自定义统计",
+            "title": "Business Custom Statistics",
             "type": "row"
         },
         {
@@ -13829,7 +13829,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "客户端版本",
+                    "title": "Client Version",
                     "type": "stat"
                 },
                 {
@@ -13913,7 +13913,7 @@
                             "step": 14400
                         }
                     ],
-                    "title": "指标总数",
+                    "title": "Total number of indicators",
                     "type": "stat"
                 },
                 {
@@ -13973,7 +13973,7 @@
                             "expr": "collector_healthcheck_lag_seconds{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "最近一次成功的健康检查是多久以前的",
+                            "legendFormat": "How long ago was the last successful health check?",
                             "refId": "A"
                         },
                         {
@@ -13981,7 +13981,7 @@
                             "expr": "collector_async_lag_seconds{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}",
                             "format": "time_series",
                             "intervalFactor": 1,
-                            "legendFormat": "最近一次成功的异步收集是多久以前的",
+                            "legendFormat": "How long ago was the last successful asynchronous collection?",
                             "refId": "B"
                         },
                         {
@@ -13991,7 +13991,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "异步收集最大耗时",
+                            "legendFormat": "Maximum time for asynchronous collection",
                             "refId": "C"
                         },
                         {
@@ -14001,7 +14001,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "异步收集平均耗时",
+                            "legendFormat": "Average time spent on asynchronous collection",
                             "refId": "D"
                         },
                         {
@@ -14011,7 +14011,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{name}} - 健康检查平均耗时 ",
+                            "legendFormat": "{{name}} - Average time required for health check",
                             "refId": "E"
                         },
                         {
@@ -14021,7 +14021,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{name}} - 健康检查最大耗时 ",
+                            "legendFormat": "{{name}} - Maximum time required for health check",
                             "refId": "F"
                         },
                         {
@@ -14032,7 +14032,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "MemoryStat 采集最大耗时",
+                            "legendFormat": "MemoryStat maximum collection time",
                             "refId": "I"
                         },
                         {
@@ -14043,7 +14043,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "MemoryStat 采集平均耗时",
+                            "legendFormat": " Average time consumed in collecting MemoryStat",
                             "refId": "J"
                         }
                     ],
@@ -14147,7 +14147,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "指标数量",
+                            "legendFormat": "Number of indicators",
                             "refId": "A"
                         },
                         {
@@ -14158,7 +14158,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "Tag膨胀的指标数",
+                            "legendFormat": "Number of indicators for tag expansion",
                             "refId": "F"
                         },
                         {
@@ -14168,7 +14168,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最近1分钟异步收集的次数",
+                            "legendFormat": "Number of asynchronous collections in the last minute",
                             "refId": "B"
                         },
                         {
@@ -14178,7 +14178,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{name}} - 最近1分钟健康检查的次数",
+                            "legendFormat": "{{name}} - The number of health checks in the last minute",
                             "refId": "C"
                         },
                         {
@@ -14189,7 +14189,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最近1分钟MemoryStat采集的次数",
+                            "legendFormat": "Number of MemoryStat collections in the last minute",
                             "refId": "D"
                         }
                     ],
@@ -14235,7 +14235,7 @@
                     }
                 }
             ],
-            "title": "Metrics Dog 自身监控",
+            "title": "Metrics Dog Self-Monitoring",
             "type": "row"
         }
     ],
@@ -14258,7 +14258,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -14289,7 +14289,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -14320,7 +14320,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "节点",
+                "label": "Node",
                 "multi": false,
                 "name": "instance",
                 "options": [],
@@ -14413,7 +14413,7 @@
                 "error": null,
                 "hide": 2,
                 "includeAll": true,
-                "label": "本地缓存",
+                "label": "Local Cache",
                 "multi": false,
                 "name": "localcache",
                 "options": [],
@@ -14444,7 +14444,7 @@
                 "error": null,
                 "hide": 2,
                 "includeAll": true,
-                "label": "数据源",
+                "label": "Data Source",
                 "multi": false,
                 "name": "datasource",
                 "options": [],

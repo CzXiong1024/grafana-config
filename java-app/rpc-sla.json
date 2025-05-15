@@ -413,7 +413,7 @@
                     }
                 }
             ],
-            "title": "RPC耗时分位线",
+            "title": "RPC time consumption percentile",
             "type": "row"
         },
         {
@@ -501,7 +501,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P95(95%) 耗时",
+                    "title": "P95(95%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -611,7 +611,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P99(99%) 耗时",
+                    "title": "P99(99%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -721,7 +721,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P999(99.9%) 耗时",
+                    "title": "P999(99.9%) time consuming",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -761,7 +761,7 @@
                     }
                 }
             ],
-            "title": "RPC长尾请求横向对比",
+            "title": "Horizontal comparison of RPC long-tail requests",
             "type": "row"
         },
         {
@@ -832,7 +832,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "HTTP状态码分布",
+                    "title": "HTTP Status Code Distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -886,7 +886,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "5xx 节点分布",
+                    "title": "5xx Node Distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -941,12 +941,12 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "4xx 节点分布",
+                    "title": "4xx Node Distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "所选时段内HTTP状态码分布",
+            "title": "HTTP status code distribution in the selected period",
             "type": "row"
         },
         {
@@ -1043,7 +1043,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "集群：{{app_cluster}} ",
+                    "legendFormat": "Cluster: {{app_cluster}} ",
                     "refId": "F"
                 },
                 {
@@ -1084,7 +1084,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量趋势",
+            "title": "Request volume trend",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1300,7 +1300,7 @@
                     "refId": "K"
                 }
             ],
-            "title": "所选时段内的耗时直方图",
+            "title": "Time consumption histogram in the selected period",
             "type": "bargauge"
         }
     ],
@@ -1323,7 +1323,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1354,7 +1354,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1385,7 +1385,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "服务提供方",
+                "label": "Service Provider",
                 "multi": false,
                 "name": "backend",
                 "options": [],
@@ -1416,7 +1416,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "RPC调用",
+                "label": "RPC call",
                 "multi": false,
                 "name": "method",
                 "options": [],
@@ -1451,7 +1451,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

@@ -697,7 +697,7 @@
                     }
                 }
             ],
-            "title": "Method 耗时水位线",
+            "title": "Method time consumption waterline",
             "type": "row"
         },
         {
@@ -772,7 +772,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "   services_req_duration_seconds{quantile=\"0.95\",name=\"$method\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+                            "expr": " services_req_duration_seconds{quantile=\"0.95\",name=\"$method\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
                             "format": "time_series",
                             "groupBy": [
                                 {
@@ -817,7 +817,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P95(95%) 耗时",
+                    "title": "P95(95%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -915,7 +915,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "   services_req_duration_seconds{quantile=\"0.95\",name=\"$method\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+                            "expr": " services_req_duration_seconds{quantile=\"0.95\",name=\"$method\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
                             "format": "time_series",
                             "groupBy": [
                                 {
@@ -960,7 +960,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P99(99%) 耗时",
+                    "title": "P99(99%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1057,7 +1057,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "   services_req_duration_seconds{quantile=\"0.95\",name=\"$method\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+                            "expr": " services_req_duration_seconds{quantile=\"0.95\",name=\"$method\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
                             "format": "time_series",
                             "groupBy": [
                                 {
@@ -1102,7 +1102,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P999(99.9%) 耗时",
+                    "title": "P999(99.9%) time consuming",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1142,7 +1142,7 @@
                     }
                 }
             ],
-            "title": "Method长尾请求横向对比",
+            "title": "Horizontal comparison of long-tail method requests",
             "type": "row"
         },
         {
@@ -1241,7 +1241,7 @@
                             "tags": []
                         }
                     ],
-                    "title": "所选时段内 SQL Exception 类型分布",
+                    "title": "SQL Exception type distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -1327,12 +1327,12 @@
                             "tags": []
                         }
                     ],
-                    "title": "所选时段内 SQL Exception 节点分布",
+                    "title": "SQL Exception node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "所选时段内Method异常分布",
+            "title": "Abnormal distribution of Method in the selected period",
             "type": "row"
         },
         {
@@ -1414,7 +1414,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "集群: {{app_cluster}}",
+                    "legendFormat": "Cluster: {{app_cluster}}",
                     "refId": "B"
                 },
                 {
@@ -1433,7 +1433,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "每秒请求量",
+            "title": "Requests per second",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1642,7 +1642,7 @@
                     "refId": "K"
                 }
             ],
-            "title": "所选时段内的耗时直方图",
+            "title": "Time consumption histogram in the selected period",
             "type": "bargauge"
         },
         {
@@ -1715,7 +1715,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近两分钟Exception趋势",
+            "title": "Exception trend in the last two minutes",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1775,7 +1775,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": " Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1806,7 +1806,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1872,7 +1872,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

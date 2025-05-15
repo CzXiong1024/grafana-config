@@ -35,7 +35,7 @@
                 "y": 0
             },
             "id": 592,
-            "title": "所选时段内慢接口统计",
+            "title": "Slow interface statistics in the selected period",
             "type": "row"
         },
         {
@@ -92,7 +92,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "慢接口(>$le秒)的节点分布",
+            "title": "Node distribution of slow interfaces (>$le seconds)",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -150,7 +150,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "慢接口(>$le秒)的集群分布",
+            "title": "Cluster distribution of slow interfaces (>$le seconds)",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -209,7 +209,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内慢接口(>$le秒)分布",
+            "title": "Distribution of slow interfaces (>$le seconds) in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -284,7 +284,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "近两分钟慢接口(>$le秒)趋势",
+            "title": "Slow interface (>$le seconds) trend in the past two minutes",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -344,7 +344,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -375,7 +375,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -405,7 +405,7 @@
                 "description": null,
                 "error": null,
                 "hide": 0,
-                "label": "耗时(秒)大于",
+                "label": "Time taken (seconds) is greater than",
                 "name": "le",
                 "options": [
                     {
@@ -467,7 +467,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

@@ -47,7 +47,7 @@
                             "links": [
                                 {
                                     "targetBlank": true,
-                                    "title": "点击查看更多慢SQL统计",
+                                    "title": "Click to view more slow SQL statistics",
                                     "url": "/d/sql-rank-c/sql-latency-rank?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                                 }
                             ],
@@ -82,7 +82,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看更多慢SQL统计",
+                            "title": "Click to view more slow SQL statistics",
                             "url": "/d/javams/slow-sql?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -114,7 +114,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "近一分钟慢SQL趋势  (点击查看更多统计)",
+                    "title": "Slow SQL Trend in the Last Minute (Click to View More Statistics)",
                     "type": "stat"
                 },
                 {
@@ -167,7 +167,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内慢SQL节点分布 ( > 2s )",
+                    "title": "Distribution of slow SQL nodes in the selected period (> 2s)",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -226,12 +226,12 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内慢SQL次数 ( > 2s )",
+                    "title": "Number of slow SQL statements in the selected period (> 2s)",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "慢SQL统计",
+            "title": "Slow SQL Statistics",
             "type": "row"
         },
         {
@@ -285,7 +285,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看单条SQL统计",
+                            "title": "Click to view single SQL statistics",
                             "url": "/d/javamd/sql-sla?${__all_variables}&${__url_time_range}"
                         }
                     ],
@@ -310,7 +310,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒执行的SQL语句",
+                            "legendFormat": "SQL statements executed per second",
                             "refId": "C"
                         },
                         {
@@ -320,7 +320,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "每秒执行的 {{command}} 语句",
+                            "legendFormat": " {{command}} statements executed per second",
                             "refId": "A"
                         },
                         {
@@ -331,7 +331,7 @@
                             "instant": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "近一分钟 {{exception}}",
+                            "legendFormat": "About one minute{{exception}}",
                             "refId": "D"
                         }
                     ],
@@ -339,7 +339,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "SQL执行统计",
+                    "title": "SQL Execution Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -430,7 +430,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "所选时段内SQL请求量TOP 20",
+                    "title": "TOP 20 SQL requests in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -476,7 +476,7 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": false,
-                            "expr": "(sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance))  > 0",
+                            "expr": "(sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance)) > 0",
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
@@ -484,7 +484,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内 SQL Exception 节点分布",
+                    "title": " SQL Exception node distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -538,7 +538,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内 SQL Exception 类型分布",
+                    "title": " SQL Exception type distribution in the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -592,12 +592,12 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "所选时段内报错的 SQLID 分布",
+                    "title": " SQLID distribution of errors reported during the selected period",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "SQL统计与异常分布",
+            "title": "SQL Statistics and Abnormal Distribution",
             "type": "row"
         },
         {
@@ -611,7 +611,7 @@
             },
             "id": 602,
             "panels": [],
-            "title": "SQL请求量 / 报错排行",
+            "title": "SQL request volume/error ranking",
             "type": "row"
         },
         {
@@ -625,7 +625,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看单条SQL语句",
+                            "title": "View a single SQL statement",
                             "url": "/d/javamd/sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -672,7 +672,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "查看单条SQL统计",
+                    "title": "View Single SQL Statistics",
                     "url": "/d/javamd/sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -709,7 +709,7 @@
                     "step": 14400
                 }
             ],
-            "title": "每秒执行的SQL语句",
+            "title": "SQL statements executed per second",
             "transparent": true,
             "type": "stat"
         },
@@ -775,7 +775,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "集群: {{app_cluster}}",
+                    "legendFormat": "Cluster: {{app_cluster}}",
                     "refId": "A"
                 },
                 {
@@ -805,7 +805,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量趋势",
+            "title": "Request volume trend",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -855,7 +855,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看单条SQL统计",
+                            "title": "View Single SQL Statistics",
                             "url": "/d/sql-rank-1/mybatis-sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -894,7 +894,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "查看单条SQL统计",
+                    "title": "View Single SQL Statistics",
                     "url": "/d/javamd/sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -932,7 +932,7 @@
                     "step": 14400
                 }
             ],
-            "title": "近一分钟 SQL Exception 占比",
+            "title": "SQL Exception ratio in the last minute",
             "transparent": true,
             "type": "stat"
         },
@@ -1104,7 +1104,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "SQL平均耗时",
+            "title": "Average SQL Time",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1197,7 +1197,7 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "所选时段内 SQL Exception TOP 20",
+            "title": "SQL Exception TOP 20 in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         }
@@ -1221,7 +1221,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1252,7 +1252,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1287,7 +1287,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

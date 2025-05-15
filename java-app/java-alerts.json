@@ -79,7 +79,7 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "报警类型分布",
+                    "title": "Alarm Type Distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -132,12 +132,12 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "应用firing的报警数",
+                    "title": "Number of alarms applied firing",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "全局报警统计",
+            "title": " Global Alarm Statistics",
             "type": "row"
         },
         {
@@ -151,7 +151,7 @@
             },
             "id": 77,
             "panels": [],
-            "title": "应用报警统计",
+            "title": "Application Alarm Statistics",
             "type": "row"
         },
         {
@@ -166,7 +166,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看HTTP接口统计",
+                            "title": "Click to view HTTP interface statistics",
                             "url": "/d/javah/http-api-overview?var-appname=${appname}&var-envtype=${envtype}&${__url_time_range}"
                         }
                     ],
@@ -212,7 +212,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看HTTP接口概览",
+                    "title": "Click to view HTTP interface overview",
                     "url": ""
                 }
             ],
@@ -243,13 +243,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看HTTP接口统计",
+                    "legendFormat": "Click to view HTTP interface statistics",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "HTTP 接口",
+            "title": "HTTP Interface",
             "type": "stat"
         },
         {
@@ -264,7 +264,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看AccessLog",
+                            "title": "Click to view AccessLog",
                             "url": "${logBaseUrl}/search/?query=source%3Atopic-accesslog%20AND%20%27json.appId%27%3A${appname}&order=desc&datasets=%5B%5D&time_range=${__from}%2C${__to}"
                         }
                     ],
@@ -310,7 +310,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看AccessLog",
+                    "title": "Click to view AccessLog",
                     "url": ""
                 }
             ],
@@ -341,13 +341,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看AccessLog",
+                    "legendFormat": "Click to view AccessLog",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "HTTP接口5xx占比 [ 1m ]",
+            "title": "HTTP interface 5xx percentage [1m]",
             "type": "stat"
         },
         {
@@ -457,7 +457,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "节点"
+                                "value": "node"
                             },
                             {
                                 "id": "unit",
@@ -472,7 +472,7 @@
                                 "value": [
                                     {
                                         "targetBlank": true,
-                                        "title": "点击查看节点指标",
+                                        "title": "Click to view node metrics",
                                         "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__value.text}&${__url_time_range}"
                                     }
                                 ]
@@ -514,8 +514,8 @@
                                 "value": [
                                     {
                                         "targetBlank": true,
-                                        "title": "查看节点状态",
-                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.节点}&${__url_time_range}"
+                                        "title": "View Node Status",
+                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.Node}&${__url_time_range}"
                                     }
                                 ]
                             }
@@ -529,14 +529,14 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "集群"
+                                "value": "cluster"
                             },
                             {
                                 "id": "links",
                                 "value": [
                                     {
                                         "targetBlank": true,
-                                        "title": "点击查看应用日志",
+                                        "title": "Click to view application log",
                                         "url": "${logBaseUrl}/search/?query=source%3Atopic-bizlog%20AND%20%27json.appId%27%3A${appname}&order=desc&datasets=%5B%5D&time_range=${__from}%2C${__to}\n"
                                     }
                                 ]
@@ -563,7 +563,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "版本号"
+                                "value": "Version number"
                             },
                             {
                                 "id": "custom.align",
@@ -578,8 +578,8 @@
                                 "value": [
                                     {
                                         "targetBlank": true,
-                                        "title": "查看节点指标",
-                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.节点}&${__url_time_range}"
+                                        "title": "View Node Metrics",
+                                        "url": "/d/javan/java-instance?var-envtype=${envtype}&var-appname=${appname}&var-instance=${__data.fields.Node}&${__url_time_range}"
                                     }
                                 ]
                             }
@@ -625,7 +625,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "应用节点",
+            "title": "Application Node",
             "transformations": [
                 {
                     "id": "merge",
@@ -662,7 +662,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看RPC调用量/排行",
+                            "title": "View RPC call volume/ranking",
                             "url": "/d/javar/rpc-overview?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}"
                         }
                     ],
@@ -725,13 +725,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看RPC统计",
+                    "legendFormat": "Click to view RPC statistics",
                     "metric": "",
                     "refId": "B",
                     "step": 14400
                 }
             ],
-            "title": "RPC调用",
+            "title": "RPC Call",
             "type": "stat"
         },
         {
@@ -746,7 +746,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看RPC调用量/排行",
+                            "title": "Click to view RPC call volume/ranking",
                             "url": "/d/javar/rpc-overview?var-envtype=${envtype}&var-appname=${appname}&${__url_time_range}"
                         }
                     ],
@@ -816,13 +816,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看RPC统计",
+                    "legendFormat": "Click to view RPC statistics",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "RPC异常请求占比 [ 1m ]",
+            "title": "RPC abnormal request ratio [1m]",
             "type": "stat"
         },
         {
@@ -837,7 +837,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看应用错误日志",
+                            "title": "Click to view application error log",
                             "url": "${logBaseUrl}/search/?query=source%3Atopic-bizlog%20AND%20%27json.appId%27%3A${appname}%20AND%20%27json.level%27%3AERROR&order=desc&datasets=%5B%5D&time_range=${__from}%2C${__to}"
                         }
                     ],
@@ -883,7 +883,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看Errorr日志",
+                    "title": "Click to view Errorr log",
                     "url": ""
                 }
             ],
@@ -914,13 +914,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看应用日志",
+                    "legendFormat": "Click to view application log",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "Error日志 [ 1m ]",
+            "title": "Error log [1m]",
             "type": "stat"
         },
         {
@@ -935,7 +935,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看GC统计",
+                            "title": "Click to view GC statistics",
                             "url": "/d/javaj/jvm-overview?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}"
                         }
                     ],
@@ -1006,13 +1006,13 @@
                     "instant": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看GC统计",
+                    "legendFormat": "Click to view GC statistics",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
                 }
             ],
-            "title": "GC频率 [ 1m ]",
+            "title": "GC frequency [1m]",
             "type": "stat"
         },
         {
@@ -1027,7 +1027,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "点击查看节点指标",
+                            "title": "Click to view node metrics",
                             "url": "/d/javan/java-instance?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}"
                         }
                     ],
@@ -1104,7 +1104,7 @@
                     "step": 14400
                 }
             ],
-            "title": "节点数",
+            "title": "Number of nodes",
             "type": "stat"
         },
         {
@@ -1119,7 +1119,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看节点CPU额度",
+                            "title": "View Node CPU Quota",
                             "url": "/d/javan/java-instance?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}&viewPanel=534"
                         }
                     ],
@@ -1128,7 +1128,7 @@
                             "$$hashKey": "object:248",
                             "id": 0,
                             "op": "=",
-                            "text": "不限",
+                            "text": "Unlimited",
                             "type": 1,
                             "value": "null"
                         },
@@ -1136,7 +1136,7 @@
                             "$$hashKey": "object:249",
                             "id": 1,
                             "op": "=",
-                            "text": "不限",
+                            "text": "Unlimited",
                             "type": 1,
                             "value": "0"
                         },
@@ -1144,7 +1144,7 @@
                             "$$hashKey": "object:250",
                             "id": 2,
                             "op": "=",
-                            "text": "不限",
+                            "text": "Unlimited",
                             "type": 1,
                             "value": "NaN"
                         }
@@ -1201,13 +1201,13 @@
             "targets": [
                 {
                     "exemplar": true,
-                    "expr": "(sum(node_cgroup_cpu_cfs_quota_seconds{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"} * 10) / sum(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"}))  > 0",
+                    "expr": "(sum(node_cgroup_cpu_cfs_quota_seconds{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"} * 10) / sum(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\",instance=~\"$instance\"})) > 0",
                     "format": "time_series",
                     "hide": false,
                     "instant": true,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看CPU规格",
+                    "legendFormat": "Click to view CPU specifications",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
@@ -1229,7 +1229,7 @@
                     "links": [
                         {
                             "targetBlank": true,
-                            "title": "查看节点内存额度",
+                            "title": "View node memory quota",
                             "url": "/d/javan/java-instance?${__url_time_range}&var-envtype=${envtype}&var-appname=${appname}&viewPanel=536"
                         }
                     ],
@@ -1238,14 +1238,14 @@
                             "$$hashKey": "object:208",
                             "id": 0,
                             "op": "=",
-                            "text": "不限",
+                            "text": "Unlimited",
                             "type": 1,
                             "value": "null"
                         },
                         {
                             "from": "",
                             "id": 1,
-                            "text": "不限",
+                            "text": "Unlimited",
                             "to": "",
                             "type": 1,
                             "value": "0"
@@ -1308,7 +1308,7 @@
                     "instant": true,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "点击查看内存规格",
+                    "legendFormat": "Click to view memory specifications",
                     "metric": "",
                     "refId": "A",
                     "step": 14400
@@ -1376,7 +1376,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "报警信息",
+            "title": "Alarm Information",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1435,7 +1435,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1461,17 +1461,17 @@
                     "value": "$__all"
                 },
                 "datasource": "infra-prometheus",
-                "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group)  ",
-                "description": "应用所属分组，通常是产品线标识，k8s部署的应用等同于namespace",
+                "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group) ",
+                "description": "The group to which the application belongs, usually the product line identifier, the application deployed in k8s is equivalent to namespace",
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "产品线",
+                "label": "Product Line",
                 "multi": false,
                 "name": "appGroup",
                 "options": [],
                 "query": {
-                    "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group)  ",
+                    "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group) ",
                     "refId": "StandardVariableQuery"
                 },
                 "refresh": 1,
@@ -1493,11 +1493,11 @@
                 },
                 "datasource": "infra-prometheus",
                 "definition": "label_values(registry_metrics_vendor{app_group=~\"$appGroup\",envtype=\"$envtype\",app_type=\"java\"},app)",
-                "description": "APP_ID，应用标识，全局唯一",
+                "description": "APP_ID, application identifier, globally unique",
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1528,7 +1528,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": false,
                 "name": "instance",
                 "options": [],

@@ -35,7 +35,7 @@
                 "y": 0
             },
             "id": 592,
-            "title": "所选时段内慢调用统计",
+            "title": "Slow call statistics in the selected period",
             "type": "row"
         },
         {
@@ -92,7 +92,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "慢RPC(>$le秒)的节点分布",
+            "title": "Node distribution of slow RPC (>$le seconds)",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -150,7 +150,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "慢RPC(>$le秒)的服务分布",
+            "title": "Service distribution of slow RPC (>$le seconds)",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -208,7 +208,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "所选时段内慢RPC(>$le秒)分布",
+            "title": "Distribution of slow RPC (>$le seconds) in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -259,7 +259,7 @@
                             }
                         ]
                     },
-                    "unit": "次/分钟"
+                    "unit": "times/minute"
                 },
                 "overrides": []
             },
@@ -307,7 +307,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "近一分钟慢RPC(>$le秒)趋势",
+            "title": "Slow RPC (>$le seconds) trend in the past minute",
             "type": "timeseries"
         }
     ],
@@ -330,7 +330,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -361,7 +361,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -396,7 +396,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "服务提供方",
+                "label": "Service Provider",
                 "multi": true,
                 "name": "backend",
                 "options": [],
@@ -426,7 +426,7 @@
                 "description": null,
                 "error": null,
                 "hide": 0,
-                "label": "耗时(秒)大于",
+                "label": "Time taken (seconds) is greater than",
                 "name": "le",
                 "options": [
                     {
@@ -488,7 +488,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

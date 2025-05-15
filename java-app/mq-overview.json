@@ -30,7 +30,7 @@
             },
             "id": 142,
             "panels": [],
-            "title": "全局统计",
+            "title": "Global Statistics",
             "type": "row"
         },
         {
@@ -112,7 +112,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 published 的消息",
+                    "legendFormat": "Messages published in the last minute",
                     "metric": "",
                     "refId": "A",
                     "step": 2400
@@ -124,7 +124,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 publish failed 的消息",
+                    "legendFormat": "Publish failed message in the last minute",
                     "metric": "",
                     "refId": "E",
                     "step": 2400
@@ -136,7 +136,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 acknowledged published的消息",
+                    "legendFormat": "Messages acknowledged and published in the last minute",
                     "metric": "",
                     "refId": "F",
                     "step": 2400
@@ -148,7 +148,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 not acknowledged published 的消息",
+                    "legendFormat": "Messages not acknowledged published in the last minute",
                     "metric": "",
                     "refId": "G",
                     "step": 2400
@@ -160,7 +160,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 unrouted published 的消息",
+                    "legendFormat": "Unrouted published messages in the last minute",
                     "metric": "",
                     "refId": "H",
                     "step": 2400
@@ -170,7 +170,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "Rabbit生产者(Producer)统计",
+            "title": "Rabbit Producer Statistics",
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
@@ -295,7 +295,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 consumed 的消息",
+                    "legendFormat": "Messages consumed in the last minute",
                     "metric": "",
                     "refId": "A",
                     "step": 2400
@@ -307,7 +307,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 acknowledged 的消息",
+                    "legendFormat": "Messages acknowledged in the last minute",
                     "metric": "",
                     "refId": "D",
                     "step": 2400
@@ -319,7 +319,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "近一分钟 rejected 的消息",
+                    "legendFormat": "Messages rejected in the last minute",
                     "metric": "",
                     "refId": "C",
                     "step": 2400
@@ -329,7 +329,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "Rabbit消费者(Consumer)统计",
+            "title": "Rabbit Consumer Statistics",
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
@@ -478,7 +478,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "连接池 ( ConnectionFactory ) 统计",
+            "title": "Connection Pool ( ConnectionFactory ) Statistics",
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
@@ -551,7 +551,7 @@
                     "dashes": false,
                     "datasource": "infra-prometheus",
                     "decimals": null,
-                    "description": "调用Channel#basicPublish发送消息的次数",
+                    "description": "The number of times Channel#basicPublish is called to send messages",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -626,7 +626,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 published",
+                    "title": " Published in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -688,7 +688,7 @@
                     "dashes": false,
                     "datasource": "infra-prometheus",
                     "decimals": null,
-                    "description": "调用Channel#basicPublish发送消息时异常的次数",
+                    "description": "Number of exceptions when calling Channel#basicPublish to send messages",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -763,7 +763,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 publish failed",
+                    "title": "Publish failed in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -825,7 +825,7 @@
                     "dashes": false,
                     "datasource": "infra-prometheus",
                     "decimals": null,
-                    "description": "ack confirm events:  messages handled successfully",
+                    "description": "ack confirm events: messages handled successfully",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -900,7 +900,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 acknowledged published",
+                    "title": "acknowledged published in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1037,7 +1037,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 not acknowledged published",
+                    "title": "Not acknowledged published in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1099,7 +1099,7 @@
                     "dashes": false,
                     "datasource": "infra-prometheus",
                     "decimals": null,
-                    "description": "消息找不到路由时的回调(PublishReturn)次数",
+                    "description": "Number of callbacks (PublishReturn) when the message cannot find a route",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -1174,7 +1174,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 unrouted published",
+                    "title": "Unrouted published in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1221,7 +1221,7 @@
                     }
                 }
             ],
-            "title": "Rabbit生产者详情",
+            "title": "Rabbit Producer Details",
             "type": "row"
         },
         {
@@ -1251,7 +1251,7 @@
                     "dashes": false,
                     "datasource": "infra-prometheus",
                     "decimals": null,
-                    "description": "调用Channel#basicGet获取消息的次数",
+                    "description": "The number of times Channel#basicGet is called to get messages",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -1326,7 +1326,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 consumed",
+                    "title": "consumed in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1388,7 +1388,7 @@
                     "dashes": false,
                     "datasource": "infra-prometheus",
                     "decimals": null,
-                    "description": "调用Channel#basicAck确认消费的次数",
+                    "description": "The number of times Channel#basicAck is called to confirm consumption",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -1463,7 +1463,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 acknowledged",
+                    "title": "acknowledged in the last minute",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1525,7 +1525,7 @@
                     "dashes": false,
                     "datasource": "infra-prometheus",
                     "decimals": null,
-                    "description": "调用Channel#basickNack|basicReject消费失败的次数",
+                    "description": "Number of failed consumption calls to Channel#basickNack|basicReject",
                     "editable": true,
                     "error": false,
                     "fieldConfig": {
@@ -1600,7 +1600,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "近一分钟 rejected （Nack + BasicReject )",
+                    "title": "Rejected in the last minute (Nack + BasicReject)",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1647,7 +1647,7 @@
                     }
                 }
             ],
-            "title": "Rabbit消费者详情",
+            "title": "Rabbit Consumer Details",
             "type": "row"
         }
     ],
@@ -1670,7 +1670,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1696,17 +1696,17 @@
                     "value": "$__all"
                 },
                 "datasource": "infra-prometheus",
-                "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group)  ",
-                "description": "应用所属分组，通常是产品线标识，k8s部署的应用等同于namespace",
+                "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group) ",
+                "description": "The group to which the application belongs, usually the product line identifier, the application deployed in k8s is equivalent to namespace",
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "产品线",
+                "label": "Product Line",
                 "multi": false,
                 "name": "appGroup",
                 "options": [],
                 "query": {
-                    "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group)  ",
+                    "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app_group) ",
                     "refId": "StandardVariableQuery"
                 },
                 "refresh": 1,
@@ -1728,11 +1728,11 @@
                 },
                 "datasource": "infra-prometheus",
                 "definition": "label_values(registry_metrics_vendor{app_group=~\"$appGroup\",envtype=\"$envtype\",app_type=\"java\"},app)",
-                "description": "APP_ID，应用标识，全局唯一",
+                "description": "APP_ID, application identifier, globally unique",
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1763,7 +1763,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": false,
                 "name": "instance",
                 "options": [],

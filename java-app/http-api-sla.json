@@ -787,7 +787,7 @@
                     }
                 }
             ],
-            "title": "接口耗时分位线",
+            "title": "Interface time consumption quantile line",
             "type": "row"
         },
         {
@@ -872,7 +872,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P95(95%) 耗时",
+                    "title": "P95(95%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -982,7 +982,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P99(99%) 耗时",
+                    "title": "P99(99%) time consumption",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1092,7 +1092,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "P999(99.9%) 耗时",
+                    "title": "P999(99.9%) time consuming",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1132,7 +1132,7 @@
                     }
                 }
             ],
-            "title": "接口长尾请求横向对比",
+            "title": "Horizontal comparison of long-tail requests of interfaces",
             "type": "row"
         },
         {
@@ -1197,7 +1197,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "5xx 节点分布",
+                    "title": "5xx Node Distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -1251,7 +1251,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "4xx 节点分布",
+                    "title": "4xx Node Distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -1309,7 +1309,7 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "HTTP状态码分布",
+                    "title": "HTTP Status Code Distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 },
@@ -1368,12 +1368,12 @@
                             "refId": "B"
                         }
                     ],
-                    "title": "HTTP请求量分布",
+                    "title": "HTTP request volume distribution",
                     "type": "grafana-piechart-panel",
                     "valueName": "current"
                 }
             ],
-            "title": "所选时段内 HTTP 状态码统计",
+            "title": "HTTP status code statistics for the selected period",
             "type": "row"
         },
         {
@@ -1395,7 +1395,7 @@
                     "value": "GET /api/dict"
                 }
             },
-            "title": "接口: $method",
+            "title": "Interface: $method",
             "type": "row"
         },
         {
@@ -1467,7 +1467,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "集群：{{app_cluster}} ",
+                    "legendFormat": "Cluster: {{app_cluster}} ",
                     "refId": "F"
                 },
                 {
@@ -1508,7 +1508,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量趋势",
+            "title": "Request volume trend",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1726,7 +1726,7 @@
                     "refId": "K"
                 }
             ],
-            "title": "所选时段内的耗时直方图",
+            "title": "Time consumption histogram in the selected period",
             "type": "bargauge"
         }
     ],
@@ -1749,7 +1749,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1780,7 +1780,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1811,7 +1811,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "接口分组",
+                "label": "Interface Grouping",
                 "multi": false,
                 "name": "backend",
                 "options": [],
@@ -1842,7 +1842,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "接口",
+                "label": "Interface",
                 "multi": false,
                 "name": "method",
                 "options": [],
@@ -1877,7 +1877,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "节点",
+                "label": "Node",
                 "multi": true,
                 "name": "instance",
                 "options": [],

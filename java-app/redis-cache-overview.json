@@ -95,7 +95,7 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "副本数",
+            "title": "Number of copies",
             "type": "stat"
         },
         {
@@ -132,7 +132,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "节点"
+                                "value": "node"
                             },
                             {
                                 "id": "custom.align",
@@ -156,7 +156,7 @@
                         "properties": [
                             {
                                 "id": "displayName",
-                                "value": "启动时长"
+                                "value": "Startup duration"
                             },
                             {
                                 "id": "custom.displayMode",
@@ -212,7 +212,7 @@
                 "sortBy": [
                     {
                         "desc": false,
-                        "displayName": "启动时长"
+                        "displayName": "Startup duration"
                     }
                 ]
             },
@@ -229,7 +229,7 @@
                     "refId": "B"
                 }
             ],
-            "title": "应用节点和 Pod Name",
+            "title": "Application Node and Pod Name",
             "transformations": [
                 {
                     "id": "merge",
@@ -515,7 +515,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "HTTP 流量",
+                    "title": "HTTP Traffic",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -645,7 +645,7 @@
                         },
                         {
                             "exemplar": true,
-                            "expr": "sum(irate(commonspool2_con_borrowed_total{comp_type=~\"redis.+\",envtype=~\"$envtype\",app=\"$appname\"}[2m]))  by (instance)",
+                            "expr": "sum(irate(commonspool2_con_borrowed_total{comp_type=~\"redis.+\",envtype=~\"$envtype\",app=\"$appname\"}[2m])) by (instance)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -658,7 +658,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Redis 流量",
+                    "title": "Redis Traffic",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -778,7 +778,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "sum(irate(rabbitmq_consumed_total{app=\"$appname\",envtype=\"$envtype\"}[2m]))  by (instance)",
+                            "expr": "sum(irate(rabbitmq_consumed_total{app=\"$appname\",envtype=\"$envtype\"}[2m])) by (instance)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -788,7 +788,7 @@
                         },
                         {
                             "exemplar": true,
-                            "expr": "sum(irate(rabbitmq_published_total{app=\"$appname\",envtype=\"$envtype\"}[2m]))  by (instance)",
+                            "expr": "sum(irate(rabbitmq_published_total{app=\"$appname\",envtype=\"$envtype\"}[2m])) by (instance)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
@@ -801,7 +801,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "RabbitMQ 流量",
+                    "title": "RabbitMQ Traffic",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -944,7 +944,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Logback 日志",
+                    "title": "Logback Log",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1064,12 +1064,12 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "sum(irate(logback_events_total{envtype=~\"$envtype\",app=\"$appname\"}[2m]))  by (instance,level)",
+                            "expr": "sum(irate(logback_events_total{envtype=~\"$envtype\",app=\"$appname\"}[2m])) by (instance,level)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{instance}}  - {{level}}",
+                            "legendFormat": "{{instance}} - {{level}}",
                             "refId": "B"
                         }
                     ],
@@ -1077,7 +1077,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Logback  Level ",
+                    "title": "Logback Level",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -1126,7 +1126,7 @@
                     }
                 }
             ],
-            "title": "各节点组件流量概览",
+            "title": "Overview of traffic of each node component",
             "type": "row"
         },
         {
@@ -1146,7 +1146,7 @@
         {
             "cacheTimeout": null,
             "datasource": "infra-prometheus",
-            "description": "所有节点每秒执行的Redis Command",
+            "description": "Redis Commands executed per second by all nodes",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -1218,7 +1218,7 @@
                     "step": 14400
                 }
             ],
-            "title": "集群 Redis Command",
+            "title": "Cluster Redis Command",
             "type": "stat"
         },
         {
@@ -1227,7 +1227,7 @@
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "所有节点的Redis 连接池统计",
+            "description": "Redis connection pool statistics for all nodes",
             "fieldConfig": {
                 "defaults": {
                     "links": []
@@ -1282,7 +1282,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "每秒执行的Redis命令(Borrow)",
+                    "legendFormat": "Redis commands executed per second (Borrow)",
                     "refId": "G"
                 },
                 {
@@ -1292,7 +1292,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "每秒归还连接的次数(Return)",
+                    "legendFormat": "Number of connections returned per second (Return)",
                     "refId": "C"
                 },
                 {
@@ -1302,7 +1302,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "每分钟创建的TCP连接",
+                    "legendFormat": "TCP connections created per minute",
                     "refId": "A"
                 },
                 {
@@ -1312,7 +1312,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "每分钟销毁的TCP连接",
+                    "legendFormat": "TCP connections destroyed per minute",
                     "refId": "F"
                 },
                 {
@@ -1322,7 +1322,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "每分钟由定时任务触发销毁的TCP连接",
+                    "legendFormat": "TCP connections destroyed every minute by scheduled tasks",
                     "refId": "D"
                 },
                 {
@@ -1332,7 +1332,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "每分钟由获取连接触发销毁的TCP连接",
+                    "legendFormat": "TCP connections destroyed every minute triggered by connection acquisition",
                     "refId": "E"
                 }
             ],
@@ -1340,7 +1340,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "集群TCP连接统计",
+            "title": "Cluster TCP Connection Statistics",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1390,7 +1390,7 @@
                     "dashLength": 10,
                     "dashes": false,
                     "datasource": "infra-prometheus",
-                    "description": "单个节点的 Redis 连接池使用率和配置",
+                    "description": "Redis connection pool usage and configuration for a single node",
                     "fieldConfig": {
                         "defaults": {
                             "links": []
@@ -1436,7 +1436,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:131",
-                            "alias": "/.+使用率/",
+                            "alias": "/.+usage/",
                             "yaxis": 2
                         }
                     ],
@@ -1451,7 +1451,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 使用率",
+                            "legendFormat": " {{comp_name}} - Usage",
                             "refId": "G"
                         },
                         {
@@ -1461,7 +1461,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}}  - 当前活跃的连接数",
+                            "legendFormat": " {{comp_name}} - Current number of active connections",
                             "refId": "A"
                         },
                         {
@@ -1471,7 +1471,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 池耗尽时阻塞等待的线程数",
+                            "legendFormat": "{{comp_name}} - Number of threads blocked waiting when pool is exhausted",
                             "refId": "B"
                         },
                         {
@@ -1481,7 +1481,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 当前的空闲连接数",
+                            "legendFormat": "{{comp_name}} - Current number of idle connections",
                             "refId": "C"
                         },
                         {
@@ -1491,7 +1491,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最大连接数",
+                            "legendFormat": "{{comp_name}} - Maximum number of connections",
                             "refId": "F"
                         },
                         {
@@ -1501,7 +1501,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最大空闲连接数",
+                            "legendFormat": "{{comp_name}} - Maximum number of idle connections",
                             "refId": "D"
                         },
                         {
@@ -1511,7 +1511,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{comp_name}} - 最小空闲连接数",
+                            "legendFormat": "{{comp_name}} - Minimum number of idle connections",
                             "refId": "E"
                         }
                     ],
@@ -1519,7 +1519,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "当前节点连接池统计",
+                    "title": "Current node connection pool statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1558,7 +1558,7 @@
                     "dashLength": 10,
                     "dashes": false,
                     "datasource": "infra-prometheus",
-                    "description": "单个节点最近一分钟的TCP连接统计",
+                    "description": " TCP connection statistics of a single node in the last minute",
                     "fieldConfig": {
                         "defaults": {
                             "links": []
@@ -1613,7 +1613,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - Redis命令的平均耗时[ms]",
+                            "legendFormat": " {{comp_name}} - Average time taken by Redis commands [ms]",
                             "refId": "H"
                         },
                         {
@@ -1623,7 +1623,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每秒执行的Redis命令(Borrow)",
+                            "legendFormat": " {{comp_name}} - Redis commands executed per second (Borrow)",
                             "refId": "G"
                         },
                         {
@@ -1633,7 +1633,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每秒归还连接的次数(Return)",
+                            "legendFormat": " {{comp_name}} - Number of connections returned per second (Return)",
                             "refId": "C"
                         },
                         {
@@ -1643,7 +1643,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}}  - 每分钟创建的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections created per minute",
                             "refId": "A"
                         },
                         {
@@ -1653,7 +1653,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections destroyed per minute",
                             "refId": "F"
                         },
                         {
@@ -1663,7 +1663,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟由定时任务触发销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connection destroyed every minute by a scheduled task",
                             "refId": "D"
                         },
                         {
@@ -1673,7 +1673,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 每分钟由获取连接触发销毁的TCP连接",
+                            "legendFormat": " {{comp_name}} - TCP connections destroyed every minute triggered by connection acquisition",
                             "refId": "E"
                         }
                     ],
@@ -1681,7 +1681,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "当前节点TCP连接统计",
+                    "title": "Current Node TCP Connection Statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1720,7 +1720,7 @@
                     "dashLength": 10,
                     "dashes": false,
                     "datasource": "infra-prometheus",
-                    "description": "单个节点的Redis连接池耗时统计",
+                    "description": "Time consumption statistics of Redis connection pool of a single node",
                     "fieldConfig": {
                         "defaults": {
                             "links": [],
@@ -1775,7 +1775,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - Redis命令的平均耗时",
+                            "legendFormat": " {{comp_name}} - Average time taken by Redis commands",
                             "refId": "A"
                         },
                         {
@@ -1785,7 +1785,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 连接的平均闲置时长",
+                            "legendFormat": " {{comp_name}} - Average idle time of the connection",
                             "refId": "B"
                         },
                         {
@@ -1795,7 +1795,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 获取连接的平均等待时长",
+                            "legendFormat": " {{comp_name}} - Get the average waiting time for the connection",
                             "refId": "C"
                         },
                         {
@@ -1805,7 +1805,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": " {{comp_name}} - 客户端配置的最大等待时长",
+                            "legendFormat": " {{comp_name}} - Maximum waiting time configured by the client",
                             "refId": "F"
                         }
                     ],
@@ -1813,7 +1813,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "当前节点连接池耗时统计",
+                    "title": "Current node connection pool time statistics",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -1876,7 +1876,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [
@@ -1913,7 +1913,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用",
+                "label": "Application",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1944,7 +1944,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "节点",
+                "label": "Node",
                 "multi": false,
                 "name": "instance",
                 "options": [],

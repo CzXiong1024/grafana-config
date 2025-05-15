@@ -20,7 +20,7 @@
             }
         ]
     },
-    "description": "节点指标",
+    "description": "Node metrics",
     "editable": true,
     "gnetId": 4701,
     "graphTooltip": 1,
@@ -49,7 +49,7 @@
                     "fieldConfig": {
                         "defaults": {
                             "links": [],
-                            "unit": "次/分钟"
+                            "unit": "times/minute"
                         },
                         "overrides": []
                     },
@@ -109,7 +109,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "GC 频次 [ 1m ]",
+                    "title": "GC frequency [1m]",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -127,7 +127,7 @@
                         {
                             "$$hashKey": "object:1900",
                             "decimals": null,
-                            "format": "次/分钟",
+                            "format": "times/minute",
                             "label": null,
                             "logBase": 1,
                             "max": null,
@@ -219,7 +219,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "GC 最大停顿时长",
+                    "title": "GC maximum pause duration",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -327,7 +327,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "老年代(Old Gen)已用内存",
+                    "title": "Old Gen Used Memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -435,7 +435,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "新生代(Eden Gen)已用内存",
+                    "title": "Eden Gen used memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -543,7 +543,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "Survivor Space 已用内存",
+                    "title": "Survivor Space Used Memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -638,7 +638,7 @@
                     "targets": [
                         {
                             "exemplar": true,
-                            "expr": "sum(jvm_memory_used_bytes{envtype=~\"$envtype\",app=\"$appname\", area=\"heap\"}) by(instance) /  sum(jvm_memory_max_bytes{envtype=~\"$envtype\",app=\"$appname\", area=\"heap\"}) by (instance)",
+                            "expr": "sum(jvm_memory_used_bytes{envtype=~\"$envtype\",app=\"$appname\", area=\"heap\"}) by (instance) / sum(jvm_memory_max_bytes{envtype=~\"$envtype\",app=\"$appname\", area=\"heap\"}) by (instance)",
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
@@ -650,7 +650,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "堆内存使用率",
+                    "title": "Heap Memory Usage",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -690,7 +690,7 @@
                     }
                 }
             ],
-            "title": "各节点JVM内存池概览",
+            "title": "Overview of JVM memory pools on each node",
             "type": "row"
         },
         {
@@ -775,7 +775,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "进程启动时长",
+                    "title": "Process startup time",
                     "type": "stat"
                 },
                 {
@@ -858,7 +858,7 @@
                             "expr": "increase(config_apollo_release_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])",
                             "hide": false,
                             "interval": "",
-                            "legendFormat": "近两分钟配置文件更新的次数",
+                            "legendFormat": "Number of configuration file updates in the last two minutes",
                             "refId": "A"
                         },
                         {
@@ -866,7 +866,7 @@
                             "expr": "increase(config_apollo_changedkeys_total{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[2m])",
                             "hide": false,
                             "interval": "",
-                            "legendFormat": "近两分钟累计变动的配置项",
+                            "legendFormat": "Configuration items that have been changed cumulatively in the last two minutes",
                             "refId": "B"
                         },
                         {
@@ -878,7 +878,7 @@
                             "refId": "C"
                         }
                     ],
-                    "title": "Apollo 配置 & Exception",
+                    "title": "Apollo Configuration & Exception",
                     "type": "timeseries"
                 },
                 {
@@ -951,7 +951,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "宿主机累计运行",
+                    "title": "Accumulated running time of the host",
                     "type": "stat"
                 },
                 {
@@ -990,7 +990,7 @@
                                                 "options": {
                                                     "from": -10000,
                                                     "result": {
-                                                        "text": "不限"
+                                                        "text": "Unlimited"
                                                     },
                                                     "to": 0
                                                 },
@@ -1003,7 +1003,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "内存 Quota"
+                                    "options": "Memory Quota"
                                 },
                                 "properties": [
                                     {
@@ -1017,7 +1017,7 @@
                                                 "options": {
                                                     "from": -100000,
                                                     "result": {
-                                                        "text": "不限"
+                                                        "text": " Unlimited"
                                                     },
                                                     "to": 0
                                                 },
@@ -1042,7 +1042,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "宿主机CPU"
+                                    "options": "Host CPU"
                                 },
                                 "properties": [
                                     {
@@ -1066,7 +1066,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "宿主机内存"
+                                    "options": "Host memory"
                                 },
                                 "properties": [
                                     {
@@ -1078,7 +1078,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "SWAP分区"
+                                    "options": "SWAP partition"
                                 },
                                 "properties": [
                                     {
@@ -1090,7 +1090,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "磁盘容量"
+                                    "options": "Disk capacity"
                                 },
                                 "properties": [
                                     {
@@ -1196,7 +1196,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "内存 Quota",
+                            "legendFormat": "Memory Quota",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "B",
@@ -1328,7 +1328,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "磁盘容量",
+                            "legendFormat": "Disk capacity",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "H",
@@ -1372,7 +1372,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "宿主机CPU",
+                            "legendFormat": "Host CPU",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "D",
@@ -1416,7 +1416,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "宿主机内存",
+                            "legendFormat": "Host memory",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "E",
@@ -1460,7 +1460,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "SWAP分区",
+                            "legendFormat": "SWAP partition",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "G",
@@ -1482,7 +1482,7 @@
                             "tags": []
                         }
                     ],
-                    "title": "节点容量规格",
+                    "title": "Node Capacity Specifications",
                     "type": "stat"
                 },
                 {
@@ -1579,7 +1579,7 @@
                             "instant": true,
                             "interval": "",
                             "intervalFactor": 10,
-                            "legendFormat": "DNS缓存",
+                            "legendFormat": "DNS Cache",
                             "orderByTime": "ASC",
                             "policy": "default",
                             "refId": "A",
@@ -1601,7 +1601,7 @@
                             "tags": []
                         }
                     ],
-                    "title": "DNS缓存",
+                    "title": "DNS Cache",
                     "type": "stat"
                 },
                 {
@@ -1684,7 +1684,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "集群",
+                    "title": "Cluster",
                     "type": "stat"
                 },
                 {
@@ -1767,7 +1767,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "时区",
+                    "title": "Time Zone",
                     "type": "stat"
                 },
                 {
@@ -1925,7 +1925,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "JAVA版本",
+                    "title": "JAVA version",
                     "type": "stat"
                 },
                 {
@@ -2008,7 +2008,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "Class版本",
+                    "title": "Class Version",
                     "type": "stat"
                 },
                 {
@@ -2091,7 +2091,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "JVM版本",
+                    "title": "JVM version",
                     "type": "stat"
                 },
                 {
@@ -2414,7 +2414,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "进程ID(PID)",
+                    "title": "Process ID (PID)",
                     "type": "stat"
                 },
                 {
@@ -2580,7 +2580,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "部署的Git分支",
+                    "title": "Deployed Git branch",
                     "type": "stat"
                 },
                 {
@@ -2663,7 +2663,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "最近的构建时间",
+                    "title": "Latest build time",
                     "type": "stat"
                 },
                 {
@@ -2746,7 +2746,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "总内存",
+                    "title": "Total Memory",
                     "type": "stat"
                 },
                 {
@@ -2912,7 +2912,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "发布时的Git CommitId",
+                    "title": "Git CommitId when publishing",
                     "type": "stat"
                 },
                 {
@@ -2995,7 +2995,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "宿主机IP",
+                    "title": "Host IP",
                     "type": "stat"
                 },
                 {
@@ -3078,7 +3078,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "k8s node ",
+                    "title": "k8s node",
                     "type": "stat"
                 },
                 {
@@ -3219,7 +3219,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:600",
-                            "alias": "宿主机内存使用率",
+                            "alias": "Host memory usage",
                             "yaxis": 2
                         }
                     ],
@@ -3230,12 +3230,12 @@
                         {
                             "datasource": "infra-prometheus",
                             "exemplar": true,
-                            "expr": "1 -(system_memory_free_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"} /  system_memory_total_bytes)",
+                            "expr": "1 -(system_memory_free_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"} / system_memory_total_bytes)",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机内存使用率",
+                            "legendFormat": "Host memory usage",
                             "refId": "E"
                         },
                         {
@@ -3245,7 +3245,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机空闲内存(free)",
+                            "legendFormat": "Host free memory (free)",
                             "refId": "B"
                         },
                         {
@@ -3256,7 +3256,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机总内存(total)",
+                            "legendFormat": "Total host memory (total)",
                             "refId": "A"
                         },
                         {
@@ -3267,7 +3267,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机Swap分区剩余大小(free)",
+                            "legendFormat": "Host Swap partition remaining size (free)",
                             "refId": "C"
                         },
                         {
@@ -3278,7 +3278,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "宿主机Swap分区大小(total)",
+                            "legendFormat": "Host Swap partition size (total)",
                             "refId": "D"
                         }
                     ],
@@ -3286,7 +3286,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "宿主机内存统计",
+                    "title": "Host Memory Statistics",
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
@@ -3330,7 +3330,7 @@
                     }
                 }
             ],
-            "title": "部署环境和系统信息",
+            "title": "Deployment environment and system information",
             "type": "row"
         },
         {
@@ -3401,7 +3401,7 @@
                             "refId": "A"
                         }
                     ],
-                    "title": "JVM内存池最大配置",
+                    "title": "JVM memory pool maximum configuration",
                     "type": "bargauge"
                 },
                 {
@@ -3420,7 +3420,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "堆内存使用率"
+                                    "options": "Heap memory usage"
                                 },
                                 "properties": [
                                     {
@@ -3467,7 +3467,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:364",
-                            "alias": "/使用率/",
+                            "alias": "/usage/",
                             "yaxis": 2
                         }
                     ],
@@ -3482,7 +3482,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "已用的(Used)堆内存",
+                            "legendFormat": "Used heap memory",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -3494,7 +3494,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大可用的(-Xmx)堆内存",
+                            "legendFormat": " Maximum available (-Xmx) heap memory",
                             "refId": "C"
                         },
                         {
@@ -3504,17 +3504,17 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "已提交的(Committed)堆内存",
+                            "legendFormat": "Committed heap memory",
                             "refId": "D"
                         },
                         {
                             "exemplar": true,
-                            "expr": "sum(jvm_memory_used_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"}) /  sum(jvm_memory_max_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"})",
+                            "expr": "sum(jvm_memory_used_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"}) / sum(jvm_memory_max_bytes{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\", area=\"heap\"})",
                             "format": "time_series",
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "堆内存使用率",
+                            "legendFormat": "Heap memory usage",
                             "refId": "B",
                             "step": 2400
                         }
@@ -3523,7 +3523,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "堆(Heap)内存",
+                    "title": "Heap Memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -3576,7 +3576,7 @@
                             {
                                 "matcher": {
                                     "id": "byName",
-                                    "options": "堆外内存使用率"
+                                    "options": "Off-heap memory usage"
                                 },
                                 "properties": [
                                     {
@@ -3623,7 +3623,7 @@
                     "seriesOverrides": [
                         {
                             "$$hashKey": "object:520",
-                            "alias": "/使用率/",
+                            "alias": "/usage/",
                             "yaxis": 2
                         }
                     ],
@@ -3638,7 +3638,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "已用的(Used)堆外内存池",
+                            "legendFormat": "Used off-heap memory pool",
                             "metric": "",
                             "refId": "A",
                             "step": 2400
@@ -3651,7 +3651,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "Netty已用的Direct Memory",
+                            "legendFormat": "Direct Memory used by Netty",
                             "metric": "",
                             "refId": "C",
                             "step": 2400
@@ -3663,7 +3663,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "最大可用的(Max)堆外内存",
+                            "legendFormat": "Maximum available off-heap memory",
                             "refId": "D"
                         },
                         {
@@ -3674,7 +3674,7 @@
                             "hide": false,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "堆外内存使用率",
+                            "legendFormat": "Off-heap memory usage",
                             "refId": "B"
                         }
                     ],
@@ -3682,7 +3682,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "堆外(Off Heap)内存",
+                    "title": "Off Heap Memory",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -3780,7 +3780,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "新生代(Young Gen)每秒增加的字节",
+                            "legendFormat": "Young Gen bytes added per second",
                             "refId": "C"
                         },
                         {
@@ -3790,7 +3790,7 @@
                             "format": "time_series",
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "老年代(Old Gen)每秒增加的字节",
+                            "legendFormat": "Old Gen bytes added per second",
                             "refId": "A"
                         },
                         {
@@ -3801,7 +3801,7 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "老年代Old(Mixed) GC 后的大小",
+                            "legendFormat": "Size of the old generation after Old(Mixed) GC",
                             "refId": "B"
                         }
                     ],
@@ -3809,7 +3809,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "GC 内存分配",
+                    "title": "GC Memory Allocation",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -3917,7 +3917,7 @@
                             "hide": true,
                             "interval": "",
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}({{area}})  - 已提交内存(Committed)",
+                            "legendFormat": "{{id}}({{area}}) - Committed",
                             "refId": "A"
                         }
                     ],
@@ -3925,7 +3925,7 @@
                     "timeFrom": null,
                     "timeRegions": [],
                     "timeShift": null,
-                    "title": "已使用的JVM内存池 ",
+                    "title": "JVM memory pool used",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -4026,7 +4026,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "当前已加载的class",
+                            "legendFormat": "Currently loaded class",
                             "refId": "B"
                         },
                         {
@@ -4036,7 +4036,7 @@
                             "hide": false,
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "近两分钟累计加载的class",
+                            "legendFormat": "The cumulative class loaded in the past two minutes",
                             "refId": "C"
                         },
                         {
@@ -4045,7 +4045,7 @@
                             "format": "time_series",
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "近两分钟累计卸载的class",
+                            "legendFormat": "The cumulative number of classes uninstalled in the past two minutes",
                             "refId": "A"
                         }
                     ],
@@ -4173,7 +4173,7 @@
                             "instant": false,
                             "interval": "30s",
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}_已用内存",
+                            "legendFormat": "{{id}}_Used Memory",
                             "refId": "B"
                         },
                         {
@@ -4182,7 +4182,7 @@
                             "hide": false,
                             "instant": false,
                             "intervalFactor": 1,
-                            "legendFormat": "{{id}}_最大可用内存",
+                            "legendFormat": "{{id}}_Maximum Available Memory",
                             "refId": "C"
                         }
                     ],
@@ -4333,7 +4333,7 @@
                     }
                 }
             ],
-            "title": "JVM内存池统计",
+            "title": "JVM Memory Pool Statistics",
             "type": "row"
         },
         {
@@ -4347,7 +4347,7 @@
             },
             "id": 164,
             "panels": [],
-            "title": "JVM GC耗时统计",
+            "title": "JVM GC time statistics",
             "type": "row"
         },
         {
@@ -4507,7 +4507,7 @@
             "targets": [
                 {
                     "exemplar": true,
-                    "expr": "sum(increase(jvm_gc_pause_seconds_count{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range])) by(cause)",
+                    "expr": "sum(increase(jvm_gc_pause_seconds_count{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range])) by (cause)",
                     "format": "table",
                     "instant": true,
                     "interval": "",
@@ -4517,7 +4517,7 @@
                 },
                 {
                     "exemplar": true,
-                    "expr": "sum(increase(jvm_gc_pause_seconds_sum{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range]) ) by(cause)",
+                    "expr": "sum(increase(jvm_gc_pause_seconds_sum{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range]) ) by (cause)",
                     "format": "table",
                     "hide": false,
                     "instant": true,
@@ -4528,7 +4528,7 @@
                 },
                 {
                     "exemplar": true,
-                    "expr": "sum(increase(jvm_gc_pause_seconds_sum{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range])) by(cause) / sum(increase(jvm_gc_pause_seconds_count{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range]) ) by(cause) ",
+                    "expr": "sum(increase(jvm_gc_pause_seconds_sum{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range])) by (cause) / sum(increase(jvm_gc_pause_seconds_count{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\"}[$__range]) ) by(cause) ",
                     "format": "table",
                     "hide": false,
                     "instant": true,
@@ -4562,7 +4562,7 @@
             ],
             "timeFrom": null,
             "timeShift": null,
-            "title": "所选时段内GC统计",
+            "title": "GC statistics for the selected period",
             "transformations": [
                 {
                     "id": "seriesToColumns",
@@ -4695,7 +4695,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{name}} - 平均停顿",
+                    "legendFormat": "{{name}} - Average Pause",
                     "refId": "B"
                 },
                 {
@@ -4705,7 +4705,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{action}} ({{cause}})  - 最大停顿时长",
+                    "legendFormat": "{{action}} ({{cause}}) - Maximum pause duration",
                     "refId": "A"
                 },
                 {
@@ -4715,7 +4715,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{action}} ({{cause}}) - 平均停顿",
+                    "legendFormat": "{{action}} ({{cause}}) - Average pause",
                     "refId": "C"
                 },
                 {
@@ -4726,7 +4726,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{action}} ({{cause}})  - 并发(concurrent)回收最大耗时",
+                    "legendFormat": "{{action}} ({{cause}}) - Maximum time taken for concurrent collection",
                     "refId": "D"
                 },
                 {
@@ -4737,7 +4737,7 @@
                     "hide": true,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "{{action}} ({{cause}})  - 并发回收平均耗时",
+                    "legendFormat": "{{action}} ({{cause}}) - Average time taken for concurrent collection",
                     "refId": "E"
                 }
             ],
@@ -4745,7 +4745,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "GC 停顿时长",
+            "title": "GC pause duration",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4794,7 +4794,7 @@
             "fieldConfig": {
                 "defaults": {
                     "links": [],
-                    "unit": "次/分钟"
+                    "unit": "times/minute"
                 },
                 "overrides": []
             },
@@ -4862,7 +4862,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "GC 原因与频次",
+            "title": "GC Reasons and Frequency",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -4880,7 +4880,7 @@
                 {
                     "$$hashKey": "object:1900",
                     "decimals": null,
-                    "format": "次/分钟",
+                    "format": "times/minute",
                     "label": null,
                     "logBase": 1,
                     "max": null,
@@ -4953,7 +4953,7 @@
                     "refId": "C"
                 }
             ],
-            "title": "所选时段内累计GC次数",
+            "title": "Cumulative GC times in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         },
@@ -5004,11 +5004,11 @@
                     "instant": true,
                     "interval": "",
                     "intervalFactor": 10,
-                    "legendFormat": "{{action}}  ({{cause}})",
+                    "legendFormat": "{{action}} ({{cause}})",
                     "refId": "C"
                 }
             ],
-            "title": "所选时段内累计GC耗时",
+            "title": "Cumulative GC time consumed in the selected period",
             "type": "grafana-piechart-panel",
             "valueName": "current"
         }
@@ -5032,7 +5032,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -5063,7 +5063,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -5094,7 +5094,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "节点",
+                "label": "Node",
                 "multi": false,
                 "name": "instance",
                 "options": [],
