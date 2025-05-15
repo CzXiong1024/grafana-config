@@ -1,0 +1,6156 @@
+{
+"annotations": {
+"list": [
+{
+"builtIn": 1,
+"datasource": {
+"type": "datasource",
+"uid": "grafana"
+},
+"enable": true,
+"hide": true,
+"iconColor": "rgba(0, 211, 255, 1)",
+"name": "Annotations & Alerts",
+"target": {
+"limit": 100,
+"matchAny": false,
+"tags": [],
+"type": "dashboard"
+},
+"type": "dashboard"
+}
+]
+},
+"editable": true,
+"fiscalYearStartMonth": 0,
+"graphTooltip": 1,
+"id": 536,
+"links": [],
+"liveNow": false,
+"panels": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"decimals": 0,
+"mappings": [
+{
+"options": {
+"match": "null",
+"result": {
+"text": "N/A"
+}
+},
+"type": "special"
+}
+],
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+},
+{
+"color": "red",
+"value": 80
+}
+]
+},
+"unit": "none"
+},
+"overrides": []
+},
+"gridPos": {
+"h": 2,
+"w": 3,
+"x": 0,
+"y": 0
+},
+"id": 10,
+"links": [],
+"maxDataPoints": 100,
+"options": {
+"colorMode": "value",
+"graphMode": "none",
+"justifyMode": "auto",
+"orientation": "horizontal",
+"reduceOptions": {
+"calcs": [
+"mean"
+],
+"fields": "",
+"values": false
+},
+"text": {
+"valueSize": 40
+},
+"textMode": "auto"
+},
+"pluginVersion": "9.3.8",
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "kube_deployment_spec_replicas{deployment=~\"$appname\",namespace=~\"$namespace\"}",
+"instant": true,
+"interval": "",
+"legendFormat": "",
+"refId": "A"
+}
+],
+"title": " Number of copies",
+"type": "stat"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"fixedColor": "green",
+"mode": "thresholds"
+},
+"custom": {
+"align": "auto",
+"displayMode": "auto",
+"filterable": false,
+"inspect": false
+},
+"mappings": [],
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+}
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "instance"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "node"
+},
+{
+"id": "custom.align"
+},
+{
+"id": "custom.width",
+"value": 300
+},
+{
+"id": "custom.displayMode",
+"value": "auto"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "Value"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "Startup duration"
+},
+{
+"id": "custom.displayMode",
+"value": "auto"
+},
+{
+"id": "custom.align",
+"value": "center"
+},
+{
+"id": "unit",
+"value": "s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "pod"
+},
+"properties": [
+{
+"id": "custom.width",
+"value": 400
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "service"
+},
+"properties": [
+{
+"id": "custom.displayMode",
+"value": "auto"
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 3,
+"y": 0
+},
+"id": 12,
+"interval": "30s",
+"links": [],
+"options": {
+"footer": {
+"fields": "",
+"reducer": [
+"sum"
+],
+"show": false
+},
+"showHeader": true,
+"sortBy": [
+{
+"desc": false,
+"displayName": "Startup duration"
+}
+]
+},
+"pluginVersion": "9.3.8",
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "process_uptime_seconds{service=\"$appname\",namespace=~\"$namespace\"}",
+"format": "table",
+"instant": true,
+"interval": "",
+"intervalFactor": 4,
+"legendFormat": "",
+"refId": "B"
+}
+],
+"title": "Application Node and Pod Name",
+"transformations": [
+{
+"id": "merge",
+"options": {
+"reducers": []
+}
+},
+{
+"id": "filterFieldsByName",
+"options": {
+"include": {
+"names": [
+"instance",
+"pod",
+"service",
+"Value"
+],
+"pattern": "/^instance|service|pod|Value$/gm"
+}
+}
+}
+],
+"type": "table"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"mappings": [
+{
+"options": {
+"match": "null",
+"result": {
+"text": "N/A"
+}
+},
+"type": "special"
+}
+],
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+},
+{
+"color": "red",
+"value": 80
+}
+]
+},
+"unit": "none"
+},
+"overrides": []
+},
+"gridPos": {
+"h": 2,
+"w": 3,
+"x": 0,
+"y": 2
+},
+"id": 8,
+"links": [],
+"maxDataPoints": 100,
+"options": {
+"colorMode": "value",
+"graphMode": "none",
+"justifyMode": "auto",
+"orientation": "horizontal",
+"reduceOptions": {
+"calcs": [
+"mean"
+],
+"fields": "",
+"values": false
+},
+"text": {
+"valueSize": 40
+},
+"textMode": "auto"
+},
+"pluginVersion": "9.3.8",
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "max(kube_pod_container_resource_limits{pod=~\"$appname.+\",namespace=~\"$namespace\",resource=\"cpu\"})",
+"instant": true,
+"interval": "",
+"legendFormat": "",
+"refId": "A"
+}
+],
+"title": "CPU Quota",
+"type": "stat"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"decimals": 1,
+"mappings": [
+{
+"options": {
+"match": "null",
+"result": {
+"text": "N/A"
+}
+},
+"type": "special"
+}
+],
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+},
+"unit": "bytes"
+},
+"overrides": []
+},
+"gridPos": {
+"h": 3,
+"w": 3,
+"x": 0,
+"y": 4
+},
+"id": 4,
+"links": [],
+"maxDataPoints": 100,
+"options": {
+"colorMode": "value",
+"graphMode": "none",
+"justifyMode": "auto",
+"orientation": "horizontal",
+"reduceOptions": {
+"calcs": [
+"mean"
+],
+"fields": "",
+"values": false
+},
+"text": {
+"valueSize": 40
+},
+"textMode": "auto"
+},
+"pluginVersion": "9.3.8",
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "max(kube_pod_container_resource_limits{pod=~\"$appname.+\",namespace=\"$namespace\",resource=\"memory\"})",
+"instant": true,
+"interval": "",
+"legendFormat": "",
+"refId": "A"
+}
+],
+"title": "Memory Quota",
+"type": "stat"
+},
+{
+"collapsed": true,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 7
+},
+"id": 729,
+"panels": [
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 9,
+"w": 20,
+"x": 0,
+"y": 8
+},
+"hiddenSeries": false,
+"id": 730,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"expr": "sum(irate(http_server_requests_seconds_count{service=\"$appname\",namespace=~\"$namespace\"}[2m])) ",
+"legendFormat": "total",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"expr": "sum(irate(http_server_requests_seconds_count{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance)",
+"hide": false,
+"legendFormat": "__auto",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "HTTP Traffic",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "reqps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 9,
+"w": 20,
+"x": 0,
+"y": 17
+},
+"hiddenSeries": false,
+"id": 731,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(commonspool2_con_borrowed_total{comp_type=~\"redis.+\",service=\"$appname\",namespace=~\"$namespace\"}[2m]))",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "total",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(commonspool2_con_borrowed_total{comp_type=~\"redis.+\",service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Redis Traffic",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "reqps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 9,
+"w": 20,
+"x": 0,
+"y": 26
+},
+"hiddenSeries": false,
+"id": 732,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(rabbitmq_consumed_total{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}} - consumed",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(rabbitmq_published_total{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}} - published",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "RabbitMQ Traffic",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "reqps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 9,
+"w": 10,
+"x": 0,
+"y": 35
+},
+"hiddenSeries": false,
+"id": 733,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(logback_events_total{service=\"$appname\",namespace=~\"$namespace\"}[2m]))\n",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "total",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(logback_events_total{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}} ",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Logback Log",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "wps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 9,
+"w": 10,
+"x": 10,
+"y": 35
+},
+"hiddenSeries": false,
+"id": 734,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(logback_events_total{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance,level)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}} - {{level}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Logback Level",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "wps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+}
+],
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"refId": "A"
+}
+],
+"title": "Overview of traffic of each node component",
+"type": "row"
+},
+{
+"collapsed": true,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 8
+},
+"id": 706,
+"panels": [
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "times/minute"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 9
+},
+"hiddenSeries": false,
+"id": 116,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(increase(jvm_gc_pause_seconds_count{service=\"$appname\",namespace=~\"$namespace\",action=~\".*minor.*\"}[1m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "YoungGC Frequency",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "times/minute",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "binBps"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 9
+},
+"hiddenSeries": false,
+"id": 120,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(jvm_gc_memory_allocated_bytes_total{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "New Generation Memory Allocation",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "binBps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "times/minute"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 17
+},
+"hiddenSeries": false,
+"id": 714,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(increase(jvm_gc_pause_seconds_count{service=\"$appname\",namespace=~\"$namespace\",action=~\".*major.*\"}[1m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "OldGC Frequency",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "times/minute",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "binBps"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 17
+},
+"hiddenSeries": false,
+"id": 121,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(irate(jvm_gc_memory_promoted_bytes_total{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (instance)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Old Generation Memory Allocation (Promotion Object)",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "binBps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "s"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 25
+},
+"hiddenSeries": false,
+"id": 119,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_gc_pause_seconds_max{service=\"$appname\",namespace=~\"$namespace\"} > 0",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}} - {{cause}}",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "GC Maximum Pause",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "s",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "bytes"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 25
+},
+"hiddenSeries": false,
+"id": 118,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_memory_used_bytes{service=\"$appname\",namespace=~\"$namespace\",id=~\"[a-zA-Z0-9\\\\s]+Old[a-zA-Z0-9\\\\s]+\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Old Generation Memory",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "bytes",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"All": "#629e51",
+"Error (httpstatus >=400)": "#e24d42",
+"Error (httpstatus >=500)": "#bf1b00"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "percentunit"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 33
+},
+"hiddenSeries": false,
+"id": 122,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": " sum(jvm_memory_used_bytes{service=\"$appname\",area=\"heap\",namespace=~\"$namespace\"}) by (instance) / sum(jvm_memory_max_bytes{service=\"$appname\",area=\"heap\",namespace=~\"$namespace\"}) by (instance)",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"metric": "",
+"range": true,
+"refId": "A",
+"step": 2400
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Heap Memory Usage",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2606",
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2607",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"All": "#629e51",
+"Error (httpstatus >=400)": "#e24d42",
+"Error (httpstatus >=500)": "#bf1b00"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 33
+},
+"hiddenSeries": false,
+"id": 127,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "process_cpu_usage{service=\"$appname\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"metric": "",
+"range": true,
+"refId": "A",
+"step": 2400
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Process CPU Usage",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2606",
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2607",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"unit": "short"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 41
+},
+"hiddenSeries": false,
+"id": 130,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "process_files_open{service=\"$appname\",namespace=~\"$namespace\"} OR process_files_open_files{service=\"$appname\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"metric": "",
+"range": true,
+"refId": "C",
+"step": 2400
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "File descriptors opened by the process",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:252",
+"format": "short",
+"logBase": 1,
+"show": true
+},
+{
+"$$hashKey": "object:253",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 41
+},
+"hiddenSeries": false,
+"id": 715,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "kube_pod_container_status_last_terminated_reason{reason=\"OOMKilled\",container=\"$appname\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} - OOMKilled",
+"range": true,
+"refId": "B"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "increase(kube_pod_container_status_restarts_total{container=\"$appname\",namespace=~\"$namespace\"}[3m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} - Restarted in the last 3 minutes",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Container OOM/Restart Statistics",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "none",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 10,
+"w": 10,
+"x": 0,
+"y": 49
+},
+"hiddenSeries": false,
+"id": 736,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "(tomcat_threads_busy{service=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}/ tomcat_threads_config_max) OR (tomcat_threads_busy_threads{service=~\"$appname\",namespace=~\"$namespace\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"}/ tomcat_threads_config_max_threads)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Tomcat thread pool usage",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "bytes",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 10,
+"w": 10,
+"x": 10,
+"y": 49
+},
+"hiddenSeries": false,
+"id": 737,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "tomcat_threads_busy{service=~\"$appname\",namespace=~\"$namespace\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"} OR tomcat_threads_busy_threads{service=~\"$appname\",namespace=~\"$namespace\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"} ",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Tomcat Active Threads",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "none",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 59
+},
+"hiddenSeries": false,
+"id": 740,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_threads_states_threads{service=\"$appname\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}} - {{state}} Threads",
+"range": true,
+"refId": "G"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Node JVM Thread Status",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 59
+},
+"hiddenSeries": false,
+"id": 746,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(increase(jvm_threads_states_threads{service=\"$appname\",namespace=~\"$namespace\"}[1m])) by (state)",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{state}} Threads",
+"range": true,
+"refId": "G"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Cluster JVM Thread Status",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 10,
+"w": 10,
+"x": 0,
+"y": 67
+},
+"hiddenSeries": false,
+"id": 744,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "process_cpu_usage{service=~\"$appname\",namespace=~\"$namespace\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": " Process CPU Usage",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"decimals": 2,
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"decimals": 2,
+"format": "percentunit",
+"logBase": 1,
+"min": "0",
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 10,
+"w": 10,
+"x": 10,
+"y": 67
+},
+"hiddenSeries": false,
+"id": 743,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "system_load_average_1m{service=~\"$appname\",namespace=~\"$namespace\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{instance}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "System LoadAvg in the last minute",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "none",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "Pod CPU usage statistics from k8s",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 77
+},
+"hiddenSeries": false,
+"id": 143,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "avg(irate(container_cpu_usage_seconds_total{container!~\"(POD|istio-proxy)\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}[5m]) ) by (pod) / max( kube_pod_container_resource_limits{pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\",resource=\"cpu\"} ) by (pod)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} ",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "POD CPU usage",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "percentunit",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "Pod memory usage statistics from k8s",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 77
+},
+"hiddenSeries": false,
+"id": 145,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "avg(container_memory_working_set_bytes{ container=\"$appname\",pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"} ) by (pod)/ max( kube_pod_container_resource_limits{pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\",resource=\"memory\"} ) by (pod)",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} ",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "POD memory usage",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "percentunit",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 0,
+"y": 85
+},
+"hiddenSeries": false,
+"id": 141,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "irate(container_network_transmit_bytes_total{pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}[3m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} - Sent Bytes",
+"range": true,
+"refId": "B"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "irate(container_network_receive_bytes_total{pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}[3m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} - Received Bytes",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "POD Network IO",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "binBps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "bytes",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 10,
+"x": 10,
+"y": 85
+},
+"hiddenSeries": false,
+"id": 142,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "rate(container_fs_reads_bytes_total{container=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}[5m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} - Read Bytes",
+"range": true,
+"refId": "B"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "rate(container_fs_writes_bytes_total{container=\"$appname\",pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}[5m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}} - Write Bytes ",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "POD Disk IO",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "binBps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "bytes",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 20,
+"x": 0,
+"y": 93
+},
+"hiddenSeries": false,
+"id": 735,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "increase(container_cpu_cfs_throttled_periods_total{container=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}[2m])\n /increase(container_cpu_cfs_periods_total{container=~\"$appname\", pod=~\"$appname-[0-9a-z]+-[0-9a-z]+\",namespace=~\"$namespace\"}[2m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Container CPU Throttled Periods %",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "bytes",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 8,
+"w": 20,
+"x": 0,
+"y": 101
+},
+"hiddenSeries": false,
+"id": 747,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": " irate(container_cpu_cfs_throttled_seconds_total{pod=~\"$appname.+\",namespace=~\"$namespace\"}[2m]) / 10",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Container CPU Throttled Time Per Period",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "s",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "s",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+}
+],
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"refId": "A"
+}
+],
+"title": "Overview of key indicators of each node",
+"type": "row"
+},
+{
+"collapsed": true,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 9
+},
+"id": 752,
+"panels": [
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 9,
+"w": 20,
+"x": 0,
+"y": 10
+},
+"hiddenSeries": false,
+"id": 753,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"expr": "sum(irate(http_server_requests_seconds_count{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (uri)",
+"hide": false,
+"legendFormat": "__auto",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "HTTP API Requests",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "reqps",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "s"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 9,
+"w": 20,
+"x": 0,
+"y": 19
+},
+"hiddenSeries": false,
+"id": 754,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"expr": "sum(irate(http_server_requests_seconds_sum{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (uri) / sum(irate(http_server_requests_seconds_count{service=\"$appname\",namespace=~\"$namespace\"}[2m])) by (uri)",
+"hide": false,
+"legendFormat": "__auto",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "HTTP API Avg Latency",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:2162",
+"format": "s",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:2163",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+}
+],
+"title": "HTTP API Summary",
+"type": "row"
+},
+{
+"collapsed": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 10
+},
+"id": 263,
+"panels": [],
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"refId": "A"
+}
+],
+"title": "Current Node JVM & Key Indicators",
+"type": "row"
+},
+{
+"aliasColors": {
+"Debug": "#0a50a1",
+"Error": "#bf1b00",
+"Info": "#629e51",
+"Warn": "#cca300"
+},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"editable": true,
+"error": false,
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"grid": {
+"leftLogBase": 1,
+"rightLogBase": 1
+},
+"gridPos": {
+"h": 5,
+"w": 21,
+"x": 0,
+"y": 11
+},
+"hiddenSeries": false,
+"id": 748,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "increase(container_cpu_cfs_throttled_periods_total{container=~\"$appname\", pod=~\"$pod\",namespace=~\"$namespace\"}[2m])\n /increase(container_cpu_cfs_periods_total{container=~\"$appname\", pod=~\"$pod\",namespace=~\"$namespace\"}[2m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{pod}}",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Container CPU Throttled Periods %",
+"tooltip": {
+"msResolution": false,
+"shared": true,
+"sort": 0,
+"value_type": "cumulative"
+},
+"type": "graph",
+"x-axis": true,
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"y-axis": true,
+"y_formats": [
+"mbytes",
+"short"
+],
+"yaxes": [
+{
+"$$hashKey": "object:1962",
+"format": "percentunit",
+"logBase": 1,
+"min": 0,
+"show": true
+},
+{
+"$$hashKey": "object:1963",
+"format": "bytes",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"mappings": [],
+"max": 100,
+"min": 0,
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "dark-green",
+"value": null
+}
+]
+},
+"unit": "bytes"
+},
+"overrides": []
+},
+"gridPos": {
+"h": 4,
+"w": 21,
+"x": 0,
+"y": 16
+},
+"id": 707,
+"interval": "30s",
+"options": {
+"displayMode": "gradient",
+"minVizHeight": 10,
+"minVizWidth": 0,
+"orientation": "vertical",
+"reduceOptions": {
+"calcs": [
+"mean"
+],
+"fields": "",
+"values": true
+},
+"showUnfilled": true,
+"text": {}
+},
+"pluginVersion": "9.3.8",
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": false,
+"expr": "jvm_memory_max_bytes{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{id}}({{area}})",
+"refId": "A"
+}
+],
+"title": "JVM memory pool maximum configuration",
+"type": "bargauge"
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "binBps"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 5,
+"w": 21,
+"x": 0,
+"y": 20
+},
+"hiddenSeries": false,
+"id": 713,
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "irate(jvm_gc_memory_allocated_bytes_total{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m])",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Young Gen bytes added per second",
+"range": true,
+"refId": "C"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "irate(jvm_gc_memory_promoted_bytes_total{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m])",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Old Gen bytes added per second",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_gc_live_data_size_bytes{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"hide": true,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Size of the old generation after Old(Mixed) GC",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "GC Memory Allocation",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:2066",
+"format": "binBps",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:2067",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "bytes"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 21,
+"x": 0,
+"y": 25
+},
+"hiddenSeries": false,
+"id": 207,
+"interval": "15s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_memory_used_bytes{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{id}}({{area}}) ",
+"range": true,
+"refId": "E"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_memory_committed_bytes{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"hide": true,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{id}}({{area}}) - Committed",
+"range": true,
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "JVM memory pool used",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"format": "bytes",
+"logBase": 1,
+"show": true
+},
+{
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "s"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 11,
+"w": 22,
+"x": 0,
+"y": 32
+},
+"hiddenSeries": false,
+"id": 538,
+"interval": "15s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_gc_pause_seconds_max{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{action}} ({{cause}}) - Maximum pause duration",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "rate(jvm_gc_pause_seconds_sum{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m]) / rate(jvm_gc_pause_seconds_count{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m])",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{action}} ({{cause}}) - Average pause",
+"range": true,
+"refId": "C"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_gc_concurrent_phase_time_seconds_max{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"hide": true,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{action}} ({{cause}}) - Maximum time taken for concurrent collection",
+"range": true,
+"refId": "D"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "GC pause duration",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:1994",
+"format": "s",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:1995",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": [],
+"unit": "times/minute"
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 22,
+"x": 0,
+"y": 43
+},
+"hiddenSeries": false,
+"id": 703,
+"interval": "15s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "increase(jvm_gc_pause_seconds_count{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[70s])",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{action}} ({{cause}}) ",
+"range": true,
+"refId": "C"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "GC Reasons and Frequency",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:1900",
+"format": "times/minute",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:1901",
+"format": "short",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"breakPoint": "50%",
+"combine": {
+"label": "Others",
+"threshold": 0
+},
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fontSize": "80%",
+"format": "short",
+"gridPos": {
+"h": 8,
+"w": 11,
+"x": 0,
+"y": 50
+},
+"id": 704,
+"interval": "30s",
+"legend": {
+"header": "total",
+"percentage": true,
+"show": true,
+"sort": "current",
+"sortDesc": true,
+"values": true
+},
+"legendType": "Right side",
+"links": [],
+"maxDataPoints": 3,
+"nullPointMode": "connected",
+"pieType": "pie",
+"strokeWidth": 1,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": false,
+"expr": "sum(increase(jvm_gc_pause_seconds_count{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[$__range])) by(action,cause)",
+"format": "time_series",
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{action}} ({{cause}})",
+"refId": "C"
+}
+],
+"title": "Cumulative GC times in the selected period",
+"type": "grafana-piechart-panel",
+"valueName": "current"
+},
+{
+"aliasColors": {},
+"breakPoint": "50%",
+"combine": {
+"label": "Others",
+"threshold": 0
+},
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fontSize": "80%",
+"format": "s",
+"gridPos": {
+"h": 8,
+"w": 11,
+"x": 11,
+"y": 50
+},
+"id": 539,
+"interval": "30s",
+"legend": {
+"header": "total",
+"percentage": true,
+"show": true,
+"sort": "current",
+"sortDesc": true,
+"values": true
+},
+"legendType": "Right side",
+"links": [],
+"maxDataPoints": 3,
+"nullPointMode": "connected",
+"pieType": "pie",
+"strokeWidth": 1,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": false,
+"expr": "sum(increase(jvm_gc_pause_seconds_sum{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[$__range])) by(action,cause) ",
+"format": "time_series",
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{action}} ({{cause}})",
+"refId": "C"
+}
+],
+"title": "Cumulative GC time consumed in the selected period",
+"type": "grafana-piechart-panel",
+"valueName": "current"
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 6,
+"w": 11,
+"x": 0,
+"y": 58
+},
+"hiddenSeries": false,
+"id": 724,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "tomcat_threads_busy{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"} OR tomcat_threads_busy_threads{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Active thread (busy)",
+"range": true,
+"refId": "G"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "tomcat_threads_config_max{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"} OR tomcat_threads_config_max_threads{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Maximum number of threads",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "tomcat_threads_current{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"} OR tomcat_threads_current_threads{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Current number of threads",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Tomcat Thread Pool",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 6,
+"w": 11,
+"x": 11,
+"y": 58
+},
+"hiddenSeries": false,
+"id": 739,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_threads_daemon{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"} OR jvm_threads_daemon_threads{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Daemon Threads",
+"range": true,
+"refId": "G"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_threads_live{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"} OR jvm_threads_live_threads{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Daemon + None Daemon Threads",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"exemplar": true,
+"expr": "jvm_threads_peak{service=\"$appname\",instance=\"$instance\"} OR jvm_threads_peak_threads{service=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Peak number of threads",
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "JVM Threads",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 8,
+"w": 11,
+"x": 0,
+"y": 64
+},
+"hiddenSeries": false,
+"id": 741,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "increase(jvm_classes_unloaded_classes_total{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m]) OR increase(jvm_classes_unloaded_total{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m])",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Class uninstalled in the last two minutes",
+"range": true,
+"refId": "G"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "increase(jvm_classes_loaded_classes{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m]) OR increase(jvm_classes_loaded{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}[2m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Class loaded in the last two minutes",
+"range": true,
+"refId": "A"
+},
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_buffer_count_buffers{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"} OR jvm_buffer_count{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"} ",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{id}} Buffers",
+"range": true,
+"refId": "B"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Class loading statistics",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 8,
+"w": 11,
+"x": 11,
+"y": 64
+},
+"hiddenSeries": false,
+"id": 745,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "jvm_threads_states_threads{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{state}} Threads",
+"range": true,
+"refId": "G"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "JVM Thread Status",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 8,
+"w": 11,
+"x": 0,
+"y": 72
+},
+"hiddenSeries": false,
+"id": 727,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(rate(cache_gets_total{result=\"hit\",service=\"$appname\",instance=\"$instance\",name=~\"$localcache\",namespace=~\"$namespace\"}[2m])) by(name) / sum(rate(cache_gets_total{service=\"$appname\",instance=\"$instance\",name=~\"$localcache\",namespace=~\"$namespace\"}[2m])) by (name)",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{name}}",
+"range": true,
+"refId": "G"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Local Cache Hit Rate",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "percentunit",
+"logBase": 1,
+"max": "1",
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "percentunit",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 8,
+"w": 11,
+"x": 11,
+"y": 72
+},
+"hiddenSeries": false,
+"id": 726,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(increase(cache_evictions_total{service=\"$appname\",instance=\"$instance\",namespace=~\"$namespace\",name=~\"$localcache\"}[70s])) by(name)",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{name}}",
+"range": true,
+"refId": "G"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Local Cache Eviction per minute",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 9,
+"w": 11,
+"x": 0,
+"y": 80
+},
+"hiddenSeries": false,
+"id": 738,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(increase(cache_gets_total{result=\"miss\",service=\"$appname\",instance=\"$instance\",name=~\"$localcache\",namespace=~\"$namespace\"}[70s])) by(name)",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{name}}",
+"range": true,
+"refId": "G"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Local Cache Miss per minute",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 9,
+"w": 11,
+"x": 11,
+"y": 80
+},
+"hiddenSeries": false,
+"id": 725,
+"interval": "30s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": false,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "9.3.8",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"editorMode": "code",
+"exemplar": true,
+"expr": "sum(increase(cache_puts_total{service=\"$appname\",instance=\"$instance\",name=~\"$localcache\",namespace=~\"$namespace\"}[70s])) by(name)",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "{{name}}",
+"range": true,
+"refId": "G"
+}
+],
+"thresholds": [],
+"timeRegions": [],
+"title": "Local Cache Put per minute",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"mode": "time",
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:26",
+"format": "short",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:27",
+"format": "none",
+"logBase": 1,
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+}
+],
+"refresh": "10s",
+"schemaVersion": 37,
+"style": "dark",
+"tags": [],
+"templating": {
+"list": [
+{
+"current": {
+"selected": false,
+"text": "oss-prd-pms20",
+"value": "oss-prd-pms20"
+},
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"definition": "label_values(kube_pod_info{namespace=~\"oss.+\"},namespace)",
+"hide": 0,
+"includeAll": false,
+"label": "namespace",
+"multi": false,
+"name": "namespace",
+"options": [],
+"query": {
+"query": "label_values(kube_pod_info{namespace=~\"oss.+\"},namespace)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 1,
+"regex": "",
+"skipUrlSync": false,
+"sort": 0,
+"type": "query"
+},
+{
+"current": {
+"selected": false,
+"text": "pms20-calcr",
+"value": "pms20-calcr"
+},
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"definition": "label_values(jvm_gc_pause_seconds_count,service)",
+"hide": 0,
+"includeAll": false,
+"label": "Application",
+"multi": false,
+"name": "appname",
+"options": [],
+"query": {
+"query": "label_values(jvm_gc_pause_seconds_count,service)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 2,
+"regex": "",
+"skipUrlSync": false,
+"sort": 0,
+"tagValuesQuery": "",
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+},
+{
+"current": {
+"selected": false,
+"text": "oss-prd-pms20-pms20-calcr-846fb65f9c-bp67t",
+"value": "oss-prd-pms20-pms20-calcr-846fb65f9c-bp67t"
+},
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"definition": "label_values(jvm_gc_pause_seconds_count{service=\"$appname\",namespace=~\"$namespace\"},instance)",
+"hide": 0,
+"includeAll": false,
+"label": "Node",
+"multi": false,
+"name": "instance",
+"options": [],
+"query": {
+"query": "label_values(jvm_gc_pause_seconds_count{service=\"$appname\",namespace=~\"$namespace\"},instance)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 2,
+"regex": "",
+"skipUrlSync": false,
+"sort": 0,
+"tagValuesQuery": "",
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+},
+{
+"current": {
+"selected": false,
+"text": "pms20-calcr-846fb65f9c-bp67t",
+"value": "pms20-calcr-846fb65f9c-bp67t"
+},
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"definition": "label_values(jvm_gc_pause_seconds_count{service=\"$appname\",instance=\"$instance\"},pod)",
+"hide": 2,
+"includeAll": false,
+"label": "Pod",
+"multi": false,
+"name": "pod",
+"options": [],
+"query": {
+"query": "label_values(jvm_gc_pause_seconds_count{service=\"$appname\",instance=\"$instance\"},pod)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 2,
+"regex": "",
+"skipUrlSync": true,
+"sort": 0,
+"tagValuesQuery": "",
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+},
+{
+"allValue": ".+",
+"current": {
+"selected": true,
+"text": [
+"All"
+],
+"value": [
+"$__all"
+]
+},
+"datasource": {
+"type": "prometheus",
+"uid": "M_SgA5f4k"
+},
+"definition": "label_values(cache_size{service=\"$appname\",instance=\"$instance\"},name)",
+"hide": 0,
+"includeAll": true,
+"label": "Local Cache",
+"multi": true,
+"name": "localcache",
+"options": [],
+"query": {
+"query": "label_values(cache_size{service=\"$appname\",instance=\"$instance\"},name)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 2,
+"regex": "",
+"skipUrlSync": true,
+"sort": 1,
+"tagValuesQuery": "",
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+}
+]
+},
+"time": {
+"from": "now-1h",
+"to": "now"
+},
+"timepicker": {
+"refresh_intervals": [
+"5s",
+"10s",
+"30s",
+"1m",
+"5m",
+"15m",
+"30m",
+"1h",
+"2h",
+"1d"
+]
+},
+"timezone": "utc",
+"title": "legacy-app-metrics",
+"uid": "non-hboot-app",
+"version": 28,
+"weekStart": ""
+}

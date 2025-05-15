@@ -1,0 +1,3033 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "gnetId": 4701,
+  "graphTooltip": 1,
+  "id": 477,
+  "iteration": 1659086681383,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {
+        "2xx": "light-green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "dark-green",
+        "慢请求(>3s)": "super-light-red"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟接口访问量趋势",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 20,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 639,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看HTTP接口大盘",
+          "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_request_duration_seconds_count{app=\"$appname\",envtype=~\"$envtype\"}[1m]))",
+          "interval": "",
+          "legendFormat": "all",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_request_total{status=~\"2..\",app=\"$appname\",envtype=\"$envtype\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "2xx",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "5xx",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "4xx",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_request_total{status=~\"3..\",app=\"$appname\",envtype=\"$envtype\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "3xx",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(http_server_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\"}[1m])) by (app) - sum(increase(http_server_request_duration_seconds_bucket{le=\"3.0\",app=\"$appname\",envtype=\"$envtype\"}[1m])) by (app)) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "慢请求(>3s)",
+          "refId": "F"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "总体访问情况",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟接口的请求量趋势",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 640,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看单个HTTP接口的统计",
+          "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request)",
+          "interval": "",
+          "legendFormat": "{{request}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "请求量(By Api)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟接口的请求量",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 12,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 641,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看单个HTTP接口的统计",
+          "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (instance) ",
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "请求量(By ServerIP)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟接口4xx+5xx的数量",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 642,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看单个接口的耗时/状态码统计",
+          "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(http_server_request_total{status=~\"4..|5..\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request))  > 0",
+          "interval": "",
+          "legendFormat": "{{request}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "fail数量(By Api)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟接口4xx+5xx的数量",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 12,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 645,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看单个接口的耗时/状态码统计",
+          "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(http_server_request_total{status=~\"4..|5..\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (instance))  > 0",
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "fail数量(By ServerIp)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟接口平均耗时",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 644,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看单个接口的耗时统计",
+          "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "( sum(increase(http_server_request_duration_seconds_sum{app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request)\n/\nsum(increase(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request) ) ",
+          "interval": "",
+          "legendFormat": "{{request}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "平均耗时(By Api)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟API业务码的数量",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 12,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 646,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看HTTP接口大盘",
+          "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_errorcode_total{app=\"$appname\",envtype=\"$envtype\"}[1m])) by (code)",
+          "interval": "",
+          "legendFormat": "{{code}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "API业务码(By Code)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟慢请求的数量",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "hiddenSeries": false,
+      "id": 643,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看慢接口统计",
+          "url": "/d/javahs/http-slow-api?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(http_server_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request) - \nsum(increase(http_server_request_duration_seconds_bucket{le=\"3.0\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request)) > 0",
+          "interval": "",
+          "legendFormat": "{{request}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "3秒以上慢请求(By Api)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟慢请求数量的趋势",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 12,
+        "y": 32
+      },
+      "hiddenSeries": false,
+      "id": 647,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看慢接口统计",
+          "url": "/d/javahs/http-slow-api?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(http_server_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (instance) - \nsum(increase(http_server_request_duration_seconds_bucket{le=\"3.0\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (instance))",
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "3秒以上慢请求(By ServerIp)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟Exception的数量",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 40
+      },
+      "hiddenSeries": false,
+      "id": 648,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_exception_total{app=\"$appname\",envtype=\"$envtype\"}[1m])) by (class)",
+          "interval": "",
+          "legendFormat": "{{request}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "API Exception ( by Class)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "3xx": "blue",
+        "4xx": "yellow",
+        "5xx": "red",
+        "all": "purple",
+        "慢请求(>3s)": "light-purple"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "最近一分钟Exception的数量",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 12,
+        "y": 40
+      },
+      "hiddenSeries": false,
+      "id": 649,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_exception_total{app=\"$appname\",envtype=\"$envtype\"}[1m])) by (instance)",
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "API Exception ( by ServerIp)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:176",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:177",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": true,
+      "datasource": "infra-prometheus",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      },
+      "id": 623,
+      "panels": [
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "none",
+          "gridPos": {
+            "h": 9,
+            "w": 19,
+            "x": 0,
+            "y": 49
+          },
+          "id": 633,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "percentageDecimals": 2,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [
+            {
+              "title": "查看单个HTTP接口的统计",
+              "url": "/d/jvm-job-http/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+            }
+          ],
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "pluginVersion": "7.5.6",
+          "repeatDirection": "v",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": false,
+              "expr": "",
+              "format": "time_series",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "",
+              "refId": "B"
+            }
+          ],
+          "title": "TODO",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        }
+      ],
+      "title": "API数据明细",
+      "type": "row"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "prod",
+          "value": "prod"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "部署环境",
+        "multi": false,
+        "name": "envtype",
+        "options": [],
+        "query": {
+          "query": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "htone-sgapi",
+          "value": "htone-sgapi"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "应用 ( 支持sug )",
+        "multi": false,
+        "name": "appname",
+        "options": [],
+        "query": {
+          "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"},request)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "HTTP接口",
+        "multi": true,
+        "name": "api",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "POST /annualBill/info",
+            "value": "POST /annualBill/info"
+          },
+          {
+            "selected": false,
+            "text": "POST /Approval/getApprovedCount",
+            "value": "POST /Approval/getApprovedCount"
+          },
+          {
+            "selected": false,
+            "text": "POST /Approval/getApprovedOrderInfo",
+            "value": "POST /Approval/getApprovedOrderInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /Approval/getApprovedOrderList",
+            "value": "POST /Approval/getApprovedOrderList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Approval/pushApprovedMessage",
+            "value": "POST /Approval/pushApprovedMessage"
+          },
+          {
+            "selected": false,
+            "text": "POST /Approval/saveApprovedOrder",
+            "value": "POST /Approval/saveApprovedOrder"
+          },
+          {
+            "selected": false,
+            "text": "POST /Approval/updateMessageCard",
+            "value": "POST /Approval/updateMessageCard"
+          },
+          {
+            "selected": false,
+            "text": "POST /battle/getFlowCalendar",
+            "value": "POST /battle/getFlowCalendar"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /certificate/info",
+            "value": "OPTIONS /certificate/info"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /certificate/list",
+            "value": "OPTIONS /certificate/list"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/certificate/hotel/list",
+            "value": "OPTIONS /manage/certificate/hotel/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/certificate/hotel/list",
+            "value": "POST /manage/certificate/hotel/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /certificate/list",
+            "value": "POST /certificate/list"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /certificate/type/list",
+            "value": "OPTIONS /certificate/type/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /certificate/info",
+            "value": "POST /certificate/info"
+          },
+          {
+            "selected": false,
+            "text": "POST /certificate/type/list",
+            "value": "POST /certificate/type/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /cleanRating/cleanInfoDetail",
+            "value": "POST /cleanRating/cleanInfoDetail"
+          },
+          {
+            "selected": false,
+            "text": "POST /cleanRating/getHotelMonthRatingInfos",
+            "value": "POST /cleanRating/getHotelMonthRatingInfos"
+          },
+          {
+            "selected": false,
+            "text": "POST /cleanRating/getLoginRole",
+            "value": "POST /cleanRating/getLoginRole"
+          },
+          {
+            "selected": false,
+            "text": "POST /cleanRating/getAuditCleanInfo",
+            "value": "POST /cleanRating/getAuditCleanInfo"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /search/hotel/byName",
+            "value": "OPTIONS /search/hotel/byName"
+          },
+          {
+            "selected": false,
+            "text": "POST /common/getCompanyBasicInfo",
+            "value": "POST /common/getCompanyBasicInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /common/getUserSecretKey",
+            "value": "POST /common/getUserSecretKey"
+          },
+          {
+            "selected": false,
+            "text": "POST /common/queryHtoneMessageId",
+            "value": "POST /common/queryHtoneMessageId"
+          },
+          {
+            "selected": false,
+            "text": "POST /common/saveDeviceLog",
+            "value": "POST /common/saveDeviceLog"
+          },
+          {
+            "selected": false,
+            "text": "POST /common/type/list",
+            "value": "POST /common/type/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /common/white/list",
+            "value": "POST /common/white/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /search/hotel/byName",
+            "value": "POST /search/hotel/byName"
+          },
+          {
+            "selected": false,
+            "text": "POST /staff/cardPush",
+            "value": "POST /staff/cardPush"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /common/getBusinessList",
+            "value": "OPTIONS /common/getBusinessList"
+          },
+          {
+            "selected": false,
+            "text": "POST /common/getBusinessList",
+            "value": "POST /common/getBusinessList"
+          },
+          {
+            "selected": false,
+            "text": "POST /daily/getSignAddress",
+            "value": "POST /daily/getSignAddress"
+          },
+          {
+            "selected": false,
+            "text": "POST /daily/getSignCount",
+            "value": "POST /daily/getSignCount"
+          },
+          {
+            "selected": false,
+            "text": "POST /daily/getSignInStatistics",
+            "value": "POST /daily/getSignInStatistics"
+          },
+          {
+            "selected": false,
+            "text": "POST /daily/saveSign",
+            "value": "POST /daily/saveSign"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/addFeiShuGroupUser",
+            "value": "POST /feishu/addFeiShuGroupUser"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/authentication",
+            "value": "POST /feishu/authentication"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/deleteFeiShuGroupUser",
+            "value": "POST /feishu/deleteFeiShuGroupUser"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/getFeiShuGroupUserInfo",
+            "value": "POST /feishu/getFeiShuGroupUserInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/getUserInfoByFeiShuId",
+            "value": "POST /feishu/getUserInfoByFeiShuId"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/queryApplicationIdByUrl",
+            "value": "POST /feishu/queryApplicationIdByUrl"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/queryFileNodeToken",
+            "value": "POST /feishu/queryFileNodeToken"
+          },
+          {
+            "selected": false,
+            "text": "POST /feishu/upLoadFile",
+            "value": "POST /feishu/upLoadFile"
+          },
+          {
+            "selected": false,
+            "text": "POST /staff/fine/queryQuestionList",
+            "value": "POST /staff/fine/queryQuestionList"
+          },
+          {
+            "selected": false,
+            "text": "POST /staff/fine/queryStaffAnswerChance",
+            "value": "POST /staff/fine/queryStaffAnswerChance"
+          },
+          {
+            "selected": false,
+            "text": "POST /staff/fine/saveAnswerList",
+            "value": "POST /staff/fine/saveAnswerList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/GetHotelMonthStoryList",
+            "value": "POST /gla/GetHotelMonthStoryList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/GetMonthStoryList",
+            "value": "POST /gla/GetMonthStoryList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/SaveVote",
+            "value": "POST /gla/SaveVote"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getCityProperList",
+            "value": "POST /gla/getCityProperList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getGlaStoryList",
+            "value": "POST /gla/getGlaStoryList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getMonthEvaluation",
+            "value": "POST /gla/getMonthEvaluation"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getMonthPersonalList",
+            "value": "POST /gla/getMonthPersonalList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getProperBrandList",
+            "value": "POST /gla/getProperBrandList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getQuarterList",
+            "value": "POST /gla/getQuarterList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getStoryInfo",
+            "value": "POST /gla/getStoryInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getUserHotelList",
+            "value": "POST /gla/getUserHotelList"
+          },
+          {
+            "selected": false,
+            "text": "POST /gla/getYearQuarterSelectList",
+            "value": "POST /gla/getYearQuarterSelectList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/getHonorBasicInfo",
+            "value": "POST /Honor/getHonorBasicInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/getHonorMenu",
+            "value": "POST /Honor/getHonorMenu"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/getHonorRankList",
+            "value": "POST /Honor/getHonorRankList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/honorwallList",
+            "value": "POST /Honor/honorwallList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryBadgeHistoryList",
+            "value": "POST /Honor/queryBadgeHistoryList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryHonorLink",
+            "value": "POST /Honor/queryHonorLink"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryHonorPersonRelation",
+            "value": "POST /Honor/queryHonorPersonRelation"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryHonorQuarterScoreList",
+            "value": "POST /Honor/queryHonorQuarterScoreList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryUserChance",
+            "value": "POST /Honor/queryUserChance"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryUserHonorPower",
+            "value": "POST /Honor/queryUserHonorPower"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryUserHonorPowerInfoList",
+            "value": "POST /Honor/queryUserHonorPowerInfoList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryUserMonthHonorList",
+            "value": "POST /Honor/queryUserMonthHonorList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryUserQuarterHonorList",
+            "value": "POST /Honor/queryUserQuarterHonorList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/queryUsersHonorInfoByMonth",
+            "value": "POST /Honor/queryUsersHonorInfoByMonth"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/saveHonorInfo",
+            "value": "POST /Honor/saveHonorInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/saveHonorLink",
+            "value": "POST /Honor/saveHonorLink"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Honor/honorwallList",
+            "value": "OPTIONS /Honor/honorwallList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/honorwallrecordList",
+            "value": "POST /Honor/honorwallrecordList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Honor/honorchanceList",
+            "value": "POST /Honor/honorchanceList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Honor/honorchanceList",
+            "value": "OPTIONS /Honor/honorchanceList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Honor/honorwallrecordList",
+            "value": "OPTIONS /Honor/honorwallrecordList"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspApi/GetMyRoad",
+            "value": "POST /HspApi/GetMyRoad"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspApi/getBreakOutGameForHtone",
+            "value": "POST /HspApi/getBreakOutGameForHtone"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspApi/getChallengeGameForHtone",
+            "value": "POST /HspApi/getChallengeGameForHtone"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspApi/getPkDataByAdaccount",
+            "value": "POST /HspApi/getPkDataByAdaccount"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspApi/getRankDataByAdaccount",
+            "value": "POST /HspApi/getRankDataByAdaccount"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspMyRoad/getMyRoadData",
+            "value": "POST /HspMyRoad/getMyRoadData"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspMyRoad/getRoadRankData",
+            "value": "POST /HspMyRoad/getRoadRankData"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspMyRoad/getVistorCount",
+            "value": "POST /HspMyRoad/getVistorCount"
+          },
+          {
+            "selected": false,
+            "text": "POST /HspMyRoad/saveVistor",
+            "value": "POST /HspMyRoad/saveVistor"
+          },
+          {
+            "selected": false,
+            "text": "POST /hspRank/getAllUserRank",
+            "value": "POST /hspRank/getAllUserRank"
+          },
+          {
+            "selected": false,
+            "text": "POST /hspRank/getBaseData",
+            "value": "POST /hspRank/getBaseData"
+          },
+          {
+            "selected": false,
+            "text": "POST /hspRank/getHeroData",
+            "value": "POST /hspRank/getHeroData"
+          },
+          {
+            "selected": false,
+            "text": "POST /hspRank/getOtherRank",
+            "value": "POST /hspRank/getOtherRank"
+          },
+          {
+            "selected": false,
+            "text": "POST /hxm/userGroup/manager",
+            "value": "POST /hxm/userGroup/manager"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectItem/getInspectTypeList",
+            "value": "OPTIONS /inspectItem/getInspectTypeList"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectItem/getInspectTypeList",
+            "value": "POST /inspectItem/getInspectTypeList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectItem/getInspectItems",
+            "value": "OPTIONS /inspectItem/getInspectItems"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectItem/getInspectTypeCodeList",
+            "value": "POST /inspectItem/getInspectTypeCodeList"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectItem/getInspectItems",
+            "value": "POST /inspectItem/getInspectItems"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectItem/getInspectTypeCodeList",
+            "value": "OPTIONS /inspectItem/getInspectTypeCodeList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPlan/addInspectPlan",
+            "value": "OPTIONS /inspectPlan/addInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPlan/editInspectPlan",
+            "value": "OPTIONS /inspectPlan/editInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPlan/getInspectPlan",
+            "value": "OPTIONS /inspectPlan/getInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPlan/queryInspectPlan",
+            "value": "OPTIONS /inspectPlan/queryInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPlan/removeInspectPlan",
+            "value": "OPTIONS /inspectPlan/removeInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPlan/addInspectPlan",
+            "value": "POST /inspectPlan/addInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPlan/editInspectPlan",
+            "value": "POST /inspectPlan/editInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPlan/getInspectPlan",
+            "value": "POST /inspectPlan/getInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPlan/queryInspectPlan",
+            "value": "POST /inspectPlan/queryInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPlan/removeInspectPlan",
+            "value": "POST /inspectPlan/removeInspectPlan"
+          },
+          {
+            "selected": false,
+            "text": "GET /inspectPoint/getInspectPoint",
+            "value": "GET /inspectPoint/getInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "GET /inspectPoint/removeInspectPoint",
+            "value": "GET /inspectPoint/removeInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPoint/addInspectPoint",
+            "value": "OPTIONS /inspectPoint/addInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPoint/editInspectPoint",
+            "value": "OPTIONS /inspectPoint/editInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPoint/getInspectPoint",
+            "value": "OPTIONS /inspectPoint/getInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPoint/queryInspectPoint",
+            "value": "OPTIONS /inspectPoint/queryInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspectPoint/removeInspectPoint",
+            "value": "OPTIONS /inspectPoint/removeInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPoint/addInspectPoint",
+            "value": "POST /inspectPoint/addInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPoint/editInspectPoint",
+            "value": "POST /inspectPoint/editInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPoint/queryHotelPointErrorList",
+            "value": "POST /inspectPoint/queryHotelPointErrorList"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPoint/queryInspectPoint",
+            "value": "POST /inspectPoint/queryInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPoint/queryNfcErrorInspectPoint",
+            "value": "POST /inspectPoint/queryNfcErrorInspectPoint"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectPoint/updateInspectPointStatus",
+            "value": "POST /inspectPoint/updateInspectPointStatus"
+          },
+          {
+            "selected": false,
+            "text": "GET /inspect/common/exportGroupInspectReport",
+            "value": "GET /inspect/common/exportGroupInspectReport"
+          },
+          {
+            "selected": false,
+            "text": "GET /inspect/common/exportHotelReport",
+            "value": "GET /inspect/common/exportHotelReport"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspect/common/areaList",
+            "value": "OPTIONS /inspect/common/areaList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspect/common/hotelReport",
+            "value": "OPTIONS /inspect/common/hotelReport"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspect/common/weekList",
+            "value": "OPTIONS /inspect/common/weekList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspect/hotel/getEmployee",
+            "value": "OPTIONS /inspect/hotel/getEmployee"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspect/manageAuthCheck",
+            "value": "OPTIONS /inspect/manageAuthCheck"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspect/authCheck",
+            "value": "POST /inspect/authCheck"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspect/common/GroupReport",
+            "value": "POST /inspect/common/GroupReport"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspect/common/areaList",
+            "value": "POST /inspect/common/areaList"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspect/common/hotelReport",
+            "value": "POST /inspect/common/hotelReport"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspect/common/weekList",
+            "value": "POST /inspect/common/weekList"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspect/hotel/getEmployee",
+            "value": "POST /inspect/hotel/getEmployee"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspect/manageAuthCheck",
+            "value": "POST /inspect/manageAuthCheck"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectTask/getInspectTaskDetail",
+            "value": "POST /inspectTask/getInspectTaskDetail"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectTask/getInspectTaskItems",
+            "value": "POST /inspectTask/getInspectTaskItems"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectTask/getInspectTaskPoints",
+            "value": "POST /inspectTask/getInspectTaskPoints"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectTask/getInspectTasks",
+            "value": "POST /inspectTask/getInspectTasks"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectTask/saveInspectTaskItems",
+            "value": "POST /inspectTask/saveInspectTaskItems"
+          },
+          {
+            "selected": false,
+            "text": "POST /inspectTask/updateTaskStatus",
+            "value": "POST /inspectTask/updateTaskStatus"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /inspect/common/GroupReport",
+            "value": "OPTIONS /inspect/common/GroupReport"
+          },
+          {
+            "selected": false,
+            "text": "POST /mdm/getExchangeCode",
+            "value": "POST /mdm/getExchangeCode"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getApprovalTypeList",
+            "value": "OPTIONS /manage/getApprovalTypeList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getApproveFunctionRoleList",
+            "value": "OPTIONS /manage/getApproveFunctionRoleList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getFeishuAppList",
+            "value": "OPTIONS /manage/getFeishuAppList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/login/user",
+            "value": "OPTIONS /manage/login/user"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/queryMessageConfigList",
+            "value": "OPTIONS /manage/queryMessageConfigList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /user/menu/query",
+            "value": "OPTIONS /user/menu/query"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getCalenderListByDate",
+            "value": "POST /manage/getCalenderListByDate"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getFeishuAppList",
+            "value": "POST /manage/getFeishuAppList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getListbyCalenderOfCulture",
+            "value": "POST /manage/getListbyCalenderOfCulture"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getMsgTypeInfo",
+            "value": "POST /manage/getMsgTypeInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getMsgTypeInfoList",
+            "value": "POST /manage/getMsgTypeInfoList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/login/user",
+            "value": "POST /manage/login/user"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/queryMessageConfigList",
+            "value": "POST /manage/queryMessageConfigList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/saveMessageConfig",
+            "value": "POST /manage/saveMessageConfig"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/templateMessage/getList",
+            "value": "POST /manage/templateMessage/getList"
+          },
+          {
+            "selected": false,
+            "text": "POST /user/menu/query",
+            "value": "POST /user/menu/query"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getListbyCalenderOfCulture",
+            "value": "OPTIONS /manage/getListbyCalenderOfCulture"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getMsgTypeInfoList",
+            "value": "OPTIONS /manage/getMsgTypeInfoList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getiFeishuApp",
+            "value": "OPTIONS /manage/getiFeishuApp"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/saveMessageConfig",
+            "value": "OPTIONS /manage/saveMessageConfig"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/templateMessage/getList",
+            "value": "OPTIONS /manage/templateMessage/getList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getApprovalConfigList",
+            "value": "POST /manage/getApprovalConfigList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getiFeishuApp",
+            "value": "POST /manage/getiFeishuApp"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/app/info",
+            "value": "OPTIONS /manage/app/info"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/createFeishuApp",
+            "value": "OPTIONS /manage/createFeishuApp"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getApprovalConfigList",
+            "value": "OPTIONS /manage/getApprovalConfigList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/createFeishuApp",
+            "value": "POST /manage/createFeishuApp"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getApproveFunctionRoleList",
+            "value": "POST /manage/getApproveFunctionRoleList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/saveMethod",
+            "value": "POST /manage/saveMethod"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/app/info",
+            "value": "POST /manage/app/info"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getApprovalTypeList",
+            "value": "POST /manage/getApprovalTypeList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/saveApplicationAuth",
+            "value": "POST /manage/saveApplicationAuth"
+          },
+          {
+            "selected": false,
+            "text": "POST /newYear/battle/authCheck",
+            "value": "POST /newYear/battle/authCheck"
+          },
+          {
+            "selected": false,
+            "text": "POST /newYear/battle/basicInfo",
+            "value": "POST /newYear/battle/basicInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /newYear/battle/hotelData",
+            "value": "POST /newYear/battle/hotelData"
+          },
+          {
+            "selected": false,
+            "text": "POST /newYear/battle/selfHotelData",
+            "value": "POST /newYear/battle/selfHotelData"
+          },
+          {
+            "selected": false,
+            "text": "POST /newYear/battle/areaData",
+            "value": "POST /newYear/battle/areaData"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/getAbnormalCondition",
+            "value": "POST /plague/getAbnormalCondition"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/getEmployeeVaccination",
+            "value": "POST /plague/getEmployeeVaccination"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/getEmployeeVaccinationList",
+            "value": "POST /plague/getEmployeeVaccinationList"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/hotel/info",
+            "value": "POST /plague/hotel/info"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/hotel/info/save",
+            "value": "POST /plague/hotel/info/save"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/hotel/report",
+            "value": "POST /plague/hotel/report"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/hotel/report/save",
+            "value": "POST /plague/hotel/report/save"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/hotelInfoByHotelNo",
+            "value": "POST /plague/hotelInfoByHotelNo"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/hotelReportByHotelNo",
+            "value": "POST /plague/hotelReportByHotelNo"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/selectByAdHotel",
+            "value": "POST /plague/selectByAdHotel"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/selectByHotelId",
+            "value": "POST /plague/selectByHotelId"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/selectById",
+            "value": "POST /plague/selectById"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/selectListByAdHotel",
+            "value": "POST /plague/selectListByAdHotel"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/submitAbnormalCondition",
+            "value": "POST /plague/submitAbnormalCondition"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/submitEmployeeVaccination",
+            "value": "POST /plague/submitEmployeeVaccination"
+          },
+          {
+            "selected": false,
+            "text": "POST /plague/submitPlagueReport",
+            "value": "POST /plague/submitPlagueReport"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/savePushQuestionConfig",
+            "value": "OPTIONS /manage/savePushQuestionConfig"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/getPushQuestionConfigList",
+            "value": "POST /manage/getPushQuestionConfigList"
+          },
+          {
+            "selected": false,
+            "text": "POST /pushQuestion/getEffectiveConfig",
+            "value": "POST /pushQuestion/getEffectiveConfig"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /manage/getPushQuestionConfigList",
+            "value": "OPTIONS /manage/getPushQuestionConfigList"
+          },
+          {
+            "selected": false,
+            "text": "POST /manage/savePushQuestionConfig",
+            "value": "POST /manage/savePushQuestionConfig"
+          },
+          {
+            "selected": false,
+            "text": "POST /qr/bindUserImage",
+            "value": "POST /qr/bindUserImage"
+          },
+          {
+            "selected": false,
+            "text": "POST /qr/createImage",
+            "value": "POST /qr/createImage"
+          },
+          {
+            "selected": false,
+            "text": "POST /qr/loginScan",
+            "value": "POST /qr/loginScan"
+          },
+          {
+            "selected": false,
+            "text": "POST /qr/operateImageByFeiShu",
+            "value": "POST /qr/operateImageByFeiShu"
+          },
+          {
+            "selected": false,
+            "text": "GET /saml/metadata",
+            "value": "GET /saml/metadata"
+          },
+          {
+            "selected": false,
+            "text": "GET /sso/login",
+            "value": "GET /sso/login"
+          },
+          {
+            "selected": false,
+            "text": "GET /sso/logout",
+            "value": "GET /sso/logout"
+          },
+          {
+            "selected": false,
+            "text": "GET /sso/logoutprocess",
+            "value": "GET /sso/logoutprocess"
+          },
+          {
+            "selected": false,
+            "text": "POST /sso/loginprocess",
+            "value": "POST /sso/loginprocess"
+          },
+          {
+            "selected": false,
+            "text": "POST /safemanagersign/sign/brandceo",
+            "value": "POST /safemanagersign/sign/brandceo"
+          },
+          {
+            "selected": false,
+            "text": "POST /safemanagersign/sign/info",
+            "value": "POST /safemanagersign/sign/info"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /safe/getSafeAccidentTypeTree",
+            "value": "OPTIONS /safe/getSafeAccidentTypeTree"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/accidentCase",
+            "value": "POST /safe/accidentCase"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/accidentType",
+            "value": "POST /safe/accidentType"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/getSafeAccidentReportListPage",
+            "value": "POST /safe/getSafeAccidentReportListPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/info",
+            "value": "POST /safe/info"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/recordList",
+            "value": "POST /safe/recordList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /safe/getSafeAccidentReportListPage",
+            "value": "OPTIONS /safe/getSafeAccidentReportListPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/getSafeAccidentConfigListPage",
+            "value": "POST /safe/getSafeAccidentConfigListPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/getSafeAccidentTypeTree",
+            "value": "POST /safe/getSafeAccidentTypeTree"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/save",
+            "value": "POST /safe/save"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /safe/getSafeAccidentConfigListPage",
+            "value": "OPTIONS /safe/getSafeAccidentConfigListPage"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /safe/getSafeAccidentHandlerListPage",
+            "value": "OPTIONS /safe/getSafeAccidentHandlerListPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /safe/getSafeAccidentHandlerListPage",
+            "value": "POST /safe/getSafeAccidentHandlerListPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /SenseWorth/querySenseWorthBasicInfo",
+            "value": "POST /SenseWorth/querySenseWorthBasicInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /Spread/queryAdminTaskList",
+            "value": "POST /Spread/queryAdminTaskList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Spread/queryAdminTaskList",
+            "value": "OPTIONS /Spread/queryAdminTaskList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /strategy/basic/config",
+            "value": "OPTIONS /strategy/basic/config"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /strategy/programme/list",
+            "value": "OPTIONS /strategy/programme/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /strategy/programme/list",
+            "value": "POST /strategy/programme/list"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /strategy/programme/relation",
+            "value": "OPTIONS /strategy/programme/relation"
+          },
+          {
+            "selected": false,
+            "text": "POST /strategy/basic/config",
+            "value": "POST /strategy/basic/config"
+          },
+          {
+            "selected": false,
+            "text": "POST /strategy/emc/list",
+            "value": "POST /strategy/emc/list"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /strategy/emc/list",
+            "value": "OPTIONS /strategy/emc/list"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /strategy/plan/list",
+            "value": "OPTIONS /strategy/plan/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /strategy/plan/list",
+            "value": "POST /strategy/plan/list"
+          },
+          {
+            "selected": false,
+            "text": "POST /strategy/programme/relation",
+            "value": "POST /strategy/programme/relation"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /taskCenter/getTaskBatch",
+            "value": "OPTIONS /taskCenter/getTaskBatch"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /taskCenter/planQuery",
+            "value": "OPTIONS /taskCenter/planQuery"
+          },
+          {
+            "selected": false,
+            "text": "POST /taskCenter/getTaskBatch",
+            "value": "POST /taskCenter/getTaskBatch"
+          },
+          {
+            "selected": false,
+            "text": "POST /taskCenter/planQuery",
+            "value": "POST /taskCenter/planQuery"
+          },
+          {
+            "selected": false,
+            "text": "POST /thumbUp/info",
+            "value": "POST /thumbUp/info"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjbz/getPlatformList",
+            "value": "POST /yjbz/getPlatformList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjbz/getWindowByIsDelete",
+            "value": "POST /yjbz/getWindowByIsDelete"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjbz/getPlatformByPage",
+            "value": "OPTIONS /yjbz/getPlatformByPage"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjbz/getWindowByPage",
+            "value": "OPTIONS /yjbz/getWindowByPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjbz/getWindowByPage",
+            "value": "POST /yjbz/getWindowByPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjbz/getPlatformByPage",
+            "value": "POST /yjbz/getPlatformByPage"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Yjdd/GetYjddBasicInfo",
+            "value": "OPTIONS /Yjdd/GetYjddBasicInfo"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Yjdd/queryBlackListPageList",
+            "value": "OPTIONS /Yjdd/queryBlackListPageList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Yjdd/queryServiceBasePageList",
+            "value": "OPTIONS /Yjdd/queryServiceBasePageList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Yjdd/queryServiceDetailPageList",
+            "value": "OPTIONS /Yjdd/queryServiceDetailPageList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getCallMessageByPage",
+            "value": "OPTIONS /yjdd/getCallMessageByPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /Yjdd/GetYjddBasicInfo",
+            "value": "POST /Yjdd/GetYjddBasicInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /Yjdd/GetYjddBasicInfoNew",
+            "value": "POST /Yjdd/GetYjddBasicInfoNew"
+          },
+          {
+            "selected": false,
+            "text": "POST /Yjdd/queryBlackListPageList",
+            "value": "POST /Yjdd/queryBlackListPageList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Yjdd/queryManagementGroupPageList",
+            "value": "POST /Yjdd/queryManagementGroupPageList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Yjdd/queryServiceBasePageList",
+            "value": "POST /Yjdd/queryServiceBasePageList"
+          },
+          {
+            "selected": false,
+            "text": "POST /Yjdd/queryServiceRulesPageList",
+            "value": "POST /Yjdd/queryServiceRulesPageList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getBrandList",
+            "value": "POST /yjdd/getBrandList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getBusinessInfo",
+            "value": "POST /yjdd/getBusinessInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getCallMessageByPage",
+            "value": "POST /yjdd/getCallMessageByPage"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getManagerAreaList",
+            "value": "POST /yjdd/getManagerAreaList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getOrderTypeList",
+            "value": "POST /yjdd/getOrderTypeList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getWhiteListInfoByAdAccount",
+            "value": "POST /yjdd/getWhiteListInfoByAdAccount"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Yjdd/queryManagementGroupPageList",
+            "value": "OPTIONS /Yjdd/queryManagementGroupPageList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /Yjdd/queryServiceRulesPageList",
+            "value": "OPTIONS /Yjdd/queryServiceRulesPageList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getBrandList",
+            "value": "OPTIONS /yjdd/getBrandList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getManagerAreaList",
+            "value": "OPTIONS /yjdd/getManagerAreaList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getOrderList",
+            "value": "OPTIONS /yjdd/getOrderList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getReportStatistics",
+            "value": "OPTIONS /yjdd/getReportStatistics"
+          },
+          {
+            "selected": false,
+            "text": "POST /Yjdd/queryServiceDetailPageList",
+            "value": "POST /Yjdd/queryServiceDetailPageList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getCallChannelList",
+            "value": "POST /yjdd/getCallChannelList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getDetailOrderList",
+            "value": "POST /yjdd/getDetailOrderList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getOrderList",
+            "value": "POST /yjdd/getOrderList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getReportStatistics",
+            "value": "POST /yjdd/getReportStatistics"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getBusinessInfo",
+            "value": "OPTIONS /yjdd/getBusinessInfo"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getCallChannelList",
+            "value": "OPTIONS /yjdd/getCallChannelList"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getDetailOrderList",
+            "value": "OPTIONS /yjdd/getDetailOrderList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getFifteenReport",
+            "value": "POST /yjdd/getFifteenReport"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getFifteenReport",
+            "value": "OPTIONS /yjdd/getFifteenReport"
+          },
+          {
+            "selected": false,
+            "text": "OPTIONS /yjdd/getOrderTypeList",
+            "value": "OPTIONS /yjdd/getOrderTypeList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/allQuantities",
+            "value": "POST /yjdd/allQuantities"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/examineServiceOrder",
+            "value": "POST /yjdd/examineServiceOrder"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getOrderStatusById",
+            "value": "POST /yjdd/getOrderStatusById"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/getServiceHandleInfo",
+            "value": "POST /yjdd/getServiceHandleInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/lineChart",
+            "value": "POST /yjdd/lineChart"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/messageNotification",
+            "value": "POST /yjdd/messageNotification"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/pendingReviewList",
+            "value": "POST /yjdd/pendingReviewList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/queryPositionRole",
+            "value": "POST /yjdd/queryPositionRole"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/queryServiceHonorList",
+            "value": "POST /yjdd/queryServiceHonorList"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/queryServiceOrderInfo",
+            "value": "POST /yjdd/queryServiceOrderInfo"
+          },
+          {
+            "selected": false,
+            "text": "POST /yjdd/saveServiceInfo",
+            "value": "POST /yjdd/saveServiceInfo"
+          },
+          {
+            "selected": false,
+            "text": "GET /yzdd/getDivisionBrandRelation",
+            "value": "GET /yzdd/getDivisionBrandRelation"
+          },
+          {
+            "selected": false,
+            "text": "POST /yzdd/rankingDetail",
+            "value": "POST /yzdd/rankingDetail"
+          },
+          {
+            "selected": false,
+            "text": "/**",
+            "value": "/**"
+          }
+        ],
+        "query": {
+          "query": "label_values(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\"},request)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "3m",
+      "5m",
+      "10m",
+      "15m",
+      "30m"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "http-api-index",
+  "uid": "http",
+  "version": 7
+}

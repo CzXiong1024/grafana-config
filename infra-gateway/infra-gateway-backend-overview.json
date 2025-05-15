@@ -1,0 +1,4141 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Dashboard for Micrometer instrumented applications (Java, Spring Boot)",
+  "editable": true,
+  "gnetId": 4701,
+  "graphTooltip": 1,
+  "id": 368,
+  "iteration": 1660818343054,
+  "links": [],
+  "panels": [
+    {
+      "cacheTimeout": null,
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "点击查看接口SLA统计",
+              "url": "/d/javahd/http-api-sla?${__url_time_range}&var-backend=${backend}&var-envtype=${envtype}&var-appname=${appname}"
+            }
+          ],
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "0 reqps",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 2000
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 5000
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 550,
+      "interval": "30s",
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "点击查看接口指标",
+          "url": "/d/javahd/http-api-sla?${__url_time_range}&var-backend=${backend}&var-envtype=${envtype}&var-appname=${appname}"
+        }
+      ],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 21
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\"}[2m]))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 14400
+        }
+      ],
+      "title": "HTTP 接口",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "aliasColors": {
+        "2xx": "green",
+        "4xx": "orange",
+        "5xx": "red",
+        "All": "#629e51",
+        "Error (httpstatus >=400)": "#e24d42",
+        "Error (httpstatus >=500)": "#bf1b00",
+        "all": "blue",
+        "all requests": "#508642"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "decimals": 3,
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {
+        "leftLogBase": 1,
+        "leftMax": null,
+        "leftMin": null,
+        "rightLogBase": 1,
+        "rightMax": null,
+        "rightMin": null
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 17,
+        "x": 4,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 548,
+      "interval": "30s",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_request_total{status=~\"2..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[2m])) OR on() vector(0)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "2xx",
+          "metric": "",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[2m])) OR on() vector(0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "5xx",
+          "metric": "",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[2m])) OR on() vector(0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "4xx",
+          "metric": "",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_request_total{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[2m])) by (app_cluster)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{app_cluster}}",
+          "metric": "",
+          "refId": "E",
+          "step": 2400
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "HTTP QPS",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "x-axis": true,
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "y-axis": true,
+      "y_formats": [
+        "mbytes",
+        "short"
+      ],
+      "yaxes": [
+        {
+          "$$hashKey": "object:293",
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:294",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1e-7
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 0.4
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 3
+      },
+      "id": 585,
+      "interval": "30s",
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 21
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[1m])) / sum(increase(http_server_request_total{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[1m]))) >= 0 OR on() vector(0)",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 14400
+        }
+      ],
+      "title": "近一分钟5xx占比",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 12000000
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 18000000
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 6
+      },
+      "id": 551,
+      "interval": "30s",
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 21
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_request_bytes_sum{app=\"$appname\",envtype=\"$envtype\",compName=~\"$backend\"}[3m])) OR on() vector(0)",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 14400
+        }
+      ],
+      "title": "Bytes Received",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "decimals": null,
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {
+        "leftLogBase": 1,
+        "leftMax": null,
+        "leftMin": null,
+        "rightLogBase": 1,
+        "rightMax": null,
+        "rightMin": null
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 17,
+        "x": 4,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 549,
+      "interval": "30s",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(http_server_errorcode_total{app=\"$appname\",envtype=\"$envtype\",server=\"$backend\"}[1m])) by (code)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{code}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "近一分钟全局错误码",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "x-axis": true,
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "y-axis": true,
+      "y_formats": [
+        "mbytes",
+        "short"
+      ],
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 12000000
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 18000000
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 9
+      },
+      "id": 552,
+      "interval": "30s",
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 21
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_response_bytes_sum{app=\"$appname\",envtype=\"$envtype\",compName=~\"$backend\"}[3m])) OR on() vector(0)",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 14400
+        }
+      ],
+      "title": "Bytes Sent",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 600,
+      "panels": [
+        {
+          "aliasColors": {
+            "2xx": "#508642",
+            "4xx": "#f9934e",
+            "5xx": "#890f02",
+            "All": "#629e51",
+            "Error (httpstatus >=400)": "#e24d42",
+            "Error (httpstatus >=500)": "#bf1b00",
+            "all": "#447ebc",
+            "all requests": "#508642"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 21,
+            "x": 0,
+            "y": 13
+          },
+          "hiddenSeries": false,
+          "id": 678,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(irate(oauthclient_http_request_total{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[2m])) by (client)  > 0",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{client}}",
+              "metric": "",
+              "refId": "B",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "调用方QPS",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "y-axis": true,
+          "y_formats": [
+            "mbytes",
+            "short"
+          ],
+          "yaxes": [
+            {
+              "$$hashKey": "object:4732",
+              "decimals": null,
+              "format": "reqps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4733",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "点击查看网关客户端统计",
+                  "url": "/d/infragc/gateway-client-overview?${__url_time_range}&var-gwclient=${gwclient}"
+                }
+              ],
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
+                  },
+                  {
+                    "color": "rgba(237, 129, 40, 0.89)",
+                    "value": 12000000
+                  },
+                  {
+                    "color": "rgba(245, 54, 54, 0.9)",
+                    "value": 18000000
+                  }
+                ]
+              },
+              "unit": "reqps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 12,
+            "x": 0,
+            "y": 19
+          },
+          "id": 602,
+          "interval": "30s",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "点击查看客户端统计",
+              "url": "/d/infragc/gateway-client-overview?${__url_time_range}&var-gwclient=${gwclient}"
+            }
+          ],
+          "maxDataPoints": 100,
+          "maxPerRow": 6,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {
+              "valueSize": 21
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.4",
+          "repeat": "gwclient",
+          "repeatDirection": "h",
+          "scopedVars": {
+            "gwclient": {
+              "selected": false,
+              "text": "ehr_paysheet",
+              "value": "ehr_paysheet"
+            },
+            "oauthClient": {
+              "selected": false,
+              "text": "wifi_portal",
+              "value": "wifi_portal"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(irate(oauthclient_http_request_total{client=~\"$gwclient\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\"}[2m])) OR on() vector(0)",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "metric": "",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "title": "$gwclient",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "点击查看网关客户端统计",
+                  "url": "/d/infragc/gateway-client-overview?${__url_time_range}&var-gwclient=${gwclient}"
+                }
+              ],
+              "mappings": [
+                {
+                  "id": 0,
+                  "op": "=",
+                  "text": "N/A",
+                  "type": 1,
+                  "value": "null"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "rgba(50, 172, 45, 0.97)",
+                    "value": null
+                  },
+                  {
+                    "color": "rgba(237, 129, 40, 0.89)",
+                    "value": 12000000
+                  },
+                  {
+                    "color": "rgba(245, 54, 54, 0.9)",
+                    "value": 18000000
+                  }
+                ]
+              },
+              "unit": "reqps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 12,
+            "x": 12,
+            "y": 19
+          },
+          "id": 1585,
+          "interval": "30s",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "点击查看客户端统计",
+              "url": "/d/infragc/gateway-client-overview?${__url_time_range}&var-gwclient=${gwclient}"
+            }
+          ],
+          "maxDataPoints": 100,
+          "maxPerRow": 6,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {
+              "valueSize": 21
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.4",
+          "repeatDirection": "h",
+          "repeatIteration": 1660818343054,
+          "repeatPanelId": 602,
+          "scopedVars": {
+            "gwclient": {
+              "selected": false,
+              "text": "ehr_salaryweb",
+              "value": "ehr_salaryweb"
+            },
+            "oauthClient": {
+              "selected": false,
+              "text": "wifi_portal",
+              "value": "wifi_portal"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(irate(oauthclient_http_request_total{client=~\"$gwclient\",app=\"$appname\",envtype=\"$envtype\",group=~\"$backend\"}[2m])) OR on() vector(0)",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "metric": "",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "title": "$gwclient",
+          "type": "stat"
+        }
+      ],
+      "title": "客户端调用统计",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 1130,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 11,
+            "w": 19,
+            "x": 0,
+            "y": 14
+          },
+          "hiddenSeries": false,
+          "id": 1132,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": null,
+            "sort": "current",
+            "sortDesc": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": true,
+          "pluginVersion": "7.5.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "v",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "topk(20,(sum(increase(http_server_request_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[$__range])) by (request)) > 0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{request}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "所选时段内请求量TOP 20 接口",
+          "tooltip": {
+            "shared": false,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": false,
+            "values": [
+              "current"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4828",
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4829",
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "接口请求量Top20",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 1144,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 12,
+            "w": 19,
+            "x": 0,
+            "y": 15
+          },
+          "hiddenSeries": false,
+          "id": 1146,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": null,
+            "sort": "current",
+            "sortDesc": true,
+            "total": true,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": true,
+          "pluginVersion": "7.5.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "v",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "(sum(increase(http_server_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[$__range])) by (request) - \nsum(increase(http_server_request_duration_seconds_bucket{le=\"0.5\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[$__range])) by (request)) > 0",
+              "format": "time_series",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{request}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "所选时段内耗时大于500ms的接口 ( 按次数排行 ）",
+          "tooltip": {
+            "shared": false,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": false,
+            "values": [
+              "current"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4936",
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4937",
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "慢接口排行",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 1136,
+      "panels": [
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "short",
+          "gridPos": {
+            "h": 9,
+            "w": 19,
+            "x": 0,
+            "y": 16
+          },
+          "id": 1134,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "show": true,
+            "sideWidth": null,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "pluginVersion": "7.5.4",
+          "repeatDirection": "v",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(increase(http_server_request_total{status=~\"5..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[$__range])) by (request) > 0",
+              "format": "time_series",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{request}}",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "所选时段内接口5xx统计",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "short",
+          "gridPos": {
+            "h": 9,
+            "w": 19,
+            "x": 0,
+            "y": 25
+          },
+          "id": 1351,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "show": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "pluginVersion": "7.5.4",
+          "repeatDirection": "v",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(increase(http_server_request_total{status=~\"4..\",app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"}[$__range])) by (request) > 0",
+              "format": "time_series",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{request}}",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "所选时段内接口4xx统计",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        }
+      ],
+      "title": "接口 5xx / 4xx 排行",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 606,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 7,
+            "w": 19,
+            "x": 0,
+            "y": 17
+          },
+          "hiddenSeries": false,
+          "id": 624,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "repeat": "request",
+          "repeatDirection": "v",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "resilience4j_circuitbreaker_state{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"} == 1 or resilience4j_circuitbreaker_state{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"} == 4",
+              "format": "table",
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - {{name}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "断路器熔断开启(OPEN)的接口",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {
+                "reducers": []
+              }
+            }
+          ],
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:333",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:334",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 7,
+            "w": 19,
+            "x": 0,
+            "y": 24
+          },
+          "hiddenSeries": false,
+          "id": 1579,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "repeatDirection": "v",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "resilience4j_circuitbreaker_state{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"} == 2",
+              "format": "table",
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - {{name}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "断路器半开状态(HALF_OPEN)的接口",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {
+                "reducers": []
+              }
+            }
+          ],
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:333",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:334",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {
+            "2xx": "#508642",
+            "4xx": "#f9934e",
+            "5xx": "#890f02",
+            "All": "#629e51",
+            "Error (httpstatus >=400)": "#e24d42",
+            "Error (httpstatus >=500)": "#bf1b00",
+            "all": "#447ebc",
+            "all requests": "#508642"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 19,
+            "x": 0,
+            "y": 31
+          },
+          "hiddenSeries": false,
+          "id": 1578,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatDirection": "v",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "resilience4j_circuitbreaker_failure_rate{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"} > 0",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}}  - {{name}}",
+              "metric": "",
+              "refId": "D",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "断路器失败请求比例大于0的接口",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "y-axis": true,
+          "y_formats": [
+            "mbytes",
+            "short"
+          ],
+          "yaxes": [
+            {
+              "$$hashKey": "object:5327",
+              "decimals": null,
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": "100",
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:5328",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "接口熔断统计",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 1584,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "cacheTimeout": null,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "Bps"
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 19,
+            "x": 0,
+            "y": 18
+          },
+          "hiddenSeries": false,
+          "id": 1580,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(irate(http_server_request_bytes_sum{app=\"$appname\",envtype=\"$envtype\",server=~\"$backend\"}[3m])) OR on() vector(0)",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "Received Bytes",
+              "metric": "",
+              "refId": "A",
+              "step": 14400
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(irate(http_server_response_bytes_sum{app=\"$appname\",envtype=\"$envtype\",server=~\"$backend\"}[3m])) OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "Sent Bytes",
+              "metric": "",
+              "refId": "B",
+              "step": 14400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "HTTP IO",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:104",
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:105",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "HTTP接口IO统计",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 582,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 20,
+            "x": 0,
+            "y": 19
+          },
+          "hiddenSeries": false,
+          "id": 712,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "zuul_origin_concurrent_requests{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"} ",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}}",
+              "refId": "N"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "TCP连接并发数",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4371",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4372",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 20,
+            "x": 0,
+            "y": 25
+          },
+          "hiddenSeries": false,
+          "id": 593,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(increase(connectionpool_inactive_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "TCP链路 Inactive",
+              "refId": "N"
+            },
+            {
+              "expr": "sum(increase(connectionpool_idle_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "TCP链路 Idle",
+              "refId": "O"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(increase(connectionpool_error_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "TCP链路 Exception Caught",
+              "refId": "P"
+            },
+            {
+              "expr": "sum(increase(zuul_origin_rejected_requests_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "触发MaxConcurrentRequestExceeded的次数",
+              "refId": "Q"
+            },
+            {
+              "expr": "sum(increase(connectionpool_maxConnsPerHostExceeded_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "触发MaxConnectionPerHostExceeded的次数",
+              "refId": "M"
+            },
+            {
+              "expr": "sum(increase(connectionpool_request_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "向连接池获取TCP连接的次数",
+              "refId": "E"
+            },
+            {
+              "expr": "sum(increase(connectionpool_reuse_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "TCP连接复用的次数",
+              "refId": "G"
+            },
+            {
+              "expr": "sum(increase(connectionpool_create_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "新创建的TCP连接",
+              "refId": "F"
+            },
+            {
+              "expr": "sum(increase(connectionpool_create_success_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "成功创建的TCP连接",
+              "refId": "A"
+            },
+            {
+              "expr": "sum(increase(connectionpool_create_fail_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "创建失败的TCP连接",
+              "refId": "B"
+            },
+            {
+              "expr": "sum(connectionpool_inPool{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"})",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "当前尚在池里的TCP连接数",
+              "refId": "H"
+            },
+            {
+              "expr": "sum(connectionpool_inUse{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"})",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "当前池里已被占用的TCP连接数",
+              "refId": "I"
+            },
+            {
+              "expr": "sum(increase(connectionpool_fromPoolIsClosed_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "从池里Borrow时已Close的TCP连接",
+              "refId": "J"
+            },
+            {
+              "expr": "sum(increase(connectionpool_release_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "Release到池里的次数",
+              "refId": "L"
+            },
+            {
+              "expr": "sum(increase(connectionpool_alreadyClosed_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "Release到池里时TCP连接已Close的次数",
+              "refId": "K"
+            },
+            {
+              "expr": "sum(increase(connectionpool_close_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "已关闭的TCP连接",
+              "refId": "C"
+            },
+            {
+              "expr": "sum(increase(connectionpool_closeWrtBusyConnCounter_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}[1m]))",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "因尚未Write Ready但放回池中被关闭的TCP连接",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "近一分钟TCP连接池统计",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4463",
+              "decimals": 0,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4464",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "服务TCP连接池统计",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 1577,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 7,
+            "w": 21,
+            "x": 0,
+            "y": 21
+          },
+          "hiddenSeries": false,
+          "id": 625,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": false,
+            "avg": false,
+            "current": false,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": false,
+            "sortDesc": true,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": true,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00([0-3][0-F]|4[0-6])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "<=109us",
+              "refId": "C"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(4[7-D])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "262us",
+              "refId": "E"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T004E|T004F|T0050\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "524us",
+              "refId": "F"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T0051|T0052|T0053\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "786us",
+              "refId": "G"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T0054|T0055|T0056\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "1ms",
+              "refId": "H"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T0057|T0058|T0059\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "2.1ms",
+              "refId": "I"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(5[A-F])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "4.1ms",
+              "refId": "L"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T0060|T0061|T0062\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "8.3ms",
+              "refId": "M"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(6[3-F])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "55.9ms",
+              "refId": "S"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(7[0-F])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "715ms",
+              "refId": "W"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(8[0-3])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "1.073s",
+              "refId": "A"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(8[4-6])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "2.147s",
+              "refId": "B"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(8[7-9])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "3.221s",
+              "refId": "D"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00(8[A-C])\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "4.294s",
+              "refId": "J"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=\"T008D\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "5.726s",
+              "refId": "K"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=\"T008E\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "7.158s",
+              "refId": "N"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=\"T008F\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "8.589s",
+              "refId": "O"
+            },
+            {
+              "expr": "sum(increase(connectionpool_createTiming_total{app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\",percentile=~\"T00[9-F][0-F]\",statistic=\"percentile\"}[$__interval]))OR on() vector(0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": ">8.589s",
+              "refId": "X"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "所选时段内TCP创建耗时直方图",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "total"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4573",
+              "decimals": null,
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4574",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 21,
+            "x": 0,
+            "y": 28
+          },
+          "hiddenSeries": false,
+          "id": 1573,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "connectionpool_createTiming_seconds{quantile=\"0.95\",app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 95%的TCP创建耗时 ",
+              "refId": "D"
+            },
+            {
+              "expr": "connectionpool_createTiming_seconds{quantile=\"0.99\",app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 99%的TCP创建耗时 ",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "TCP创建耗时百分比 - 长尾请求",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4624",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4625",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 21,
+            "x": 0,
+            "y": 36
+          },
+          "hiddenSeries": false,
+          "id": 584,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "connectionpool_createTiming_seconds{quantile=\"0.25\",app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 25%的TCP创建耗时 ",
+              "refId": "N"
+            },
+            {
+              "expr": "connectionpool_createTiming_seconds{quantile=\"0.5\",app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 50%的TCP创建耗时 ",
+              "refId": "A"
+            },
+            {
+              "expr": "connectionpool_createTiming_seconds{quantile=\"0.75\",app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 75%的TCP创建耗时 ",
+              "refId": "B"
+            },
+            {
+              "expr": "connectionpool_createTiming_seconds{quantile=\"0.9\",app=\"$appname\",envtype=\"$envtype\",id=~\"$backend\"}",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 90%的TCP创建耗时 ",
+              "refId": "C"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "TCP创建耗时百分比",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4674",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4675",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "服务TCP连接创建耗时",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 592,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "从接收到客户端 Request Headers 到 Request 全部写入到后端Socket的耗时统计",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 17,
+            "x": 0,
+            "y": 21
+          },
+          "hiddenSeries": false,
+          "id": 583,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "service_passport_req_routelag_seconds{quantile=\"0.25\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "25%请求路由耗时 - {{instance}}",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_req_routelag_seconds{quantile=\"0.5\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "50%请求路由耗时 - {{instance}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_req_routelag_seconds{quantile=\"0.75\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "75%请求路由耗时 - {{instance}}",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_req_routelag_seconds{quantile=\"0.9\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "90%请求路由耗时 - {{instance}}",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_req_routelag_seconds{quantile=\"0.95\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "95%请求路由耗时 - {{instance}}",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_req_routelag_seconds{quantile=\"0.99\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "99%请求路由耗时 - {{instance}}",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "HttpReqest 转发耗时",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:644",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:645",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "从接收到后端的Response Headers 到  Response 全部写入客户端Socket的耗时统计",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 17,
+            "x": 0,
+            "y": 27
+          },
+          "hiddenSeries": false,
+          "id": 594,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "service_passport_resp_routelag_seconds{quantile=\"0.25\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "25% Response路由耗时 - {{instance}}",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_resp_routelag_seconds{quantile=\"0.5\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "50% Response路由耗时 - {{instance}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_resp_routelag_seconds{quantile=\"0.75\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "75% Response路由耗时 - {{instance}}",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_resp_routelag_seconds{quantile=\"0.9\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "90% Response路由耗时 - {{instance}}",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_resp_routelag_seconds{quantile=\"0.95\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "95% Response路由耗时 - {{instance}}",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_resp_routelag_seconds{quantile=\"0.99\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "99% Response路由耗时 -- {{instance}}",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "HttpResponse 转发耗时",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:669",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:670",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 17,
+            "x": 0,
+            "y": 33
+          },
+          "hiddenSeries": false,
+          "id": 595,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "service_passport_infilter_lag_seconds{quantile=\"0.25\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "25%请求的执行耗时 - {{instance}}",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_infilter_lag_seconds{quantile=\"0.5\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "50%请求的执行耗时 - {{instance}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_infilter_lag_seconds{quantile=\"0.75\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "75%请求的执行耗时 - {{instance}}",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_infilter_lag_seconds{quantile=\"0.9\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "90%请求的执行耗时 - {{instance}}",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_infilter_lag_seconds{quantile=\"0.95\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "95%请求的执行耗时 - {{instance}}",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_infilter_lag_seconds{quantile=\"0.99\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "99%请求的执行耗时 - {{instance}}",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "网关业务逻辑 [ InboundFilter ]",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:694",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:695",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 17,
+            "x": 0,
+            "y": 39
+          },
+          "hiddenSeries": false,
+          "id": 721,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "service_passport_outfilter_lag_seconds{quantile=\"0.25\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "25%请求的执行耗时 - {{instance}}",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_outfilter_lag_seconds{quantile=\"0.5\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "50%请求的执行耗时 - {{instance}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_outfilter_lag_seconds{quantile=\"0.75\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "75%请求的执行耗时 - {{instance}}",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_outfilter_lag_seconds{quantile=\"0.9\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "90%请求的执行耗时 - {{instance}}",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_outfilter_lag_seconds{quantile=\"0.95\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "95%请求的执行耗时 - {{instance}}",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_outfilter_lag_seconds{quantile=\"0.99\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "99%请求的执行耗时 - {{instance}}",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "网关业务逻辑 [ OutboundFilter ]",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:719",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:720",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 17,
+            "x": 0,
+            "y": 45
+          },
+          "hiddenSeries": false,
+          "id": 722,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "service_passport_client_reqbody_seconds{quantile=\"0.25\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "25%请求的读取耗时 - {{instance}}",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_client_reqbody_seconds{quantile=\"0.5\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "50%请求的读取耗时 - {{instance}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_client_reqbody_seconds{quantile=\"0.75\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "75%请求的读取耗时 - {{instance}}",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_client_reqbody_seconds{quantile=\"0.9\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "90%请求的读取耗时 - {{instance}}",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_client_reqbody_seconds{quantile=\"0.95\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "95%请求的读取耗时 - {{instance}}",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_client_reqbody_seconds{quantile=\"0.99\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "99%请求的读取耗时 - {{instance}}",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Client RequestBody",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:744",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:745",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 17,
+            "x": 0,
+            "y": 51
+          },
+          "hiddenSeries": false,
+          "id": 723,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "service_passport_origin_respbody_seconds{quantile=\"0.25\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "25%请求的读取耗时 - {{instance}}",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_origin_respbody_seconds{quantile=\"0.5\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "50%请求的读取耗时 - {{instance}}",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_origin_respbody_seconds{quantile=\"0.75\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "75%请求的读取耗时 - {{instance}}",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_origin_respbody_seconds{quantile=\"0.9\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "90%请求的读取耗时 - {{instance}}",
+              "refId": "C"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_origin_reqbody_seconds{quantile=\"0.95\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "95%请求的读取耗时 - {{instance}}",
+              "refId": "D"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_origin_respbody_seconds{quantile=\"0.99\",app=\"$appname\",envtype=\"$envtype\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "99%请求的读取耗时 - {{instance}}",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "后端服务 ResponseBody",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:769",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:770",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 17,
+            "x": 0,
+            "y": 57
+          },
+          "hiddenSeries": false,
+          "id": 596,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "service_passport_con_lag_seconds{quantile=\"0.25\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 25%请求获取TCP连接的耗时",
+              "refId": "G"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_con_lag_seconds{quantile=\"0.5\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 50%请求获取TCP连接的耗时",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "service_passport_con_lag_seconds{quantile=\"0.75\",name=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 75%请求获取TCP连接的耗时",
+              "refId": "B"
+            },
+            {
+              "expr": "service_passport_con_lag_seconds{quantile=\"0.9\",compName=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 90%请求获取TCP连接的耗时",
+              "refId": "C"
+            },
+            {
+              "expr": "service_passport_con_lag_seconds{quantile=\"0.95\",compName=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 95%请求获取TCP连接的耗时",
+              "refId": "D"
+            },
+            {
+              "expr": "service_passport_con_lag_seconds{quantile=\"0.99\",compName=~\"$backend\"}",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{instance}} - 99%请求获取TCP连接的耗时",
+              "refId": "E"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "TCP连接获取耗时",
+          "tooltip": {
+            "shared": true,
+            "sort": 1,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:794",
+              "decimals": null,
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:795",
+              "decimals": null,
+              "format": "decbytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "网关HTTP转发耗时",
+      "type": "row"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "prod",
+          "value": "prod"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "网关环境",
+        "multi": false,
+        "name": "envtype",
+        "options": [],
+        "query": {
+          "query": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "label": "网关",
+        "name": "appname",
+        "query": "infra-gateway",
+        "skipUrlSync": true,
+        "type": "constant"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "ehr-salary",
+          "value": "ehr-salary"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(connectionpool_request_total{app=\"$appname\",envtype=\"$envtype\"},id)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "服务提供方( 支持sug )",
+        "multi": false,
+        "name": "backend",
+        "options": [],
+        "query": {
+          "query": "label_values(connectionpool_request_total{app=\"$appname\",envtype=\"$envtype\"},id)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(oauthclient_http_request_total{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"},client)",
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "includeAll": true,
+        "label": "网关客户端",
+        "multi": false,
+        "name": "gwclient",
+        "options": [],
+        "query": {
+          "query": "label_values(oauthclient_http_request_total{app=\"$appname\",envtype=\"$envtype\",group=\"$backend\"},client)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": true,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {
+    "now": true,
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "3m",
+      "5m",
+      "10m",
+      "15m",
+      "30m"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "gateway-backend-overview",
+  "uid": "infragb",
+  "version": 16
+}

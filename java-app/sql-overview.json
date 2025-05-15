@@ -1,0 +1,1341 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "gnetId": 4701,
+  "graphTooltip": 1,
+  "id": 358,
+  "iteration": 1659068759306,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": true,
+      "datasource": "infra-prometheus",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 604,
+      "panels": [
+        {
+          "datasource": "infra-prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "点击查看更多慢SQL统计",
+                  "url": "/d/sql-rank-c/sql-latency-rank?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+                }
+              ],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "dark-yellow",
+                    "value": 100
+                  },
+                  {
+                    "color": "red",
+                    "value": 6000
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 1
+          },
+          "id": 615,
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "点击查看更多慢SQL统计",
+              "url": "/d/javams/slow-sql?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+            }
+          ],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {
+              "valueSize": 25
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.5.4",
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": true,
+              "expr": "sum(increase(mybatis_req_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[1m])) - \nsum(increase(mybatis_req_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[1m]))",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "近一分钟慢SQL趋势  (点击查看更多统计)",
+          "type": "stat"
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "none",
+          "gridPos": {
+            "h": 5,
+            "w": 11,
+            "x": 6,
+            "y": 1
+          },
+          "id": 616,
+          "interval": null,
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "percentageDecimals": 2,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "pluginVersion": "7.5.6",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": false,
+              "expr": "(sum(increase(mybatis_req_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (instance) - sum(increase(mybatis_req_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (instance)) >= 1",
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{instance}}",
+              "refId": "A"
+            }
+          ],
+          "title": "所选时段内慢SQL节点分布 ( > 2s )",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "decimals": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "none",
+          "gridPos": {
+            "h": 9,
+            "w": 18,
+            "x": 0,
+            "y": 6
+          },
+          "id": 606,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "percentageDecimals": 2,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "pluginVersion": "7.5.6",
+          "repeatDirection": "v",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": false,
+              "expr": "(sum(increase(mybatis_req_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\"}[$__range])) by (sql) - \nsum(increase(mybatis_req_duration_seconds_bucket{le=\"2.0\",app=\"$appname\",envtype=\"$envtype\"}[$__range])) by (sql)) >= 1 ",
+              "format": "time_series",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{sql}}",
+              "refId": "B"
+            }
+          ],
+          "title": "所选时段内慢SQL次数 ( > 2s )",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        }
+      ],
+      "title": "慢SQL统计",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": "infra-prometheus",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 608,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "infra-prometheus",
+          "fieldConfig": {
+            "defaults": {
+              "links": [],
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 7,
+            "w": 18,
+            "x": 0,
+            "y": 2
+          },
+          "hiddenSeries": false,
+          "id": 597,
+          "interval": "30s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "点击查看单条SQL统计",
+              "url": "/d/javamd/sql-sla?${__all_variables}&${__url_time_range}"
+            }
+          ],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.4",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": true,
+              "expr": "sum(irate(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[2m]))",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "每秒执行的SQL语句",
+              "refId": "C"
+            },
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": true,
+              "expr": "sum(irate(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[2m])) by (command)",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "每秒执行的 {{command}} 语句",
+              "refId": "A"
+            },
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": true,
+              "expr": "sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[1m])) by (exception) > 0",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "近一分钟 {{exception}}",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "SQL执行统计",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "none",
+          "gridPos": {
+            "h": 9,
+            "w": 18,
+            "x": 0,
+            "y": 9
+          },
+          "id": 590,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "percentageDecimals": 2,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "pluginVersion": "7.5.6",
+          "repeatDirection": "v",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": false,
+              "expr": "topk(20,(sum(increase(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (sql)) > 0)",
+              "format": "time_series",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{sql}}",
+              "refId": "B"
+            }
+          ],
+          "title": "所选时段内SQL请求量TOP 20",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "none",
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 18
+          },
+          "id": 610,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "percentageDecimals": 2,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "maxDataPoints": 3,
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": false,
+              "expr": "(sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (instance))  > 0",
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{instance}}",
+              "refId": "A"
+            }
+          ],
+          "title": "所选时段内 SQL Exception 节点分布",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "none",
+          "gridPos": {
+            "h": 6,
+            "w": 10,
+            "x": 8,
+            "y": 18
+          },
+          "id": 611,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "percentageDecimals": 2,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "maxDataPoints": 3,
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": false,
+              "expr": "(sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (exception)) > 0",
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{exception}}",
+              "refId": "A"
+            }
+          ],
+          "title": "所选时段内 SQL Exception 类型分布",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "infra-prometheus",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fontSize": "80%",
+          "format": "none",
+          "gridPos": {
+            "h": 7,
+            "w": 18,
+            "x": 0,
+            "y": 24
+          },
+          "id": 612,
+          "interval": "30s",
+          "legend": {
+            "header": "total",
+            "percentage": true,
+            "percentageDecimals": 2,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "maxDataPoints": 3,
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "datasource": "infra-prometheus",
+              "exemplar": false,
+              "expr": "(sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (sql)) > 0",
+              "instant": true,
+              "interval": "",
+              "intervalFactor": 10,
+              "legendFormat": "{{sql}}",
+              "refId": "A"
+            }
+          ],
+          "title": "所选时段内报错的 SQLID 分布",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        }
+      ],
+      "title": "SQL统计与异常分布",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": "infra-prometheus",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 602,
+      "panels": [],
+      "title": "SQL请求量 / 报错排行",
+      "type": "row"
+    },
+    {
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "查看单条SQL语句",
+              "url": "/d/javamd/sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+            }
+          ],
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 10000
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 60000
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 3
+      },
+      "id": 598,
+      "interval": "30s",
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "查看单条SQL统计",
+          "url": "/d/javamd/sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 25
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(irate(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[2m]))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 14400
+        }
+      ],
+      "title": "每秒执行的SQL语句",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": [],
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 14,
+        "x": 4,
+        "y": 3
+      },
+      "hiddenSeries": false,
+      "id": 600,
+      "interval": "30s",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "sum(irate(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[2m])) by (app_cluster)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "集群: {{app_cluster}}",
+          "refId": "A"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "sum(irate(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[2m])) by (instance)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "sum(irate(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[2m])) by (instance) > 0",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}} - exception",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "请求量趋势",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:230",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:231",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "查看单条SQL统计",
+              "url": "/d/sql-rank-1/mybatis-sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+            }
+          ],
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1e-12
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 0.7
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 6
+      },
+      "id": 599,
+      "interval": "30s",
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "查看单条SQL统计",
+          "url": "/d/javamd/sql-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
+        }
+      ],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 25
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[1m])) / sum(increase(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[1m]))) OR on() vector(0)",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 14400
+        }
+      ],
+      "title": "近一分钟 SQL Exception 占比",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "decimals": 3,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 13,
+        "w": 18,
+        "x": 0,
+        "y": 9
+      },
+      "hiddenSeries": false,
+      "id": 622,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "sum(irate(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[2m])) by (sql) ",
+          "interval": "",
+          "legendFormat": "{{sql}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "SQL QPS",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:54",
+          "decimals": 2,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:55",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 13,
+        "w": 18,
+        "x": 0,
+        "y": 22
+      },
+      "hiddenSeries": false,
+      "id": 624,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "( sum(increase(mybatis_req_duration_seconds_sum{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[1m])) by (sql)\n/\nsum(increase(mybatis_req_duration_seconds_count{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[1m])) by (sql) ) >= 0",
+          "interval": "",
+          "legendFormat": "{{sql}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "SQL平均耗时",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fontSize": "80%",
+      "format": "none",
+      "gridPos": {
+        "h": 9,
+        "w": 18,
+        "x": 0,
+        "y": 35
+      },
+      "id": 591,
+      "interval": "30s",
+      "legend": {
+        "header": "total",
+        "percentage": true,
+        "percentageDecimals": 2,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "pluginVersion": "7.5.4",
+      "repeatDirection": "v",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "topk(20,(sum(increase(mybatis_req_error_total{app=\"$appname\",envtype=\"$envtype\",instance=~\"$instance\"}[$__range])) by (sql,exception)) > 0)",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 10,
+          "legendFormat": "{{exception}} - {{sql}}",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "所选时段内 SQL Exception TOP 20",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "prod",
+          "value": "prod"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "部署环境",
+        "multi": false,
+        "name": "envtype",
+        "options": [],
+        "query": {
+          "query": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "htone-sgapi",
+          "value": "htone-sgapi"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "应用 ( 支持sug )",
+        "multi": false,
+        "name": "appname",
+        "options": [],
+        "query": {
+          "query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".+",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "节点",
+        "multi": true,
+        "name": "instance",
+        "options": [],
+        "query": {
+          "query": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "3m",
+      "5m",
+      "10m",
+      "15m",
+      "30m"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "sql-overview",
+  "uid": "javam",
+  "version": 16
+}

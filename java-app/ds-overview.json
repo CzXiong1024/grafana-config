@@ -1,0 +1,3429 @@
+{
+"annotations": {
+"list": [
+{
+"builtIn": 1,
+"datasource": "-- Grafana --",
+"enable": true,
+"hide": true,
+"iconColor": "rgba(0, 211, 255, 1)",
+"limit": 100,
+"name": "Annotations & Alerts",
+"showIn": 0,
+"target": {
+"limit": 100,
+"matchAny": false,
+"tags": [],
+"type": "dashboard"
+},
+"type": "dashboard"
+}
+]
+},
+"description": "Node metrics",
+"editable": true,
+"gnetId": 4701,
+"graphTooltip": 1,
+"id": 505,
+"iteration": 1663745057241,
+"links": [],
+"panels": [
+{
+"collapsed": true,
+"datasource": null,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 0
+},
+"id": 768,
+"panels": [
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"fieldConfig": {
+"defaults": {
+"unit": "s"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P50(50%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.75"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P75(75%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.9"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P90(90%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.95"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P95(95%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.99"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99(99%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.999"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99.9(99.9%)"
+}
+]
+}
+]
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 2
+},
+"hiddenSeries": false,
+"id": 626,
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mssqlcommon",
+"value": "dataSource_mssqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_creation_seconds{pool=~\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+"interval": "",
+"legendFormat": "{{quantile}}",
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"transformations": [],
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:23",
+"format": "s",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:24",
+"format": "short",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": null,
+"show": true
+}
+],
+"yaxis": {
+"align": false,
+"alignLevel": null
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"fieldConfig": {
+"defaults": {
+"unit": "s"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P50(50%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.75"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P75(75%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.9"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P90(90%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.95"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P95(95%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.99"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99(99%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.999"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99.9(99.9%)"
+}
+]
+}
+]
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 9
+},
+"hiddenSeries": false,
+"id": 804,
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"repeatIteration": 1663292054483,
+"repeatPanelId": 626,
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mysqlcommon",
+"value": "dataSource_mysqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_creation_seconds{pool=~\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+"interval": "",
+"legendFormat": "{{quantile}}",
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"transformations": [],
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:23",
+"format": "s",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:24",
+"format": "short",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": null,
+"show": true
+}
+],
+"yaxis": {
+"align": false,
+"alignLevel": null
+}
+}
+],
+"title": "Time-consuming percentile for creating a Connection",
+"type": "row"
+},
+{
+"collapsed": true,
+"datasource": null,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 1
+},
+"id": 756,
+"panels": [
+{
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"links": [],
+"mappings": [],
+"min": 0,
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+},
+"unit": "short"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.008"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "<=8ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.032"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "32ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.1"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "100ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.3"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "300ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "500ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "1.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "2.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "2s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "3.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "3s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "5.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "5s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "7.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "7s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "10.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "10s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.001"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.004"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "4ms"
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 3
+},
+"id": 627,
+"interval": "30s",
+"links": [],
+"options": {
+"displayMode": "gradient",
+"orientation": "vertical",
+"reduceOptions": {
+"calcs": [
+"lastNotNull"
+],
+"fields": "",
+"values": false
+},
+"showUnfilled": true,
+"text": {}
+},
+"pluginVersion": "7.5.4",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mssqlcommon",
+"value": "dataSource_mssqlcommon"
+}
+},
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "sum(increase(hikaricp_connections_creation_seconds_bucket{pool=\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (le)",
+"format": "heatmap",
+"hide": false,
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{le}}",
+"refId": "K"
+}
+],
+"title": "$datasource",
+"type": "bargauge"
+},
+{
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"links": [],
+"mappings": [],
+"min": 0,
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+},
+"unit": "short"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.008"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "8ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.032"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "32ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.1"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "100ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.3"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "300ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "500ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "1.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "2.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "2s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "3.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "3s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "5.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "5s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "7.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "7s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "10.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "10s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.001"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.004"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "4ms"
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 10
+},
+"id": 805,
+"interval": "30s",
+"links": [],
+"options": {
+"displayMode": "gradient",
+"orientation": "vertical",
+"reduceOptions": {
+"calcs": [
+"lastNotNull"
+],
+"fields": "",
+"values": false
+},
+"showUnfilled": true,
+"text": {}
+},
+"pluginVersion": "7.5.4",
+"repeatDirection": "v",
+"repeatIteration": 1663292054483,
+"repeatPanelId": 627,
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mysqlcommon",
+"value": "dataSource_mysqlcommon"
+}
+},
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "sum(increase(hikaricp_connections_creation_seconds_bucket{pool=\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (le)",
+"format": "heatmap",
+"hide": false,
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{le}}",
+"refId": "K"
+}
+],
+"title": "$datasource",
+"type": "bargauge"
+}
+],
+"title": " Time statistics for creating Connection in the selected period",
+"type": "row"
+},
+{
+"collapsed": true,
+"datasource": null,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 2
+},
+"id": 772,
+"panels": [
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"fieldConfig": {
+"defaults": {
+"unit": "s"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P50(50%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.75"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P75(75%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.9"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P90(90%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.95"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P95(95%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.99"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99(99%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.999"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99.9(99.9%)"
+}
+]
+}
+]
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 4
+},
+"hiddenSeries": false,
+"id": 776,
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mssqlcommon",
+"value": "dataSource_mssqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_acquire_seconds{pool=~\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+"interval": "",
+"legendFormat": "{{quantile}}",
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"transformations": [],
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:23",
+"format": "s",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:24",
+"format": "short",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": null,
+"show": true
+}
+],
+"yaxis": {
+"align": false,
+"alignLevel": null
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"fieldConfig": {
+"defaults": {
+"unit": "s"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P50(50%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.75"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P75(75%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.9"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P90(90%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.95"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P95(95%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.99"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99(99%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.999"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99.9(99.9%)"
+}
+]
+}
+]
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 11
+},
+"hiddenSeries": false,
+"id": 789,
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"repeatIteration": 1663234287070,
+"repeatPanelId": 776,
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mysqlcommon",
+"value": "dataSource_mysqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_acquire_seconds{pool=~\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+"interval": "",
+"legendFormat": "{{quantile}}",
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"transformations": [],
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:23",
+"format": "s",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:24",
+"format": "short",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": null,
+"show": true
+}
+],
+"yaxis": {
+"align": false,
+"alignLevel": null
+}
+}
+],
+"title": "Get Connection's time-consuming quantiles",
+"type": "row"
+},
+{
+"collapsed": true,
+"datasource": null,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 3
+},
+"id": 770,
+"panels": [
+{
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"links": [],
+"mappings": [],
+"min": 0,
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+},
+"unit": "short"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.008"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "<=8ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.032"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "32ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.1"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "100ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.3"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "300ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "500ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "1.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "2.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "2s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "3.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "3s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "5.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "5s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "7.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "7s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "10.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "10s"
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 5
+},
+"id": 775,
+"interval": "30s",
+"links": [],
+"options": {
+"displayMode": "gradient",
+"orientation": "vertical",
+"reduceOptions": {
+"calcs": [
+"lastNotNull"
+],
+"fields": "",
+"values": false
+},
+"showUnfilled": true,
+"text": {}
+},
+"pluginVersion": "7.5.4",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mssqlcommon",
+"value": "dataSource_mssqlcommon"
+}
+},
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "sum(increase(hikaricp_connections_acquire_seconds_bucket{pool=\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (le)",
+"format": "heatmap",
+"hide": false,
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{le}}",
+"refId": "K"
+}
+],
+"title": "$datasource",
+"type": "bargauge"
+},
+{
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"links": [],
+"mappings": [],
+"min": 0,
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+},
+"unit": "short"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.008"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "<=8ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.032"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "32ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.1"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "100ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.3"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "300ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "500ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "1.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "2.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "2s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "3.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "3s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "5.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "5s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "7.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "7s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "10.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "10s"
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 12
+},
+"id": 790,
+"interval": "30s",
+"links": [],
+"options": {
+"displayMode": "gradient",
+"orientation": "vertical",
+"reduceOptions": {
+"calcs": [
+"lastNotNull"
+],
+"fields": "",
+"values": false
+},
+"showUnfilled": true,
+"text": {}
+},
+"pluginVersion": "7.5.4",
+"repeatDirection": "v",
+"repeatIteration": 1663234287070,
+"repeatPanelId": 775,
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mysqlcommon",
+"value": "dataSource_mysqlcommon"
+}
+},
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "sum(increase(hikaricp_connections_acquire_seconds_bucket{pool=\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (le)",
+"format": "heatmap",
+"hide": false,
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{le}}",
+"refId": "K"
+}
+],
+"title": "$datasource",
+"type": "bargauge"
+}
+],
+"title": "Get Connection time statistics within the selected period",
+"type": "row"
+},
+{
+"collapsed": true,
+"datasource": null,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 4
+},
+"id": 778,
+"panels": [
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"fieldConfig": {
+"defaults": {
+"unit": "s"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P50(50%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.75"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P75(75%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.9"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P90(90%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.95"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P95(95%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.99"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99(99%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.999"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99.9(99.9%)"
+}
+]
+}
+]
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 6
+},
+"hiddenSeries": false,
+"id": 780,
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mssqlcommon",
+"value": "dataSource_mssqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_usage_seconds{pool=~\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+"interval": "",
+"legendFormat": "{{quantile}}",
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"transformations": [],
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:23",
+"format": "s",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:24",
+"format": "short",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": null,
+"show": true
+}
+],
+"yaxis": {
+"align": false,
+"alignLevel": null
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"fieldConfig": {
+"defaults": {
+"unit": "s"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P50(50%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.75"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P75(75%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.9"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P90(90%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.95"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P95(95%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.99"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99(99%)"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.999"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "P99.9(99.9%)"
+}
+]
+}
+]
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 13
+},
+"hiddenSeries": false,
+"id": 791,
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"sort": "max",
+"sortDesc": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 2,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"repeatIteration": 1663234287070,
+"repeatPanelId": 780,
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mysqlcommon",
+"value": "dataSource_mysqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_usage_seconds{pool=~\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}",
+"interval": "",
+"legendFormat": "{{quantile}}",
+"refId": "A"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 0,
+"value_type": "individual"
+},
+"transformations": [],
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:23",
+"format": "s",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:24",
+"format": "short",
+"label": null,
+"logBase": 1,
+"max": null,
+"min": null,
+"show": true
+}
+],
+"yaxis": {
+"align": false,
+"alignLevel": null
+}
+}
+],
+"title": "Time-consuming quantiles returned by Connection",
+"type": "row"
+},
+{
+"collapsed": true,
+"datasource": null,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 5
+},
+"id": 774,
+"panels": [
+{
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"links": [],
+"mappings": [],
+"min": 0,
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+},
+"unit": "short"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.008"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "<=8ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.032"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "32ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.1"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "100ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.3"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "300ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "500ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "1.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "2.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "2s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "3.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "3s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "5.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "5s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "7.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "7s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "10.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "10s"
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 7
+},
+"id": 779,
+"interval": "30s",
+"links": [],
+"options": {
+"displayMode": "gradient",
+"orientation": "vertical",
+"reduceOptions": {
+"calcs": [
+"lastNotNull"
+],
+"fields": "",
+"values": false
+},
+"showUnfilled": true,
+"text": {}
+},
+"pluginVersion": "7.5.4",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mssqlcommon",
+"value": "dataSource_mssqlcommon"
+}
+},
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "sum(increase(hikaricp_connections_usage_seconds_bucket{pool=\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (le)",
+"format": "heatmap",
+"hide": false,
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{le}}",
+"refId": "K"
+}
+],
+"title": "$datasource",
+"type": "bargauge"
+},
+{
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"links": [],
+"mappings": [],
+"min": 0,
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+}
+]
+},
+"unit": "short"
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "0.008"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "<=8ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.032"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "32ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.1"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "100ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.3"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "300ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "0.5"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "500ms"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "1.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "1s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "2.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "2s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "3.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "3s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "5.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "5s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "7.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "7s"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "10.0"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "10s"
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 14
+},
+"id": 792,
+"interval": "30s",
+"links": [],
+"options": {
+"displayMode": "gradient",
+"orientation": "vertical",
+"reduceOptions": {
+"calcs": [
+"lastNotNull"
+],
+"fields": "",
+"values": false
+},
+"showUnfilled": true,
+"text": {}
+},
+"pluginVersion": "7.5.4",
+"repeatDirection": "v",
+"repeatIteration": 1663234287070,
+"repeatPanelId": 779,
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mysqlcommon",
+"value": "dataSource_mysqlcommon"
+}
+},
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "sum(increase(hikaricp_connections_usage_seconds_bucket{pool=\"$datasource\",app=\"$appname\",instance=~\"$instance\",envtype=\"$envtype\"}[$__range])) by (le)",
+"format": "heatmap",
+"hide": false,
+"instant": true,
+"interval": "",
+"intervalFactor": 10,
+"legendFormat": "{{le}}",
+"refId": "K"
+}
+],
+"title": "$datasource",
+"type": "bargauge"
+}
+],
+"title": "Time statistics of Connection return in the selected period",
+"type": "row"
+},
+{
+"collapsed": true,
+"datasource": null,
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 6
+},
+"id": 795,
+"panels": [
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 8
+},
+"hiddenSeries": false,
+"id": 797,
+"interval": "15s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"maxPerRow": 2,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mssqlcommon",
+"value": "dataSource_mssqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_active{pool=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Number of active connections",
+"refId": "A"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_max{pool=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Maximum number of connections",
+"refId": "B"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_min{pool=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Minimum number of connections",
+"refId": "C"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_idle{pool=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Number of idle connections",
+"refId": "E"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "hikaricp_connections_pending{pool=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Thread waiting for available connection",
+"refId": "D"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "increase(hikaricp_connections_timeout_total{pool=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}[2m])",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Number of Connection timeouts in the last 2 minutes",
+"refId": "F"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 1,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:610",
+"format": "none",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:611",
+"format": "percentunit",
+"label": "",
+"logBase": 1,
+"min": "0",
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 15
+},
+"hiddenSeries": false,
+"id": 799,
+"interval": "15s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"maxPerRow": 2,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeatDirection": "v",
+"repeatIteration": 1663235044194,
+"repeatPanelId": 797,
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_mysqlcommon",
+"value": "dataSource_mysqlcommon"
+}
+},
+"seriesOverrides": [],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_active{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Number of active connections",
+"refId": "A"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_max{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Maximum number of connections",
+"refId": "B"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_min{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Minimum number of connections",
+"refId": "C"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_idle{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Number of idle connections",
+"refId": "E"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 1,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:610",
+"format": "none",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:611",
+"format": "percentunit",
+"label": "",
+"logBase": 1,
+"min": "0",
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+}
+],
+"title": "HikariCP connection pool statistics",
+"type": "row"
+},
+{
+"collapsed": false,
+"datasource": "infra-prometheus",
+"gridPos": {
+"h": 1,
+"w": 24,
+"x": 0,
+"y": 7
+},
+"id": 164,
+"panels": [],
+"title": "Database connection pool usage",
+"type": "row"
+},
+{
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"color": {
+"mode": "thresholds"
+},
+"custom": {
+"align": "auto",
+"displayMode": "color-background",
+"filterable": false
+},
+"mappings": [],
+"thresholds": {
+"mode": "absolute",
+"steps": [
+{
+"color": "green",
+"value": null
+},
+{
+"color": "yellow",
+"value": 90
+},
+{
+"color": "red",
+"value": 300
+}
+]
+}
+},
+"overrides": [
+{
+"matcher": {
+"id": "byName",
+"options": "name"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "Component"
+},
+{
+"id": "custom.align"
+},
+{
+"id": "custom.width",
+"value": 350
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "Value"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "status"
+},
+{
+"id": "custom.align",
+"value": "center"
+},
+{
+"id": "custom.displayMode",
+"value": "color-background"
+},
+{
+"id": "mappings",
+"value": [
+{
+"from": "",
+"id": 1,
+"text": "UP",
+"to": "",
+"type": 1,
+"value": "1"
+},
+{
+"from": "",
+"id": 2,
+"text": "DOWN",
+"to": "",
+"type": 1,
+"value": "1000"
+},
+{
+"from": "",
+"id": 3,
+"text": "UNKNOWN",
+"to": "",
+"type": 1,
+"value": "100"
+},
+{
+"from": "",
+"id": 4,
+"text": "STARTING",
+"to": "",
+"type": 1,
+"value": "200"
+},
+{
+"from": "",
+"id": 5,
+"text": "RESTARTING",
+"to": "",
+"type": 1,
+"value": "300"
+},
+{
+"from": "",
+"id": 6,
+"text": "STOPPING",
+"to": "",
+"type": 1,
+"value": "400"
+},
+{
+"from": "",
+"id": 7,
+"text": "OUT_OF_SERVICE",
+"to": "",
+"type": 1,
+"value": "500"
+},
+{
+"from": "",
+"id": 8,
+"text": "UNKNOWN",
+"to": "",
+"type": 1,
+"value": "0"
+}
+]
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": "version"
+},
+"properties": [
+{
+"id": "displayName",
+"value": "version"
+},
+{
+"id": "custom.align"
+}
+]
+},
+{
+"matcher": {
+"id": "byName",
+"options": " version"
+},
+"properties": [
+{
+"id": "custom.width",
+"value": 479
+}
+]
+}
+]
+},
+"gridPos": {
+"h": 5,
+"w": 18,
+"x": 0,
+"y": 8
+},
+"id": 219,
+"links": [],
+"options": {
+"footer": {
+"fields": "",
+"reducer": [
+"sum"
+],
+"show": false
+},
+"showHeader": true,
+"sortBy": [
+{
+"desc": true,
+"displayName": "Status"
+}
+]
+},
+"pluginVersion": "7.5.4",
+"targets": [
+{
+"exemplar": true,
+"expr": "healthcheck_status{envtype=~\"$envtype\",app=\"$appname\",instance=\"$instance\",name=~\"$datasource\"} > 0",
+"format": "table",
+"hide": false,
+"instant": true,
+"interval": "",
+"intervalFactor": 3,
+"legendFormat": "",
+"refId": "A"
+}
+],
+"title": "Data Source Health Status",
+"transformations": [
+{
+"id": "filterFieldsByName",
+"options": {
+"include": {
+"pattern": "/^name|version|Value/"
+}
+}
+},
+{
+"id": "organize",
+"options": {
+"excludeByName": {
+"namespace": true
+},
+"indexByName": {},
+"renameByName": {}
+}
+}
+],
+"type": "table"
+},
+{
+"aliasColors": {},
+"bars": false,
+"dashLength": 10,
+"dashes": false,
+"datasource": "infra-prometheus",
+"description": "",
+"fieldConfig": {
+"defaults": {
+"links": []
+},
+"overrides": []
+},
+"fill": 1,
+"fillGradient": 0,
+"gridPos": {
+"h": 7,
+"w": 18,
+"x": 0,
+"y": 13
+},
+"hiddenSeries": false,
+"id": 766,
+"interval": "15s",
+"legend": {
+"alignAsTable": true,
+"avg": false,
+"current": true,
+"max": true,
+"min": true,
+"rightSide": true,
+"show": true,
+"total": false,
+"values": true
+},
+"lines": true,
+"linewidth": 1,
+"links": [],
+"maxPerRow": 2,
+"nullPointMode": "null",
+"options": {
+"alertThreshold": true
+},
+"percentage": false,
+"pluginVersion": "7.5.4",
+"pointradius": 5,
+"points": false,
+"renderer": "flot",
+"repeat": "datasource",
+"repeatDirection": "v",
+"scopedVars": {
+"datasource": {
+"selected": false,
+"text": "dataSource_common",
+"value": "dataSource_common"
+}
+},
+"seriesOverrides": [
+{
+"$$hashKey": "object:640",
+"alias": "Connection pool usage",
+"yaxis": 2
+},
+{
+"$$hashKey": "object:641",
+"alias": "Usage Rate",
+"yaxis": 2
+}
+],
+"spaceLength": 10,
+"stack": false,
+"steppedLine": false,
+"targets": [
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_active{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"} / jdbc_connections_max",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Usage rate",
+"refId": "D"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_active{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Number of active connections",
+"refId": "A"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_max{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Maximum number of connections",
+"refId": "B"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_min{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Minimum number of connections",
+"refId": "C"
+},
+{
+"datasource": "infra-prometheus",
+"exemplar": true,
+"expr": "jdbc_connections_idle{name=~\"$datasource\",app=\"$appname\",instance=\"$instance\"}",
+"format": "time_series",
+"hide": false,
+"interval": "",
+"intervalFactor": 1,
+"legendFormat": "Number of idle connections",
+"refId": "E"
+}
+],
+"thresholds": [],
+"timeFrom": null,
+"timeRegions": [],
+"timeShift": null,
+"title": "$datasource",
+"tooltip": {
+"shared": true,
+"sort": 1,
+"value_type": "individual"
+},
+"type": "graph",
+"xaxis": {
+"buckets": null,
+"mode": "time",
+"name": null,
+"show": true,
+"values": []
+},
+"yaxes": [
+{
+"$$hashKey": "object:610",
+"format": "none",
+"logBase": 1,
+"min": "0",
+"show": true
+},
+{
+"$$hashKey": "object:611",
+"format": "percentunit",
+"label": "",
+"logBase": 1,
+"min": "0",
+"show": true
+}
+],
+"yaxis": {
+"align": false
+}
+}
+],
+"refresh": false,
+"schemaVersion": 27,
+"style": "dark",
+"tags": [],
+"templating": {
+"list": [
+{
+"allValue": null,
+"current": {
+"selected": false,
+"text": "prod",
+"value": "prod"
+},
+"datasource": "infra-prometheus",
+"definition": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+"description": null,
+"error": null,
+"hide": 0,
+"includeAll": false,
+"label": "Deployment Environment",
+"multi": false,
+"name": "envtype",
+"options": [],
+"query": {
+"query": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 1,
+"regex": "",
+"skipUrlSync": false,
+"sort": 0,
+"tagValuesQuery": "",
+"tags": [],
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+},
+{
+"allValue": null,
+"current": {
+"selected": true,
+"text": "bizss-org",
+"value": "bizss-org"
+},
+"datasource": "infra-prometheus",
+"definition": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+"description": null,
+"error": null,
+"hide": 0,
+"includeAll": false,
+"label": "Application (support sug)",
+"multi": false,
+"name": "appname",
+"options": [],
+"query": {
+"query": "label_values(registry_metrics_vendor{envtype=\"$envtype\",app_type=\"java\"},app)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 2,
+"regex": "",
+"skipUrlSync": false,
+"sort": 0,
+"tagValuesQuery": "",
+"tags": [],
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+},
+{
+"allValue": null,
+"current": {
+"selected": false,
+"text": "172.21.47.166:8080",
+"value": "172.21.47.166:8080"
+},
+"datasource": "infra-prometheus",
+"definition": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
+"description": null,
+"error": null,
+"hide": 0,
+"includeAll": false,
+"label": "Node",
+"multi": false,
+"name": "instance",
+"options": [],
+"query": {
+"query": "label_values(registry_metrics_vendor{app=\"$appname\",envtype=~\"$envtype\"},instance)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 2,
+"regex": "",
+"skipUrlSync": false,
+"sort": 0,
+"tagValuesQuery": "",
+"tags": [],
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+},
+{
+"allValue": null,
+"current": {
+"selected": true,
+"text": [
+"All"
+],
+"value": [
+"$__all"
+]
+},
+"datasource": "infra-prometheus",
+"definition": "label_values(jdbc_connections_active{envtype=\"${envtype}\",app=\"$appname\",instance=\"$instance\"},name)",
+"description": null,
+"error": null,
+"hide": 0,
+"includeAll": true,
+"label": "Data Source",
+"multi": true,
+"name": "datasource",
+"options": [],
+"query": {
+"query": "label_values(jdbc_connections_active{envtype=\"${envtype}\",app=\"$appname\",instance=\"$instance\"},name)",
+"refId": "StandardVariableQuery"
+},
+"refresh": 1,
+"regex": "",
+"skipUrlSync": false,
+"sort": 0,
+"tagValuesQuery": "",
+"tags": [],
+"tagsQuery": "",
+"type": "query",
+"useTags": false
+}
+]
+},
+"time": {
+"from": "now-30m",
+"to": "now"
+},
+"timepicker": {
+"now": true,
+"refresh_intervals": [
+"10s",
+"30s",
+"1m",
+"3m",
+"5m",
+"10m",
+"15m",
+"30m"
+],
+"time_options": [
+"5m",
+"15m",
+"1h",
+"6h",
+"12h",
+"24h",
+"2d",
+"7d",
+"30d"
+]
+},
+"timezone": "browser",
+"title": "ds-overview",
+"uid": "db",
+"version": 37
+}

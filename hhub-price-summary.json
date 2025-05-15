@@ -1,0 +1,656 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 228,
+  "iteration": 1695808754079,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 21,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 631,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"500.0\",channel=~\"$channel\"}[1m])) by (channel) ) > 0",
+          "interval": "30s",
+          "legendFormat": "{{channel}} - 产品数 [1,500]",
+          "queryType": "randomWalk",
+          "refId": "J"
+        },
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"1500.0\",channel=~\"$channel\"}[1m])) by (channel) - sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"500.0\",channel=~\"$channel\"}[1m])) by (channel) ) > 0",
+          "hide": false,
+          "interval": "30s",
+          "legendFormat": "{{channel}} - 产品数 (500,1500]",
+          "refId": "I"
+        },
+        {
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"+Inf\",channel=~\"$channel\"}[1m])) by (channel) - sum(increase(crs_price_product_count_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"1500.0\",channel=~\"$channel\"}[1m])) by (channel) ) > 0",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{channel}} - 产品数 >1500",
+          "refId": "H"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "近一分钟房价查询产品数",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:137",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:138",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 21,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 629,
+      "interval": "30s",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxDataPoints": null,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"1.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 1天请求量",
+          "refId": "J"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"3.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"1.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 3天请求量",
+          "refId": "I"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"7.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"3.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 7天请求量",
+          "refId": "H"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"15.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"7.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 15天请求量",
+          "refId": "G"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"30.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"15.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 30天请求量",
+          "refId": "K"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"60.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"30.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 60天请求量",
+          "refId": "A"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"90.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"60.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 90天请求量",
+          "refId": "B"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"180.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"90.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 180天请求量",
+          "refId": "C"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"360.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"180.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 360天请求量",
+          "refId": "D"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"420.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"360.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 420天请求量",
+          "refId": "E"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "(sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"+INF\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) - sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",le=\"420.0\",channel=~\"$channel\",source=~\"$source\"}[1m])) by (channel) ) > 0 ",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}} - 大于420天请求量",
+          "refId": "F"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "近一分钟房价查询天数的请求量",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:197",
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:198",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 21,
+        "x": 0,
+        "y": 20
+      },
+      "id": 627,
+      "interval": "30s",
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.4",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",channel=~\"$channel\",source=~\"$source\"}[$__range])) by (le)",
+          "format": "heatmap",
+          "hide": false,
+          "instant": true,
+          "interval": "30s",
+          "intervalFactor": 10,
+          "legendFormat": "{{le}}",
+          "refId": "K"
+        }
+      ],
+      "title": "所选时段内房价查询天数的分布",
+      "type": "bargauge"
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": 0
+      },
+      "color": {
+        "cardColor": "#73BF69",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateOranges",
+        "exponent": 0.5,
+        "mode": "opacity"
+      },
+      "dataFormat": "tsbuckets",
+      "datasource": "infra-prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 21,
+        "x": 0,
+        "y": 30
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 628,
+      "interval": "30s",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxDataPoints": 40,
+      "pluginVersion": "7.5.4",
+      "repeatDirection": "v",
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": true,
+          "expr": "sum(increase(crs_price_request_bucket{app=\"$appname\",envtype=\"$envtype\",channel=~\"$channel\",source=~\"$source\"}[$__interval])) by (le)",
+          "format": "heatmap",
+          "hide": false,
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 3,
+          "legendFormat": "{{le}}",
+          "refId": "K"
+        }
+      ],
+      "title": "房价查询天数的分布热力图",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "none",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "test",
+          "value": "test"
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "部署环境",
+        "multi": false,
+        "name": "envtype",
+        "options": [],
+        "query": {
+          "query": "label_values(registry_metrics_vendor{app_type=\"java\"},envtype)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "hhub-price",
+          "value": "hhub-price"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "应用",
+        "multi": false,
+        "name": "appname",
+        "options": [
+          {
+            "selected": true,
+            "text": "hhub-price",
+            "value": "hhub-price"
+          }
+        ],
+        "query": "hhub-price",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": ".+",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(crs_price_request_bucket{envtype=\"$envtype\",app=\"$appname\"},source)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "来源",
+        "multi": true,
+        "name": "source",
+        "options": [],
+        "query": {
+          "query": "label_values(crs_price_request_bucket{envtype=\"$envtype\",app=\"$appname\"},source)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".+",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(crs_price_request_bucket{envtype=\"$envtype\",app=\"$appname\",source=~\"$source\"},channel)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "渠道",
+        "multi": true,
+        "name": "channel",
+        "options": [],
+        "query": {
+          "query": "label_values(crs_price_request_bucket{envtype=\"$envtype\",app=\"$appname\",source=~\"$source\"},channel)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "hhub-price-summary",
+  "uid": "hhub-request",
+  "version": 44
+}

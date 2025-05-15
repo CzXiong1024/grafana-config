@@ -1,0 +1,1214 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 659,
+  "iteration": 1709012747508,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 162,
+      "panels": [],
+      "title": "pod list",
+      "type": "row"
+    },
+    {
+      "datasource": "infra-prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "custom.align",
+                "value": null
+              },
+              {
+                "id": "displayName",
+                "value": "Pod Count"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "host_ip"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              },
+              {
+                "id": "displayName",
+                "value": "k8s node ip"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "node"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "displayName",
+                "value": "k8s node"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 755,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Pod Count"
+          }
+        ]
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "sum(kube_pod_info{pod=~\"$appname.+\",namespace=~\"$namespace\"}) by (host_ip,node)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "宿主机POD数量",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {
+            "reducers": []
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "node",
+                "Value",
+                "host_ip"
+              ],
+              "pattern": "pod|namespace|image"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Value": 2,
+              "host_ip": 1,
+              "node": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "infra-prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "应用"
+            },
+            "properties": [
+              {
+                "id": "custom.align",
+                "value": null
+              },
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "副本数"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU Quota"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              },
+              {
+                "id": "unit",
+                "value": "cpu"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Memory Quota"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "availablePods"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "可用副本数"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "maxSurge"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "滚动发布的副本数"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "datacenter"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 14,
+        "x": 8,
+        "y": 1
+      },
+      "id": 760,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "副本数"
+          }
+        ]
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "label_replace(kube_deployment_spec_replicas{deployment=~\"$appname\",namespace=~\"$namespace\"},\"container\",\"$1\",\"deployment\",\"(.*)\")",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "max(kube_pod_container_resource_limits{pod=~\"$appname.+\",namespace=~\"$namespace\",resource=\"cpu\"}) by (namespace,container)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "C"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "max(kube_pod_container_resource_limits{pod=~\"$appname.+\",namespace=~\"$namespace\",resource=\"memory\"}) by (namespace,container)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "D"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "label_replace(kube_deployment_status_replicas_available{deployment=~\"$appname\",namespace=~\"$namespace\"},\"container\",\"$1\",\"deployment\",\"(.*)\")",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "label_replace(kube_deployment_spec_strategy_rollingupdate_max_surge{deployment=~\"$appname\",namespace=~\"$namespace\"},\"container\",\"$1\",\"deployment\",\"(.*)\")",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "E"
+        }
+      ],
+      "title": "应用配额信息",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "container"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "Time 4": true,
+              "Time 5": true,
+              "Value #C": false,
+              "__name__": true,
+              "__name__ 1": true,
+              "__name__ 2": true,
+              "__name__ 3": true,
+              "datacenter": true,
+              "datacenter 2": true,
+              "datacenter 3": true,
+              "deployment": true,
+              "deployment 1": true,
+              "deployment 2": true,
+              "deployment 3": true,
+              "env": true,
+              "env 1": true,
+              "env 2": true,
+              "env 3": true,
+              "instance": true,
+              "instance 1": true,
+              "instance 2": true,
+              "instance 3": true,
+              "job": true,
+              "job 1": true,
+              "job 2": true,
+              "job 3": true,
+              "namespace 1": true,
+              "namespace 2": true,
+              "namespace 3": true,
+              "namespace 4": true,
+              "namespace 5": true,
+              "prometheus": true,
+              "prometheus 1": true,
+              "prometheus 2": true,
+              "prometheus 3": true
+            },
+            "indexByName": {
+              "Time 1": 2,
+              "Time 2": 13,
+              "Time 3": 16,
+              "Time 4": 19,
+              "Time 5": 28,
+              "Value #A": 10,
+              "Value #B": 11,
+              "Value #C": 15,
+              "Value #D": 18,
+              "Value #E": 12,
+              "__name__ 1": 3,
+              "__name__ 2": 20,
+              "__name__ 3": 29,
+              "container": 1,
+              "datacenter 1": 0,
+              "datacenter 2": 21,
+              "datacenter 3": 30,
+              "deployment 1": 4,
+              "deployment 2": 22,
+              "deployment 3": 31,
+              "env 1": 5,
+              "env 2": 23,
+              "env 3": 32,
+              "instance 1": 6,
+              "instance 2": 24,
+              "instance 3": 33,
+              "job 1": 7,
+              "job 2": 25,
+              "job 3": 34,
+              "namespace 1": 8,
+              "namespace 2": 14,
+              "namespace 3": 17,
+              "namespace 4": 26,
+              "namespace 5": 35,
+              "prometheus 1": 9,
+              "prometheus 2": 27,
+              "prometheus 3": 36
+            },
+            "renameByName": {
+              "Value #A": "副本数",
+              "Value #B": "availablePods",
+              "Value #C": "CPU Quota",
+              "Value #D": "Memory Quota",
+              "Value #E": "maxSurge",
+              "container": "应用",
+              "datacenter 1": "datacenter"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "infra-prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Container Count"
+            },
+            "properties": [
+              {
+                "id": "custom.align",
+                "value": null
+              },
+              {
+                "id": "displayName",
+                "value": "Container Count"
+              },
+              {
+                "id": "custom.width",
+                "value": 145
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "host_ip"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 170
+              },
+              {
+                "id": "displayName",
+                "value": "k8s node ip"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "datacenter"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "namespace"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 160
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "pod"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 350
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "pod_ip"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 170
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "node"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              },
+              {
+                "id": "displayName",
+                "value": "k8s node"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "启动时间"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 200
+              },
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "近五分钟重启次数"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              },
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 22,
+        "x": 0,
+        "y": 8
+      },
+      "id": 756,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "启动时间"
+          }
+        ]
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "sum(kube_pod_info{namespace=~\"$namespace\",pod=~\"$appname.+\"}) by (host_ip,node,pod,namespace,pod,pod_ip,datacenter)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "kube_pod_start_time{namespace=~\"$namespace\",pod=~\"$appname.+\"} * 1000",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": " increase(kube_pod_container_status_restarts_total{namespace=~\"$namespace\",pod=~\"$appname.+\"}[5m])",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "C"
+        }
+      ],
+      "title": "Pod Info",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "pod"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "Value #A": false,
+              "container 1": true,
+              "container 2": true,
+              "datacenter 2": true,
+              "datacenter 3": true,
+              "env 1": true,
+              "env 2": true,
+              "instance 1": true,
+              "instance 2": true,
+              "job 1": true,
+              "job 2": true,
+              "namespace 2": true,
+              "namespace 3": true,
+              "prometheus 1": true,
+              "prometheus 2": true
+            },
+            "indexByName": {
+              "Time 1": 4,
+              "Time 2": 7,
+              "Time 3": 16,
+              "Value #A": 25,
+              "Value #B": 15,
+              "Value #C": 24,
+              "container 1": 8,
+              "container 2": 17,
+              "datacenter 1": 5,
+              "datacenter 2": 9,
+              "datacenter 3": 18,
+              "env 1": 10,
+              "env 2": 19,
+              "host_ip": 3,
+              "instance 1": 11,
+              "instance 2": 20,
+              "job 1": 12,
+              "job 2": 21,
+              "namespace 1": 6,
+              "namespace 2": 13,
+              "namespace 3": 22,
+              "node": 2,
+              "pod": 0,
+              "pod_ip": 1,
+              "prometheus 1": 14,
+              "prometheus 2": 23
+            },
+            "renameByName": {
+              "Value #A": "Container Count",
+              "Value #B": "启动时间",
+              "Value #C": "近五分钟重启次数",
+              "datacenter 1": "datacenter",
+              "namespace 1": "namespace"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 160,
+      "panels": [],
+      "title": "image list & domains",
+      "type": "row"
+    },
+    {
+      "datasource": "infra-prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "datacenter"
+            },
+            "properties": [
+              {
+                "id": "custom.align",
+                "value": null
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ingress"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 300
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "namespace"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 200
+              },
+              {
+                "id": "unit",
+                "value": "cpu"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "host"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 400
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 22,
+        "x": 0,
+        "y": 19
+      },
+      "id": 761,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "ingress"
+          }
+        ]
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "sum(kube_ingress_path{namespace=~\"$namespace\",ingress=~\"$appname.*\"}) by(datacenter,namespace,host,path,ingress)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "应用域名信息",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "container"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "Value": true,
+              "Value #C": false,
+              "__name__": true,
+              "datacenter": false,
+              "deployment": true,
+              "env": true,
+              "instance": true,
+              "job": true,
+              "namespace 1": true,
+              "namespace 2": true,
+              "namespace 3": true,
+              "prometheus": true
+            },
+            "indexByName": {
+              "Time": 1,
+              "Value": 0,
+              "datacenter": 2,
+              "host": 5,
+              "ingress": 4,
+              "namespace": 3,
+              "path": 6
+            },
+            "renameByName": {
+              "Value #A": "副本数",
+              "Value #C": "CPU Quota",
+              "Value #D": "Memory Quota",
+              "container": "应用",
+              "ingress": ""
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "container"
+            },
+            "properties": [
+              {
+                "id": "custom.align",
+                "value": null
+              },
+              {
+                "id": "custom.width",
+                "value": 260
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "namespace"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": []
+              },
+              {
+                "id": "custom.align",
+                "value": null
+              },
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "image"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "auto"
+              },
+              {
+                "id": "custom.width"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 22,
+        "x": 0,
+        "y": 26
+      },
+      "id": 753,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "container"
+          }
+        ]
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "datasource": "infra-prometheus",
+          "exemplar": false,
+          "expr": "sum(kube_pod_container_info{namespace=~\"$namespace\",pod=~\"$appname.+\", container!~\"|POD\", image!=\"\"}) by (container,namespace,image) ",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 5,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "应用容器镜像",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {
+            "reducers": []
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "container|namespace|image"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "container": 1,
+              "image": 2,
+              "namespace": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "",
+        "current": {
+          "selected": true,
+          "text": [
+            "hhub",
+            "pms20",
+            "ratecenter"
+          ],
+          "value": [
+            "hhub",
+            "pms20",
+            "ratecenter"
+          ]
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(kube_pod_info,namespace)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "namespace",
+        "multi": true,
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_pod_info,namespace)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".+",
+        "current": {
+          "selected": true,
+          "text": [
+            "hhub-check",
+            "hhub-check-preview",
+            "hhub-price",
+            "hhub-price-preview",
+            "pms20-calcc",
+            "ratecenter-core",
+            "ratecenter-core-preview"
+          ],
+          "value": [
+            "hhub-check",
+            "hhub-check-preview",
+            "hhub-price",
+            "hhub-price-preview",
+            "pms20-calcc",
+            "ratecenter-core",
+            "ratecenter-core-preview"
+          ]
+        },
+        "datasource": "infra-prometheus",
+        "definition": "label_values(container_memory_working_set_bytes{container!~\"|POD\",namespace=~\"$namespace\"},container)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "application",
+        "multi": true,
+        "name": "appname",
+        "options": [],
+        "query": {
+          "query": "label_values(container_memory_working_set_bytes{container!~\"|POD\",namespace=~\"$namespace\"},container)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "image-list",
+  "uid": "k8s-app-images",
+  "version": 44
+}
