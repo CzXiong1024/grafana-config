@@ -33,13 +33,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "dark-green",
-                "慢请求(>3s)": "super-light-red"
+                "Slow request (>3s)": "super-light-red"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟接口访问量趋势",
+            "description": "Interface access trend in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -70,7 +70,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看HTTP接口大盘",
+                    "title": "Click to view the HTTP interface overview",
                     "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -132,7 +132,7 @@
                     "expr": "(sum(increase(http_server_request_duration_seconds_bucket{le=\"+Inf\",app=\"$appname\",envtype=\"$envtype\"}[1m])) by (app) - sum(increase(http_server_request_duration_seconds_bucket{le=\"3.0\",app=\"$appname\",envtype=\"$envtype\"}[1m])) by (app)) ",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "慢请求(>3s)",
+                    "legendFormat": "Slow request (>3s)",
                     "refId": "F"
                 }
             ],
@@ -140,7 +140,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "总体访问情况",
+            "title": "Overall Visit Status",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -186,13 +186,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟接口的请求量趋势",
+            "description": "The request volume trend of the interface in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -225,7 +225,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个HTTP接口的统计",
+                    "title": "Click to view statistics of a single HTTP interface",
                     "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -255,7 +255,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量(By Api)",
+            "title": "Request volume (By Api)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -301,13 +301,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟接口的请求量",
+            "description": "Number of requests for the interface in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -340,7 +340,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个HTTP接口的统计",
+                    "title": "Click to view statistics of a single HTTP interface",
                     "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -370,7 +370,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "请求量(By ServerIP)",
+            "title": "Request volume (By ServerIP)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -416,13 +416,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟接口4xx+5xx的数量",
+            "description": "Number of 4xx+5xx interfaces in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -455,7 +455,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个接口的耗时/状态码统计",
+                    "title": "Click to view the time consumption/status code statistics of a single interface",
                     "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -475,7 +475,7 @@
             "targets": [
                 {
                     "exemplar": true,
-                    "expr": "(sum(increase(http_server_request_total{status=~\"4..|5..\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request))  > 0",
+                    "expr": "(sum(increase(http_server_request_total{status=~\"4..|5..\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (request)) > 0",
                     "interval": "",
                     "legendFormat": "{{request}}",
                     "refId": "A"
@@ -485,7 +485,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "fail数量(By Api)",
+            "title": "Number of failures (By Api)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -531,13 +531,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟接口4xx+5xx的数量",
+            "description": "Number of 4xx+5xx interfaces in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -570,7 +570,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个接口的耗时/状态码统计",
+                    "title": "Click to view the time consumption/status code statistics of a single interface",
                     "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -590,7 +590,7 @@
             "targets": [
                 {
                     "exemplar": true,
-                    "expr": "(sum(increase(http_server_request_total{status=~\"4..|5..\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (instance))  > 0",
+                    "expr": "(sum(increase(http_server_request_total{status=~\"4..|5..\",app=\"$appname\",envtype=\"$envtype\",request=~\"$api\"}[1m])) by (instance)) > 0",
                     "interval": "",
                     "legendFormat": "{{instance}}",
                     "refId": "A"
@@ -600,7 +600,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "fail数量(By ServerIp)",
+            "title": "Number of failures (By ServerIp)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -646,13 +646,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟接口平均耗时",
+            "description": "Average interface time consumed in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -685,7 +685,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看单个接口的耗时统计",
+                    "title": "Click to view the time statistics of a single interface",
                     "url": "/d/javahd/http-api-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -715,7 +715,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "平均耗时(By Api)",
+            "title": "Average time (By Api)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -761,13 +761,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟API业务码的数量",
+            "description": "The number of API business codes in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -800,7 +800,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看HTTP接口大盘",
+                    "title": "Click to view the HTTP interface overview",
                     "url": "/d/javah/http-api-overview?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -830,7 +830,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "API业务码(By Code)",
+            "title": "API Business Code (By Code)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -876,13 +876,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟慢请求的数量",
+            "description": "The number of slow requests in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -915,7 +915,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看慢接口统计",
+                    "title": "Click to view slow interface statistics",
                     "url": "/d/javahs/http-slow-api?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -945,7 +945,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "3秒以上慢请求(By Api)",
+            "title": " Slow requests over 3 seconds (By Api)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -991,13 +991,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟慢请求数量的趋势",
+            "description": "The trend of the number of slow requests in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1030,7 +1030,7 @@
             "links": [
                 {
                     "targetBlank": true,
-                    "title": "点击查看慢接口统计",
+                    "title": "Click to view slow interface statistics",
                     "url": "/d/javahs/http-slow-api?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                 }
             ],
@@ -1060,7 +1060,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "3秒以上慢请求(By ServerIp)",
+            "title": "Slow requests over 3 seconds (By ServerIp)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1106,13 +1106,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟Exception的数量",
+            "description": "Number of Exceptions in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1169,7 +1169,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "API Exception ( by Class)",
+            "title": "API Exception (by Class)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1215,13 +1215,13 @@
                 "4xx": "yellow",
                 "5xx": "red",
                 "all": "purple",
-                "慢请求(>3s)": "light-purple"
+                "Slow request (>3s)": "light-purple"
             },
             "bars": false,
             "dashLength": 10,
             "dashes": false,
             "datasource": "infra-prometheus",
-            "description": "最近一分钟Exception的数量",
+            "description": "Number of Exceptions in the last minute",
             "fieldConfig": {
                 "defaults": {},
                 "overrides": []
@@ -1278,7 +1278,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "API Exception ( by ServerIp)",
+            "title": "API Exception (by ServerIp)",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1365,7 +1365,7 @@
                     "legendType": "Right side",
                     "links": [
                         {
-                            "title": "查看单个HTTP接口的统计",
+                            "title": "View statistics of a single HTTP interface",
                             "url": "/d/jvm-job-http/java-http-sla?${__url_time_range}&var-appname=${appname}&var-envtype=${envtype}"
                         }
                     ],
@@ -1393,7 +1393,7 @@
                     "valueName": "current"
                 }
             ],
-            "title": "API数据明细",
+            "title": "API Data Details",
             "type": "row"
         }
     ],
@@ -1416,7 +1416,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "部署环境",
+                "label": "Deployment Environment",
                 "multi": false,
                 "name": "envtype",
                 "options": [],
@@ -1447,7 +1447,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": false,
-                "label": "应用 ( 支持sug )",
+                "label": "Application (support sug)",
                 "multi": false,
                 "name": "appname",
                 "options": [],
@@ -1483,7 +1483,7 @@
                 "error": null,
                 "hide": 0,
                 "includeAll": true,
-                "label": "HTTP接口",
+                "label": "HTTP interface",
                 "multi": true,
                 "name": "api",
                 "options": [
